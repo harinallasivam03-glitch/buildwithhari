@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Signup</title>
+<title>Login & Signup</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-    <style>
 
 *{
     margin:0;
@@ -166,33 +172,38 @@ body::after{
 
 }
 
-
-body{
-    background:#0f172a;
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    font-family:Arial;
-}
-
-.box{
-    background:#1e293b;
-    padding:40px;
-    border-radius:20px;
-    text-align:center;
-}
-
-a{
-    color:#38bdf8;
-    text-decoration:none;
-}
-
 </style>
-
 </head>
 <body>
+
+<div class="container">
+
+    <!-- LOGIN -->
+
+    <div class="form-box active" id="loginForm">
+
+        <h1>Welcome Back</h1>
+
+        <p>Login to continue</p>
+
+        <div class="input-box">
+            <input type="email" placeholder="Enter Email">
+        </div>
+
+        <div class="input-box">
+            <input type="password" placeholder="Enter Password">
+        </div>
+
+        <button class="btn">Login</button>
+
+        <div class="switch">
+            Don't have an account?
+            <span onclick="showSignup()">Sign Up</span>
+        </div>
+
+    </div>
+
+    <!-- SIGNUP -->
 
     <div class="form-box" id="signupForm">
 
@@ -221,5 +232,24 @@ a{
 
     </div>
 
+</div>
+
+<script>
+
+const loginForm = document.getElementById("loginForm");
+const signupForm = document.getElementById("signupForm");
+
+function showSignup(){
+    loginForm.classList.remove("active");
+    signupForm.classList.add("active");
+}
+
+function showLogin(){
+    signupForm.classList.remove("active");
+    loginForm.classList.add("active");
+}
+
+</script>
+
 </body>
-</html>s
+</html>
