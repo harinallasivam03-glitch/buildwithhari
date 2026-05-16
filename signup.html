@@ -33,21 +33,32 @@ a{
 </head>
 <body>
 
-<div class="box">
+    <div class="form-box" id="signupForm">
 
-    <h1>Account Already Created 😄</h1>
+        <h1>Create Account</h1>
 
-    <p>
-        Please Login Again
-    </p>
+        <p>Signup to continue</p>
 
-    <br>
+        <div class="input-box">
+            <input type="text" placeholder="Full Name">
+        </div>
 
-    <a href="index.html">
-        Go To Login
-    </a>
+        <div class="input-box">
+            <input type="email" placeholder="Enter Email">
+        </div>
 
-</div>
+        <div class="input-box">
+            <input type="password" placeholder="Create Password">
+        </div>
+
+        <button class="btn">Sign Up</button>
+
+        <div class="switch">
+            Already have an account?
+            <span onclick="showLogin()">Login</span>
+        </div>
+
+    </div>
 
 </body>
 </html>s
