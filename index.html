@@ -170,17 +170,6 @@ inputs.forEach((input,index)=>{
 
 function sendOTP(){
 
-	let alreadyLogin =
-        localStorage.getItem("accountCreated");
-
-	if(alreadyLogin){
-
-       window.location.href = "signup.html";
-
-      return;
-
-}
-
     let email = document.getElementById("email").value;
 
     if(email === ""){
