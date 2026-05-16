@@ -170,21 +170,11 @@ inputs.forEach((input,index)=>{
 
 function sendOTP(){
 
-    let email = document.getElementById("email").value;
+    let email =
+    document.getElementById("email").value;
 
-    if(email === ""){
-
-        alert("Enter Gmail");
-
-        return;
-
-    }
-
-    let otp = Math.floor(100000 + Math.random() * 900000);
-
-    localStorage.setItem("otp", otp);
-
-    localStorage.setItem("otpExpire", Date.now() + 30000);
+    let otp =
+    Math.floor(100000 + Math.random() * 900000);
 
     emailjs.send(
         "service_91rw6tr",
@@ -193,7 +183,9 @@ function sendOTP(){
             to_email: email,
             otp_code: otp
         }
-    )
+    );
+
+}
 
     .then(()=>{
 
