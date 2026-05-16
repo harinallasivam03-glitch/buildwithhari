@@ -170,11 +170,25 @@ inputs.forEach((input,index)=>{
 
 function sendOTP(){
 
-    let otp = Math.floor(100000 + Math.random() * 900000);
+    let email =
+    document.getElementById("email").value;
+
+    if(email === ""){
+
+        alert("Enter Gmail");
+        return;
+
+    }
+
+    let otp =
+    Math.floor(100000 + Math.random() * 900000);
 
     localStorage.setItem("otp", otp);
 
-    localStorage.setItem("otpExpire", Date.now() + 30000);
+    localStorage.setItem(
+        "otpExpire",
+        Date.now() + 30000
+    );
 
     emailjs.send(
         "service_91rw6tr",
@@ -185,21 +199,29 @@ function sendOTP(){
         }
     )
 
-
     .then(()=>{
 
         alert("OTP Sent");
 
-        document.getElementById("loginPage").style.display = "none";
+        document.getElementById(
+        "loginPage").style.display = "none";
 
-        document.getElementById("otpPage").style.display = "block";
+        document.getElementById(
+        "otpPage").style.display = "block";
 
         startTimer();
+
+    })
+
+    .catch((error)=>{
+
+        alert("Failed To Send OTP");
+
+        console.log(error);
 
     });
 
 }
-
 /* TIMER */
 
 let timer;
