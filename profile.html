@@ -491,8 +491,7 @@ body{
     </div>
 
 </div>
-	<script>
-		<script>
+<script>
 
 let savedName =
 localStorage.getItem("profileName");
@@ -505,6 +504,9 @@ if(savedName){
     document.getElementById(
     "showName").innerText = savedName;
 
+    document.getElementById(
+    "topName").innerText = savedName;
+
 }
 
 if(savedEmail){
@@ -515,7 +517,6 @@ if(savedEmail){
 }
 
 </script>
-	</script>
 
 </body>
 </html>
