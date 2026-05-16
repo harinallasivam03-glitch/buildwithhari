@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BuildWithHari Leaderboard</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#030712;
+    color:white;
+    display:flex;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:280px;
+    height:100vh;
+    background:#071122;
+    border-right:1px solid rgba(255,255,255,0.05);
+    padding:20px;
+    position:fixed;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:40px;
+}
+
+.logo-box{
+    width:45px;
+    height:45px;
+    border-radius:12px;
+    background:#111827;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#a855f7;
+    font-size:20px;
+}
+
+.logo-text h2{
+    font-size:30px;
+}
+
+.logo-text p{
+    color:#94a3b8;
+    font-size:12px;
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.menu a{
+    text-decoration:none;
+    color:#cbd5e1;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:15px 18px;
+    border-radius:18px;
+    transition:0.3s;
+}
+
+.menu a:hover,
+.menu a.active{
+    background:#1e293b;
+    color:white;
+}
+
+/* MAIN */
+
+.main{
+    margin-left:280px;
+    width:100%;
+    padding:35px;
+}
+
+.title h1{
+    font-size:50px;
+}
+
+.title p{
+    color:#94a3b8;
+    margin-top:10px;
+}
+
+/* TOP CARD */
+
+.top-rank{
+    margin-top:35px;
+    background:linear-gradient(145deg,#111827,#0b1220);
+    border-radius:30px;
+    padding:40px;
+    text-align:center;
+}
+
+.top-rank i{
+    font-size:60px;
+    color:#facc15;
+}
+
+.top-rank h1{
+    font-size:80px;
+    margin-top:15px;
+    color:#facc15;
+}
+
+.top-rank p{
+    color:#cbd5e1;
+}
+
+/* USERS */
+
+.users{
+    margin-top:35px;
+}
+
+.user{
+    background:linear-gradient(145deg,#111827,#0b1220);
+    padding:22px;
+    border-radius:24px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.left{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.rank{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    background:#facc15;
+    color:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:22px;
+    font-weight:700;
+}
+
+.user h2{
+    font-size:22px;
+}
+
+.user p{
+    color:#94a3b8;
+}
+
+.mc{
+    background:#1e293b;
+    padding:10px 18px;
+    border-radius:14px;
+    color:#facc15;
+    font-weight:700;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .sidebar{
+        display:none;
+    }
+
+    .main{
+        margin-left:0;
+        padding:20px;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+    <div class="logo">
+
+        <div class="logo-box">
+            <i class="fa-solid fa-b"></i>
+        </div>
+
+        <div class="logo-text">
+            <h2>BuildWithHari</h2>
+            <p>DEVELOPER</p>
+        </div>
+
+    </div>
+
+    <div class="menu">
+
+        <a href="profile.html">
+            <i class="fa-regular fa-user"></i>
+            My Profile
+        </a>
+
+        <a href="courses.html">
+            <i class="fa-solid fa-book-open"></i>
+            Courses
+        </a>
+
+        <a href="leaderboard.html" class="active">
+            <i class="fa-solid fa-trophy"></i>
+            Leaderboard
+        </a>
+
+        <a href="settings.html">
+  	   <i class="fa-solid fa-gear"></i>
+   	   Settings
+	</a>
+
+
+    </div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+    <div class="title">
+
+        <h1>Leaderboard</h1>
+
+        <p>
+            Top users with highest MC coins
+        </p>
+
+    </div>
+
+    <!-- TOP RANK -->
+
+    <div class="top-rank">
+
+        <i class="fa-solid fa-crown"></i>
+
+        <h1>#1</h1>
+
+        <p>
+            Mooneshwaran — 35 MC
+        </p>
+
+    </div>
+
+    <!-- USERS -->
+
+    <div class="users">
+
+        <div class="user">
+
+            <div class="left">
+
+                <div class="rank">
+                    1
+                </div>
+
+                <div>
+                    <h2>Mooneshwaran</h2>
+                    <p>Top Performer</p>
+                </div>
+
+            </div>
+
+            <div class="mc">
+                35 MC
+            </div>
+
+        </div>
+
+        <div class="user">
+
+            <div class="left">
+
+                <div class="rank"
+                style="background:silver;">
+                    2
+                </div>
+
+                <div>
+                    <h2>Inbaraj V</h2>
+                    <p>Excellent Progress</p>
+                </div>
+
+            </div>
+
+            <div class="mc">
+                25 MC
+            </div>
+
+        </div>
+
+        <div class="user">
+
+            <div class="left">
+
+                <div class="rank"
+                style="background:#f97316;">
+                    3
+                </div>
+
+                <div>
+                    <h2>Hariharan N</h2>
+                    <p>Fast Learner</p>
+                </div>
+
+            </div>
+
+            <div class="mc">
+                10 MC
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
