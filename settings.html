@@ -264,8 +264,9 @@ body{
 
                 <label>Full Name</label>
 
-                <input type="text"
-                value="Hariharan N">
+               <input type="text"
+					id="userName"
+					value="Hariharan N">
 
             </div>
 
@@ -273,14 +274,16 @@ body{
 
                 <label>Email</label>
 
-                <input type="email"
-                value="harinallaisivam03@gmail.com">
+               <input type="email"
+   				id="userEmail"
+				value="harinallaisivam03@gmail.com">
 
             </div>
 
-            <button class="btn">
-                Save Changes
-            </button>
+            <button class="btn"
+			onclick="saveProfile()">
+    		Save Changes
+			</button>
 
         </div>
 
@@ -348,6 +351,21 @@ body{
 </div>
 
 <script>
+	function saveProfile(){
+
+    let name =
+    document.getElementById("userName").value;
+
+    let email =
+    document.getElementById("userEmail").value;
+
+    localStorage.setItem("profileName",name);
+
+    localStorage.setItem("profileEmail",email);
+
+    alert("Profile Updated ✅");
+
+}
 
 function logout(){
 
@@ -358,6 +376,7 @@ function logout(){
     window.location.href = "index.html";
 
 }
+	
 
 </script>
 
