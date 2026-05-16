@@ -342,7 +342,7 @@ body{
         <div class="profile-top">
 
             <div>
-                <h3>Hariharan</h3>
+                <h2 id="showName">Hariharan N</h2>
                 <p style="color:#94a3b8;">User</p>
             </div>
 
@@ -377,8 +377,8 @@ body{
                     </div>
 
                     <div>
-                        <h2>Hariharan N</h2>
-                        <p>harinallaisivam03@gmail.com</p>
+                        <h2 id="showName">Hariharan N</h2>
+                       <p id="showEmail">harinallaisivam03@gmail.com</p>
                     </div>
 
                 </div>
@@ -491,6 +491,31 @@ body{
     </div>
 
 </div>
+	<script>
+		<script>
+
+let savedName =
+localStorage.getItem("profileName");
+
+let savedEmail =
+localStorage.getItem("profileEmail");
+
+if(savedName){
+
+    document.getElementById(
+    "showName").innerText = savedName;
+
+}
+
+if(savedEmail){
+
+    document.getElementById(
+    "showEmail").innerText = savedEmail;
+
+}
+
+</script>
+	</script>
 
 </body>
 </html>
