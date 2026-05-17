@@ -16,26 +16,23 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <style>
 
-*{
+{
     margin:0;
     padding:0;
     box-sizing:border-box;
     font-family:'Poppins',sans-serif;
 }
 
-/* இதுக்கு கீழே paste பண்ணுங்க */
-
 html, body{
-    overflow-x: hidden;
-    touch-action: manipulation;
+    width:100%;
+    margin:0;
+    padding:0;
+    overflow-x:hidden;
+    touch-action:manipulation;
 }
 
 input, button, select, textarea{
     font-size:16px;
-}
-
-*{
-    -webkit-tap-highlight-color: transparent;
 }
 
 body{
@@ -305,17 +302,15 @@ body{
     }
 
     .main{
-        margin-left:0;
-        width:100%;
-        padding:20px;
-    }
+.main{
+    margin-left:0;
+    width:100%;
+    padding:15px;
+}
 
-    .topbar{
-        flex-direction:row;
-        justify-content:space-between;
-        align-items:center;
-        gap:10px;
-    }
+.topbar{
+    flex-wrap:wrap;
+}
 
     .title h1{
         font-size:38px;
