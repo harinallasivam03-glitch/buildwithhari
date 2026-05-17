@@ -647,6 +647,64 @@ if(savedEmail){
 function toggleSidebar(){
     document.getElementById("sidebar").classList.toggle("show");
 }
+	...profile page full html...
+
+
+let savedName = localStorage.getItem("profileName");
+let savedEmail = localStorage.getItem("profileEmail");
+
+if(savedName){
+    document.getElementById("showName").innerText = savedName;
+    document.getElementById("topName").innerText = savedName;
+}
+
+if(savedEmail){
+    document.getElementById("showEmail").innerText = savedEmail;
+}
+
+function toggleSidebar(){
+    document.getElementById("sidebar").classList.toggle("show");
+}
+</script>
+
+<!-- THIS BELOW ADD -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyC2wF7KID1lxdcvNGl-ExUmjetgYO4G4lA",
+  authDomain: "buildwithhari-cf274.firebaseapp.com",
+  projectId: "buildwithhari-cf274",
+  storageBucket: "buildwithhari-cf274.firebasestorage.app",
+  messagingSenderId: "112190919400",
+  appId: "1:112190919400:web:424eaf26944ba3848b2f5d"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+async function loadUsers(){
+
+    const querySnapshot = await getDocs(collection(db,"users"));
+
+    document.getElementById("memberCount").innerText = querySnapshot.size;
+
+    let html = "";
+
+    querySnapshot.forEach((doc)=>{
+        let user = doc.data();
+
+        html += `
+        <div style="background:#1e293b;padding:12px;margin-top:10px;border-radius:10px;">
+            ${user.name} - ${user.email}
+        </div>`;
+    });
+
+    document.getElementById("allUsers").innerHTML = html;
+}
+
+loadUsers();
 </script>
 
 </body>
