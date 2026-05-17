@@ -1,46 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Course Video</title>
+<title>Watch</title>
 </head>
-<body style="background:#0b1120; text-align:center; padding:40px;">
+<body style="background:black; text-align:center; padding:20px;">
 
-    <h1 style="color:white;">Course Video</h1>
-            <!-- CARD 2 -->
+<iframe id="player" width="1000" height="550" allowfullscreen></iframe>
 
-        <div class="course-card">
-
-            <div class="course-image">
-                      <i class="fa-solid fa-code"></i>
-            </div>
-
-            <div class="course-content">
-
-                <p>
-                    Build Android & iOS apps using Flutter technology.
-                </p>
-
-                <div class="course-footer">
-
-                    <div class="price">
-                        15 POINTS
-                    </div>
-					
-					<button class="btn">
-						  Open
-                    </button>
-                    
-                </div>
-
-            </div>
-
-        </div>
-
-    <iframe id="player" width="900" height="500" allowfullscreen></iframe>
-
-    <script>
-        document.getElementById("player").src = localStorage.getItem("videoLink");
-    </script>
+<script>
+document.getElementById("player").src = localStorage.getItem("videoLink");
+</script>
 
 </body>
 </html>
