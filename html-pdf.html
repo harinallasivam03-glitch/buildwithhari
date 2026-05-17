@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML Notes</title>
+    <style>
+        body{
+            background:#0b1120;
+            color:white;
+            font-family:sans-serif;
+            padding:30px;
+        }
+
+        .pdf-box{
+            background:#1e293b;
+            padding:20px;
+            border-radius:10px;
+            cursor:pointer;
+            width:300px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>HTML PDF Notes</h1>
+
+<div class="pdf-box" onclick="openPDF()">
+    HTML Beginner Notes.pdf
+</div>
+
+<script>
+function openPDF(){
+    window.location.href = "pdf-view.html";
+}
+</script>
+
+</body>
+</html>
