@@ -1,83 +1,89 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>HTML PDF Notes</title>
+    <title>HTML PDFs</title>
     <style>
         body{
             margin:0;
-            background:#0b1120;
-            font-family:Arial;
-            color:white;
             padding:30px;
+            background:#020617;
+            font-family:Arial,sans-serif;
+            color:white;
         }
 
         h1{
-            text-align:center;
             margin-bottom:30px;
         }
 
-        .pdf-container{
-            display:flex;
+        .pdf-grid{
+            display:grid;
+            grid-template-columns:repeat(5, 1fr);
             gap:30px;
-            flex-wrap:wrap;
-            justify-content:center;
         }
 
         .pdf-card{
-            width:320px;
-            background:#1e293b;
-            border-radius:15px;
-            padding:15px;
+            background:linear-gradient(135deg,#7c3aed,#2563eb);
+            border-radius:20px;
+            overflow:hidden;
             cursor:pointer;
+            box-shadow:0 8px 20px rgba(0,0,0,0.3);
         }
 
-        iframe{
+        .pdf-card iframe{
             width:100%;
-            height:400px;
+            height:320px;
             border:none;
-            border-radius:10px;
+            background:white;
         }
 
-        h3{
-            text-align:center;
+        .pdf-info{
+            background:#0f172a;
+            padding:20px;
+        }
+
+        .pdf-info h3{
+            margin:0;
+            font-size:28px;
+        }
+
+        .pdf-info p{
+            color:#94a3b8;
+            margin-top:10px;
+            font-size:18px;
         }
     </style>
 </head>
 <body>
 
-<h1>HTML Course PDF</h1>
+<h1>HTML Course PDFs</h1>
 
-<div class="pdf-card" onclick="window.location.href='pdf-view.html'">
+<div class="pdf-grid">
 
-    <iframe src="html_tutorial.pdf#toolbar=0&navpanes=0&scrollbar=0"></iframe>
+    <div class="pdf-card" onclick="window.location.href='pdf-view.html'">
+        <iframe src="html_tutorial.pdf#toolbar=0"></iframe>
+        <div class="pdf-info">
+            <h3>HTML Tutorial</h3>
+            <p>Learn HTML basics</p>
+        </div>
+    </div>
 
-    <h3>HTML Tutorial PDF</h3>
-
-</div>
-    
     <div class="pdf-card" onclick="window.location.href='pdf-view2.html'">
-
-    <iframe src="html-standard.pdf#toolbar=0&navpanes=0&scrollbar=0"></iframe>
-
-    <h3>HTML Examples PDF</h3>
-
-</div>
+        <iframe src="html_examples.pdf#toolbar=0"></iframe>
+        <div class="pdf-info">
+            <h3>HTML Examples</h3>
+            <p>Practice examples</p>
+        </div>
+    </div>
 
     <div class="pdf-card" onclick="window.location.href='pdf-view3.html'">
-
-    <iframe src="HTML Basics.pdf#toolbar=0&navpanes=0&scrollbar=0"></iframe>
-
-    <h3>HTML Examples PDF</h3>
-
-</div>
-    
-    <div class="pdf-card" onclick="window.location.href='pdf-view4.html'">
-
-    <iframe src="Learning-html.pdf#toolbar=0&navpanes=0&scrollbar=0"></iframe>
-
-    <h3>HTML Examples PDF</h3>
+        <iframe src="html_forms.pdf#toolbar=0"></iframe>
+        <div class="pdf-info">
+            <h3>HTML Forms</h3>
+            <p>Forms tutorial</p>
+        </div>
+    </div>
 
 </div>
-    
+
 </body>
 </html>
