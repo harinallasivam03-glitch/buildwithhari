@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Video</title>
+</head>
+<body style="background:#0b1120; text-align:center; padding:40px;">
+
+    <h1 style="color:white;">Course Video</h1>
+
+    <iframe id="player" width="900" height="500" allowfullscreen></iframe>
+
+    <script>
+        document.getElementById("player").src = localStorage.getItem("videoLink");
+    </script>
+
+</body>
+</html>
