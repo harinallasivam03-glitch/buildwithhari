@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CSS Videos</title>
+<style>
+body{
+    background:#0b1120;
+    color:white;
+    font-family:sans-serif;
+    padding:20px;
+}
+.video{
+    display:flex;
+    gap:15px;
+    margin:20px 0;
+    cursor:pointer;
+    background:#1e293b;
+    padding:15px;
+    border-radius:10px;
+}
+img{
+    width:220px;
+    border-radius:10px;
+}
+</style>
+</head>
+<body>
+
+<h1>HTML Videos</h1>
+
+<div class="video" onclick="playVideo('9pS6UkIQxbw')">
+    <img src="https://img.youtube.com/vi/9pS6UkIQxbw/hqdefault.jpg">
+    <h3>HTML Full Course</h3>
+</div>
+
+<div class="video" onclick="playVideo('qz0aGYrrlhU')">
+    <img src="https://img.youtube.com/vi/qz0aGYrrlhU/hqdefault.jpg">
+    <h3>HTML Tutorial 2</h3>
+</div>
+
+<script>
+function playVideo(id){
+    localStorage.setItem("videoLink","https://www.youtube.com/embed/"+id);
+    window.location.href="watch.html";
+}
+</script>
+
+</body>
+</html>
