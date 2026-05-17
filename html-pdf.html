@@ -17,7 +17,7 @@
 
         .pdf-grid{
             display:grid;
-            grid-template-columns:repeat(5, 1fr);
+            grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
             gap:30px;
         }
 
@@ -51,7 +51,41 @@
             margin-top:10px;
             font-size:18px;
         }
-    </style>
+      
+    @media(max-width:768px){
+
+    body{
+        padding:15px;
+    }
+
+    h1{
+        font-size:28px;
+        margin-top:20px;
+    }
+
+    .pdf-grid{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+    .pdf-card iframe{
+        height:280px;
+    }
+
+    .pdf-info{
+        padding:15px;
+    }
+
+    .pdf-info h3{
+        font-size:22px;
+    }
+
+    .pdf-info p{
+        font-size:14px;
+    }
+
+}
+</style>
 </head>
 <body>
 
