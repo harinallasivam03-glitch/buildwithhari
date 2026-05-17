@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <title>BuildWithHariOfficialWeb</title>
 
@@ -694,9 +694,23 @@ if(savedEmail){
 
 }
 function toggleMenu(){
-    document.querySelector(".sidebar").classList.toggle("show");
+    const sidebar = document.querySelector(".sidebar");
+    sidebar.classList.toggle("show");
 }
 
+document.addEventListener("click", function(e){
+
+    const sidebar = document.querySelector(".sidebar");
+    const toggle = document.querySelector(".menu-toggle");
+
+    if(
+        !sidebar.contains(e.target) &&
+        !toggle.contains(e.target)
+    ){
+        sidebar.classList.remove("show");
+    }
+
+});
 </script>
 
 </body>
