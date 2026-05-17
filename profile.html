@@ -267,13 +267,11 @@ body{
 
 @media(max-width:900px){
 
-    .menu-toggle{
-        display:block;
-        font-size:28px;
-        cursor:pointer;
+ .menu-toggle{
+        display:block !important;
         margin-bottom:20px;
-        color:white;
     }
+
 
     .sidebar{
         position:fixed;
@@ -333,10 +331,9 @@ body{
 }
 .menu-toggle{
     display:none;
-    font-size:28px;
-    cursor:pointer;
-    margin-bottom:20px;
+    font-size:30px;
     color:white;
+    cursor:pointer;
 }
 
 </style>
@@ -390,9 +387,10 @@ body{
 </div>
 
 <div class="main">
-	<div class="menu-toggle" onclick="toggleMenu()">
-    <i class="fa-solid fa-bars"></i>
-   </div>
+
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <i class="fa-solid fa-bars"></i>
+    </div>
 
     <div class="topbar">
 
