@@ -4,32 +4,42 @@
 <title>HTML Videos</title>
 <style>
 body{
-    background:#0b1120;
-    color:white;
-    font-family:sans-serif;
-    padding:20px;
     margin:0;
+    padding:20px;
+    background:#0f0f0f;
+    color:white;
+    font-family:Arial,sans-serif;
+}
+
+h1{
+    margin-bottom:25px;
 }
 
 .video{
-    background:#111827;
-    border-radius:14px;
+    display:flex;
+    gap:15px;
+    background:#181818;
+    border-radius:12px;
     overflow:hidden;
-    margin-bottom:22px;
+    margin-bottom:20px;
     cursor:pointer;
+    transition:0.3s;
+}
+
+.video:hover{
+    background:#222;
 }
 
 .video img{
-    width:100%;
-    display:block;
-    border-radius:0;
+    width:320px;
+    height:180px;
+    object-fit:cover;
 }
 
 .video h3{
-    font-size:16px;
-    line-height:24px;
-    padding:12px;
-    font-weight:500;
+    font-size:20px;
+    line-height:30px;
+    padding:15px 10px;
     margin:0;
 }
 
@@ -67,10 +77,6 @@ body{
     border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
-.mobile-sidebar a:hover{
-    background:#1e293b;
-}
-
 .mobile-sidebar.show{
     left:0;
 }
@@ -81,12 +87,27 @@ body{
         padding:70px 12px 15px;
     }
 
+    .menu-btn{
+        display:block;
+    }
+
     h1{
         font-size:26px;
     }
 
-    .menu-btn{
+    .video{
         display:block;
+    }
+
+    .video img{
+        width:100%;
+        height:auto;
+    }
+
+    .video h3{
+        font-size:16px;
+        line-height:24px;
+        padding:12px;
     }
 
 }
