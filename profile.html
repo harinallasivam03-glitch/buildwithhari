@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>BuildWithHari Profile</title>
+<title>BuildWithHariOfficialWeb</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -336,13 +336,13 @@ body{
 
         <div class="coin-box">
             <i class="fa-solid fa-coins"></i>
-            <span>10 MC</span>
+            <span>10 POINTS</span>
         </div>
 
         <div class="profile-top">
 
             <div>
-                <h3>Hariharan</h3>
+                <h3 id="topName"></h3>
                 <p style="color:#94a3b8;">User</p>
             </div>
 
@@ -377,7 +377,7 @@ body{
                     </div>
 
                     <div>
-                        <h2>Hariharan N</h2>
+                        <h2 id="showName"></h2>
                         <p>harinallaisivam03@gmail.com</p>
                     </div>
 
@@ -466,6 +466,24 @@ body{
                 </div>
 
             </div>
+			            <div class="user">
+
+                <div style="display:flex;align-items:center;gap:12px;">
+
+                    <div class="number"
+                    style="background:silver;">
+                        4
+                    </div>
+
+                    <h3>Inba</h3>
+
+                </div>
+
+                <div class="mc">
+                    25 MC
+                </div>
+
+            </div>
 
             <div class="user">
 
@@ -491,6 +509,33 @@ body{
     </div>
 
 </div>
+	<script>
+		<script>
+
+let savedName =
+localStorage.getItem("profileName");
+
+let savedEmail =
+localStorage.getItem("profileEmail");
+
+if(savedName){
+
+    document.getElementById(
+    "showName").innerText = savedName;
+
+    document.getElementById(
+    "topName").innerText = savedName;
+
+}
+
+if(savedEmail){
+
+    document.getElementById(
+    "showEmail").innerText = savedEmail;
+
+}
+
+	</script>
 
 </body>
 </html>
