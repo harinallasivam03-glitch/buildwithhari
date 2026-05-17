@@ -317,10 +317,8 @@ body{
                         15 POINTS
                     </div>
 
-                    <button class="btn">
-                        Open
-                    </button>
-
+                    <button onclick="openVideo('html')">Open</button>
+					
                 </div>
 
             </div>
@@ -456,6 +454,20 @@ body{
     </div>
 
 </div>
+	<script>
+function openVideo(course){
+
+    const links = {
+        html: "https://www.youtube.com/embed/9pS6UkIQxbw&t=524s",
+        java: "https://www.youtube.com/embed/PUT_JAVA_VIDEO_ID",
+        css: "https://www.youtube.com/embed/PUT_CSS_VIDEO_ID"
+    };
+
+    localStorage.setItem("videoLink", links[course]);
+
+    window.location.href = "watch.html";
+}
+</script>
 
 </body>
 </html>
