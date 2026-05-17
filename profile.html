@@ -647,6 +647,20 @@ if(savedEmail){
 function toggleSidebar(){
     document.getElementById("sidebar").classList.toggle("show");
 }
+
+	document.addEventListener("click", function(e){
+
+    const sidebar = document.querySelector(".sidebar");
+    const toggle = document.querySelector(".menu-toggle");
+
+    if(
+        !sidebar.contains(e.target) &&
+        !toggle.contains(e.target)
+    ){
+        sidebar.classList.remove("show");
+    }
+
+});
 </script>
 
 </body>
