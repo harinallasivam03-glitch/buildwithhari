@@ -1,14 +1,141 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Watch</title>
-</head>
-<body style="background:black; text-align:center; padding:20px;">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Watch Video</title>
 
-<iframe id="player" width="1000" height="550" allowfullscreen></iframe>
+<style>
+body{
+    margin:0;
+    background:#0f0f0f;
+    color:white;
+    font-family:Arial,sans-serif;
+}
+
+.player{
+    width:100%;
+    aspect-ratio:16/9;
+    background:black;
+}
+
+.player iframe{
+    width:100%;
+    height:100%;
+    border:none;
+}
+
+.content{
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+}
+
+.title{
+    font-size:24px;
+    line-height:34px;
+    margin-bottom:12px;
+}
+
+.channel{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-top:15px;
+}
+
+.logo{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:red;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+.name{
+    font-size:18px;
+    font-weight:bold;
+}
+
+.desc{
+    margin-top:20px;
+    background:#1f1f1f;
+    padding:18px;
+    border-radius:12px;
+    color:#cbd5e1;
+    line-height:28px;
+}
+
+.back-btn{
+    display:inline-block;
+    margin-bottom:20px;
+    color:white;
+    text-decoration:none;
+    background:#1f2937;
+    padding:10px 16px;
+    border-radius:8px;
+}
+
+@media(max-width:768px){
+
+    .content{
+        padding:15px;
+    }
+
+    .title{
+        font-size:18px;
+        line-height:28px;
+    }
+
+    .name{
+        font-size:16px;
+    }
+
+    .desc{
+        font-size:14px;
+        line-height:24px;
+    }
+
+}
+</style>
+</head>
+<body>
+
+<div class="player">
+    <iframe id="videoFrame"
+        allowfullscreen>
+    </iframe>
+</div>
+
+<div class="content">
+
+    <a href="html-videos.html" class="back-btn">← Back</a>
+
+    <div class="title">
+        HTML Tutorial | BuildWithHari Official
+    </div>
+
+    <div class="channel">
+        <div class="logo">B</div>
+
+        <div>
+            <div class="name">BuildWithHari</div>
+            <small style="color:gray;">Developer Channel</small>
+        </div>
+    </div>
+
+    <div class="desc">
+        Learn web development in Tamil. HTML basics, tags, forms, lists and real projects explained simply.
+    </div>
+
+</div>
 
 <script>
-document.getElementById("player").src = localStorage.getItem("videoLink");
+let video = localStorage.getItem("videoLink");
+document.getElementById("videoFrame").src = video;
 </script>
 
 </body>
