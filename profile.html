@@ -38,9 +38,10 @@ input, button, select, textarea{
 body{
     background:#030712;
     color:white;
-    display:flex;
+    margin:0;
+    padding:0;
+    overflow-x:hidden;
 }
-
 /* SIDEBAR */
 
 .sidebar{
@@ -104,11 +105,12 @@ body{
 }
 
 .main{
-    margin-left:280px;
     width:100%;
+    margin-left:280px;
     padding:35px;
+    box-sizing:border-box;
+    overflow-x:hidden;
 }
-
 .topbar{
     display:flex;
     justify-content:space-between;
@@ -301,16 +303,25 @@ body{
         left:0;
     }
 
-    .main{
-.main{
-    margin-left:0;
-    width:100%;
-    padding:15px;
-}
+	.main{
+    	 margin-left:0 !important;
+     	 width:100% !important;
+   		 padding:15px !important;
+   		 overflow-x:hidden;
+	}
 
-.topbar{
-    flex-wrap:wrap;
-}
+	body{
+   		 overflow-x:hidden;
+	}
+
+	.title h1{
+    	 font-size:30px !important;
+	}
+
+	.topbar{
+    	 flex-wrap:wrap;
+   		 gap:10px;
+	}
 
     .title h1{
         font-size:38px;
