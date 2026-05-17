@@ -286,7 +286,7 @@ body{
                 <div class="course-footer">
 
                     <button class="btn">
-                        Open
+                      <button onclick="openVideo('html')">Open</button>
                     </button>
 
                 </div>
@@ -316,8 +316,11 @@ body{
                     <div class="price">
                         15 POINTS
                     </div>
-
-                    <button onclick="openVideo('html')">Open</button>
+					
+					<button class="btn">
+						  Open
+                    </button>
+                    
 					
                 </div>
 
@@ -458,7 +461,7 @@ body{
 function openVideo(course){
 
     const links = {
-        html: "https://www.youtube.com/embed/9pS6UkIQxbw&t=524s",
+        html: "https://www.youtube.com/embed/9pS6UkIQxbw",
         java: "https://www.youtube.com/embed/PUT_JAVA_VIDEO_ID",
         css: "https://www.youtube.com/embed/PUT_CSS_VIDEO_ID"
     };
