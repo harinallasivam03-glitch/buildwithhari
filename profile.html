@@ -284,10 +284,65 @@ body{
     }
 
 }
+	.menu-btn{
+    display:none;
+    position:fixed;
+    top:15px;
+    left:15px;
+    font-size:28px;
+    color:white;
+    background:#1e293b;
+    padding:8px 14px;
+    border-radius:10px;
+    z-index:1000;
+    cursor:pointer;
+}
+
+.mobile-sidebar{
+    position:fixed;
+    top:0;
+    left:-250px;
+    width:220px;
+    height:100%;
+    background:#0f172a;
+    padding-top:70px;
+    transition:0.3s;
+    z-index:999;
+}
+
+.mobile-sidebar a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:18px 25px;
+}
+
+.mobile-sidebar.show{
+    left:0;
+}
+
+@media(max-width:768px){
+    .menu-btn{
+        display:block;
+    }
+
+    .sidebar{
+        display:none;
+    }
+}
 
 </style>
 </head>
 <body>
+	<div class="menu-btn" onclick="toggleSidebar()">☰</div>
+
+<div class="mobile-sidebar" id="sidebar">
+    <a href="profile.html">My Profile</a>
+    <a href="videos.html">Videos</a>
+    <a href="courses.html">Courses</a>
+    <a href="leaderboard.html">Leaderboard</a>
+    <a href="settings.html">Settings</a>
+</div>
 
 <div class="sidebar">
 
@@ -538,7 +593,10 @@ if(savedEmail){
     "showEmail").innerText = savedEmail;
 
 }
-
+	
+function toggleSidebar(){
+    document.getElementById("sidebar").classList.toggle("show");
+}
 </script>
 
 </body>
