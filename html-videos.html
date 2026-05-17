@@ -10,29 +10,37 @@ body{
     padding:20px;
 }
 .video{
-    display:flex;
-    gap:15px;
-    margin:20px 0;
+    background:#111827;
+    border-radius:14px;
+    overflow:hidden;
+    margin-bottom:22px;
     cursor:pointer;
-    background:#1e293b;
-    padding:15px;
-    border-radius:10px;
 }
-img{
-    width:220px;
-    border-radius:10px;
+
+.video img{
+    width:100%;
+    height:auto;
+    display:block;
+}
+
+.video h3{
+    font-size:16px;
+    line-height:24px;
+    padding:12px;
+    font-weight:500;
 }
 
 @media(max-width:768px){
 
     body{
-        padding:15px;
+        padding:70px 12px 15px;
     }
 
     h1{
-        font-size:28px;
-        margin-bottom:20px;
+        font-size:26px;
     }
+
+}
 
     .video{
         flex-direction:column;
@@ -51,7 +59,6 @@ img{
     }
 
 }
-  <style>
 .menu-btn{
     display:none;
     position:fixed;
