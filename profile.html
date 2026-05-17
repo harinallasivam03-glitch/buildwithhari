@@ -269,6 +269,10 @@ body{
 
     .menu-toggle{
         display:block;
+        font-size:28px;
+        cursor:pointer;
+        margin-bottom:20px;
+        color:white;
     }
 
     .sidebar{
@@ -280,6 +284,7 @@ body{
         z-index:999;
         transition:0.3s;
         display:block;
+        background:#071122;
     }
 
     .sidebar.show{
@@ -288,19 +293,41 @@ body{
 
     .main{
         margin-left:0;
+        width:100%;
         padding:20px;
+    }
+
+    .topbar{
+        flex-direction:row;
+        justify-content:space-between;
+        align-items:center;
+        gap:10px;
+    }
+
+    .title h1{
+        font-size:38px;
+    }
+
+    .profile-info{
+        flex-direction:row;
+        align-items:center;
+    }
+
+    .stats{
+        grid-template-columns:repeat(3,1fr);
+        gap:10px;
+    }
+
+    .stat-box{
+        padding:15px;
+    }
+
+    .stat-box h1{
+        font-size:24px;
     }
 
     .grid{
         grid-template-columns:1fr;
-    }
-
-    .stats{
-        grid-template-columns:1fr;
-    }
-
-    .title h1{
-        font-size:32px;
     }
 
 }
