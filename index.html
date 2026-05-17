@@ -329,19 +329,21 @@ function verifyOTP(){
 
     }
 
-    if(enteredOtp == realOtp){
+if(enteredOtp == realOtp){
 
-    localStorage.setItem(
-	"accountCreated",
-	"true"
-);
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
 
-	alert("Login Success ✅");
+    localStorage.setItem("profileName", name);
+    localStorage.setItem("profileEmail", email);
 
-	window.location.href =
-	"profile.html";
+    localStorage.setItem("accountCreated","true");
 
-    }else{
+    alert("Login Success ✅");
+
+    window.location.href = "profile.html";
+
+}else{
 
         alert("Wrong OTP");
 
