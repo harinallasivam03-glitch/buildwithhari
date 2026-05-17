@@ -164,8 +164,8 @@ body{
     grid-template-columns:2fr 1fr;
     gap:25px;
     margin-top:30px;
+    align-items:start;
 }
-
 .profile-card{
     background:linear-gradient(145deg,#111827,#0b1220);
     border-radius:28px;
@@ -346,16 +346,22 @@ body{
         word-break:break-word;
     }
 
-    .grid{
-        grid-template-columns:1fr;
-    }
-
+	.grid{
+ 	   display:grid;
+   	   grid-template-columns:1fr;
+	   gap:20px;
+	   align-items:start;
 }
+
 	.menu-toggle{
     display:none;
     font-size:30px;
     color:white;
     cursor:pointer;
+}
+	.profile-card{
+    width:100%;
+    max-width:100%;
 }
 
 </style>
