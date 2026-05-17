@@ -267,12 +267,28 @@ body{
 
 @media(max-width:900px){
 
+    .menu-toggle{
+        display:block;
+    }
+
     .sidebar{
-        display:none;
+        position:fixed;
+        left:-100%;
+        top:0;
+        width:280px;
+        height:100vh;
+        z-index:999;
+        transition:0.3s;
+        display:block;
+    }
+
+    .sidebar.show{
+        left:0;
     }
 
     .main{
         margin-left:0;
+        padding:20px;
     }
 
     .grid{
@@ -283,6 +299,17 @@ body{
         grid-template-columns:1fr;
     }
 
+    .title h1{
+        font-size:32px;
+    }
+
+}
+.menu-toggle{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+    margin-bottom:20px;
+    color:white;
 }
 
 </style>
@@ -336,6 +363,9 @@ body{
 </div>
 
 <div class="main">
+	<div class="menu-toggle" onclick="toggleMenu()">
+    <i class="fa-solid fa-bars"></i>
+   </div>
 
     <div class="topbar">
 
@@ -637,6 +667,9 @@ if(savedEmail){
     document.getElementById(
     "showEmail").innerText = savedEmail;
 
+}
+function toggleMenu(){
+    document.querySelector(".sidebar").classList.toggle("show");
 }
 
 </script>
