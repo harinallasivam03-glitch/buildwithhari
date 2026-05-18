@@ -209,6 +209,62 @@ inputs.forEach((input,index)=>{
 
 });
 
+/* SEND OTP */
+
+function sendOTP(){
+
+    let email =
+    document.getElementById("email").value;
+
+    if(email === ""){
+
+        alert("Enter Gmail");
+        return;
+
+    }
+
+    let otp =
+    Math.floor(100000 + Math.random() * 900000);
+
+    localStorage.setItem("otp", otp);
+
+    localStorage.setItem(
+        "otpExpire",
+        Date.now() + 30000
+    );
+
+    emailjs.send(
+        "service_91rw6tr",
+        "template_xwmyjxq",
+        {
+            to_email: email,
+            otp_code: otp
+        }
+    )
+
+    .then(()=>{
+
+        alert("OTP Sent");
+
+        document.getElementById(
+        "loginPage").style.display = "none";
+
+        document.getElementById(
+        "otpPage").style.display = "block";
+
+        startTimer();
+
+    })
+
+    .catch((error)=>{
+
+        alert("Failed To Send OTP");
+
+        console.log(error);
+
+    });
+
+}
 /* TIMER */
 
 let timer;
@@ -275,7 +331,7 @@ function verifyOTP(){
 
 if(enteredOtp == realOtp){
 
-    let name = document.getElementById("name").value;s
+    let name = document.getElementById("name").value;
     let email = document.getElementById("email").value;
 
     localStorage.setItem("profileName", name);
@@ -297,56 +353,8 @@ if(enteredOtp == realOtp){
 
 </script>
 
-	<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyC2wF7KID1lxdcvNGl-ExUmjetgYO4G4lA",
-  authDomain: "buildwithhari-cf274.firebaseapp.com",
-  projectId: "buildwithhari-cf274",
-  storageBucket: "buildwithhari-cf274.firebasestorage.app",
-  messagingSenderId: "112190919400",
-  appId: "1:112190919400:web:424eaf26944ba3848b2f5d"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-window.sendOTP = async function(){
-
-    let name = document.getElementById("name").value;
-    let email = document.getElementById("email").value;
-
-    if(name==="" || email===""){
-        alert("Enter Name and Email");
-        return;
-    }
-
-    await addDoc(collection(db,"users"),{
-        name:name,
-        email:email,
-        created:new Date()
-    });
-
-    let otp = Math.floor(100000 + Math.random() * 900000);
-
-    localStorage.setItem("otp", otp);
-    localStorage.setItem("otpExpire", Date.now()+30000);
-
-    emailjs.send("service_91rw6tr","template_xwmyjxq",{
-        to_email: email,
-        otp_code: otp
-    }).then(()=>{
-        alert("OTP Sent");
-        document.getElementById("loginPage").style.display="none";
-        document.getElementById("otpPage").style.display="block";
-        startTimer();
-    });
-}
-</script>
 <script type="module">
-....
+...
 </script>
 
 </body>
