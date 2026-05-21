@@ -160,12 +160,6 @@ body{
     margin-top:25px;
 }
 
-.price{
-    color:#facc15;
-    font-weight:700;
-    font-size:20px;
-}
-
 .btn{
     background:#7c3aed;
     border:none;
@@ -174,6 +168,7 @@ body{
     color:white;
     cursor:pointer;
     transition:0.3s;
+    width:100%;
 }
 
 .btn:hover{
@@ -194,6 +189,7 @@ body{
     }
 
 }
+
 .menu-btn{
     display:none;
     position:fixed;
@@ -270,14 +266,19 @@ body{
 </style>
 </head>
 <body>
-	<div class="menu-btn" onclick="toggleSidebar()">☰</div>
+
+<!-- MOBILE MENU -->
+
+<div class="menu-btn" onclick="toggleSidebar()">☰</div>
 
 <div class="mobile-sidebar" id="sidebar">
+
     <a href="profile.html">My Profile</a>
     <a href="videos.html">Videos</a>
     <a href="courses.html">Courses</a>
     <a href="leaderboard.html">Leaderboard</a>
     <a href="settings.html">Settings</a>
+
 </div>
 
 <!-- SIDEBAR -->
@@ -304,27 +305,25 @@ body{
             My Profile
         </a>
 
-	    <a href="videos.html" class="active">
-  	   <i class="fa-solid fa-gear"></i>
-   	   Videos
-	</a>
+        <a href="videos.html" class="active">
+            <i class="fa-solid fa-video"></i>
+            Videos
+        </a>
 
         <a href="courses.html">
             <i class="fa-solid fa-book-open"></i>
             Courses
         </a>
 
-       <a href="leaderboard.html">
+        <a href="leaderboard.html">
             <i class="fa-solid fa-trophy"></i>
             Leaderboard
         </a>
 
-
         <a href="settings.html">
-  	   <i class="fa-solid fa-gear"></i>
-   	   Settings
-	</a>
-
+            <i class="fa-solid fa-gear"></i>
+            Settings
+        </a>
 
     </div>
 
@@ -336,7 +335,7 @@ body{
 
     <div class="title">
 
-        <h1>Video Tutorial</h1>
+        <h1>Video Tutorials</h1>
 
         <p>
             Upgrade your skills with premium learning
@@ -344,135 +343,31 @@ body{
 
     </div>
 
-    <!-- COURSES -->
+    <!-- VIDEO GRID -->
 
     <div class="course-grid">
 
-        <!-- CARD 1 -->
+        <!-- HTML -->
 
         <div class="course-card">
 
             <div class="course-image">
-                <i class="fa-solid fa-code"></i>
+                <i class="fa-brands fa-html5"></i>
             </div>
 
             <div class="course-content">
 
-                <h2>HTML BEGINNER</h2>
+                <h2>HTML Beginner</h2>
 
                 <p>
-                    Learn HTML, CSS, JavaScript and build modern websites.
+                    Learn HTML full course from beginner level.
                 </p>
 
                 <div class="course-footer">
 
-                    <button class="btn open"
-                     onclick="window.location.href='html-videos.html'">Open</button>
-					
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- CARD 2 -->
-
-        <div class="course-card">
-
-            <div class="course-image">
-                      <i class="fa-solid fa-code"></i>
-            </div>
-
-            <div class="course-content">
-
-                <h2>JAVA BASIC</h2>
-
-                <p>
-                    Build Android & iOS apps using Flutter technology.
-                </p>
-
-                <div class="course-footer">
-                    <button class="btn open"
-                     onclick="window.location.href='java-videos.html'">Open</button>
-                    </button>
-                    
-					
-                </div>
-
-            </div>
-
-        </div>
-	    <!-- CARD 3 -->
-
-        <div class="course-card">
-
-            <div class="course-image">
-                <i class="fa-solid fa-code"></i>
-            </div>
-
-            <div class="course-content">
-
-                <h2>CSS BASIC</h2>
-
-                <p>
-                    Learn HTML, CSS, JavaScript and build modern websites.
-                </p>
-
-                <div class="course-footer">
-                    <button class="btn open"
-                     onclick="window.location.href='css-videos.html'">Open</button>
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-		<!-- CARD 4 -->
-
-        <div class="course-card">
-
-            <div class="course-image">
-                <i class="fa-solid fa-code"></i>
-            </div>
-
-            <div class="course-content">
-
-                <h2>Web Development</h2>
-
-                <p>
-                    Learn HTML, CSS, JavaScript and build modern websites.
-                </p>
-
-                <div class="course-footer">
-                    <button class="btn">
-                       Open
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-		<!-- CARD 5 -->
-
-        <div class="course-card">
-
-            <div class="course-image">
-                <i class="fa-solid fa-code"></i>
-            </div>
-
-            <div class="course-content">
-
-                <h2>Web Development</h2>
-
-                <p>
-                    Learn HTML, CSS, JavaScript and build modern websites.
-                </p>
-
-                <div class="course-footer">
-                    <button class="btn">
-                        Open
+                    <button class="btn"
+                    onclick="openVideo('html1')">
+                        Open Video
                     </button>
 
                 </div>
@@ -481,26 +376,85 @@ body{
 
         </div>
 
-
-        <!-- CARD 6 -->
+        <!-- CSS -->
 
         <div class="course-card">
 
             <div class="course-image">
-                <i class="fa-solid fa-code"></i>
+                <i class="fa-brands fa-css3-alt"></i>
             </div>
 
             <div class="course-content">
 
-                <h2>AI Engineering</h2>
+                <h2>CSS Beginner</h2>
 
                 <p>
-                    Learn Artificial Intelligence and Machine Learning basics.
+                    Learn modern CSS and responsive website design.
                 </p>
 
                 <div class="course-footer">
-                    <button class="btn">
-                        Open
+
+                    <button class="btn"
+                    onclick="openVideo('css')">
+                        Open Video
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- JAVA -->
+
+        <div class="course-card">
+
+            <div class="course-image">
+                <i class="fa-brands fa-java"></i>
+            </div>
+
+            <div class="course-content">
+
+                <h2>Java Beginner</h2>
+
+                <p>
+                    Learn Java programming from scratch.
+                </p>
+
+                <div class="course-footer">
+
+                    <button class="btn"
+                    onclick="openVideo('java')">
+                        Open Video
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- JAVASCRIPT -->
+
+        <div class="course-card">
+
+            <div class="course-image">
+                <i class="fa-brands fa-js"></i>
+            </div>
+
+            <div class="course-content">
+
+                <h2>JavaScript</h2>
+
+                <p>
+                    Learn JavaScript and build interactive websites.
+                </p>
+
+                <div class="course-footer">
+
+                    <button class="btn"
+                    onclick="openVideo('js')">
+                        Open Video
                     </button>
 
                 </div>
@@ -512,27 +466,44 @@ body{
     </div>
 
 </div>
-	<script>
+
+<script>
+
 function openVideo(course){
 
     const links = {
-        html: "https://www.youtube.com/embed/9pS6UkIQxbw",
-		html: "https://www.youtube.com/embed/qTia9bSOfNY",
-		html: "https://www.youtube.com/embed/E7o73M8Vy4Q",
-		html: "https://www.youtube.com/embed/ILDh3QiydCc",
-		html: "https://www.youtube.com/embed/UhT0tru1Xh8",
-        java: "https://www.youtube.com/embed/PUT_JAVA_VIDEO_ID",
-        css: "https://www.youtube.com/embed/PUT_CSS_VIDEO_ID"
+
+        html1:
+        "https://www.youtube.com/embed/qz0aGYrrlhU",
+
+        css:
+        "https://www.youtube.com/embed/1Rs2ND1ryYc",
+
+        java:
+        "https://www.youtube.com/embed/grEKMHGYyns",
+
+        js:
+        "https://www.youtube.com/embed/W6NZfCO5SIk"
+
     };
 
-    localStorage.setItem("videoLink", links[course]);
+    localStorage.setItem(
+        "videoLink",
+        links[course]
+    );
 
     window.location.href = "watch.html";
+
 }
-	
+
 function toggleSidebar(){
-    document.getElementById("sidebar").classList.toggle("show");
+
+    document
+    .getElementById("sidebar")
+    .classList.toggle("show");
+
 }
+
 </script>
 
 </body>
