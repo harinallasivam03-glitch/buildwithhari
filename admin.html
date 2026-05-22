@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Panel</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#030712;
+    color:white;
+    padding:30px;
+}
+
+.title{
+    margin-bottom:30px;
+}
+
+.title h1{
+    font-size:45px;
+}
+
+.title p{
+    color:#94a3b8;
+    margin-top:10px;
+}
+
+.users-box{
+    background:linear-gradient(145deg,#111827,#0b1220);
+    border-radius:25px;
+    padding:25px;
+}
+
+.user-card{
+    background:#0f172a;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.user-left{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.user-left h2{
+    font-size:22px;
+}
+
+.user-left p{
+    color:#94a3b8;
+}
+
+.actions{
+    display:flex;
+    gap:12px;
+}
+
+.delete-btn{
+    background:#dc2626;
+    color:white;
+    border:none;
+    padding:12px 18px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.block-btn{
+    background:#facc15;
+    color:black;
+    border:none;
+    padding:12px 18px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.delete-btn:hover,
+.block-btn:hover{
+    opacity:0.8;
+}
+
+@media(max-width:768px){
+
+    body{
+        padding:15px;
+    }
+
+    .title h1{
+        font-size:34px;
+    }
+
+    .user-card{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="title">
+
+    <h1>Admin Panel</h1>
+
+    <p>
+        Manage all users and blocked emails
+    </p>
+
+</div>
+
+<div class="users-box">
+
+    <div id="allUsers"></div>
+
+</div>
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+getDocs,
+deleteDoc,
+doc,
+setDoc
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+/* FIREBASE */
+
+const firebaseConfig = {
+
+  apiKey: "AIzaSyC2wF7KID1lxdcvNGl-ExUmjetgYO4G4lA",
+  authDomain: "buildwithhari-cf274.firebaseapp.com",
+  projectId: "buildwithhari-cf274",
+  storageBucket: "buildwithhari-cf274.firebasestorage.app",
+  messagingSenderId: "112190919400",
+  appId: "1:112190919400:web:424eaf26944ba3848b2f5d"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+/* LOAD USERS */
+
+async function loadUsers(){
+
+    const querySnapshot =
+    await getDocs(collection(db,"users"));
+
+    let html = "";
+
+    querySnapshot.forEach((docSnap)=>{
+
+        let user = docSnap.data();
+
+        html += `
+
+        <div class="user-card">
+
+            <div class="user-left">
+
+                <h2>${user.name}</h2>
+
+                <p>${user.email}</p>
+
+                <p>
+                User ID :
+                ${docSnap.id}
+                </p>
+
+            </div>
+
+            <div class="actions">
+
+                <button class="delete-btn"
+                onclick="deleteUser('${docSnap.id}')">
+
+                    Delete
+
+                </button>
+
+                <button class="block-btn"
+                onclick="blockEmail('${user.email}')">
+
+                    Block Email
+
+                </button>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+    document.getElementById(
+    "allUsers").innerHTML = html;
+
+}
+
+loadUsers();
+
+/* DELETE USER */
+
+window.deleteUser = async function(id){
+
+    let confirmDelete =
+    confirm("Delete this user ?");
+
+    if(confirmDelete){
+
+        await deleteDoc(
+        doc(db,"users",id)
+        );
+
+        alert("User Deleted ✅");
+
+        loadUsers();
+
+    }
+
+}
+
+/* BLOCK EMAIL */
+
+window.blockEmail = async function(email){
+
+    await setDoc(
+    doc(db,"blockedEmails",email),
+    {
+        email:email,
+        blocked:true
+    }
+    );
+
+    alert("Email Blocked ✅");
+
+}
+
+</script>
+
+</body>
+</html>
