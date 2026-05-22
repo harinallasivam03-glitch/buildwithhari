@@ -109,20 +109,28 @@ body{
 
 /* BUTTON */
 
-.btn{
+.play-btn{
     width:100%;
     height:55px;
     border:none;
     border-radius:14px;
-    background:linear-gradient(to right,#7c3aed,#9333ea);
+    background:#22c55e;
     color:white;
     font-size:18px;
+    font-weight:600;
     cursor:pointer;
     transition:0.3s;
 }
 
-.btn:hover{
-    opacity:0.9;
+.play-btn:hover{
+    background:#16a34a;
+}
+
+/* RESUME BUTTON */
+
+.resume-btn{
+    background:#facc15 !important;
+    color:black !important;
 }
 
 /* MOBILE */
@@ -191,10 +199,11 @@ body{
                 Learn HTML basics in Tamil with easy explanation for beginners.
             </p>
 
-            <button class="btn"
+            <button class="play-btn"
+            id="btn-9pS6UkIQxbw"
             onclick="playVideo('9pS6UkIQxbw')">
 
-                Open Video
+                ▶ PLAY
 
             </button>
 
@@ -224,10 +233,11 @@ body{
                 Learn ul, ol and li tags with real examples and beginner projects.
             </p>
 
-            <button class="btn"
+            <button class="play-btn"
+            id="btn-aD4Sp44DoKI"
             onclick="playVideo('aD4Sp44DoKI')">
 
-                Open Video
+                ▶ PLAY
 
             </button>
 
@@ -257,10 +267,11 @@ body{
                 Learn semantic tags like header, footer and section easily.
             </p>
 
-            <button class="btn"
+            <button class="play-btn"
+            id="btn-KeXRtRHDFKo"
             onclick="playVideo('KeXRtRHDFKo')">
 
-                Open Video
+                ▶ PLAY
 
             </button>
 
@@ -290,10 +301,11 @@ body{
                 Learn how to add images and clickable links in HTML websites.
             </p>
 
-            <button class="btn"
+            <button class="play-btn"
+            id="btn-ILDh3QiydCc"
             onclick="playVideo('ILDh3QiydCc')">
 
-                Open Video
+                ▶ PLAY
 
             </button>
 
@@ -323,10 +335,11 @@ body{
                 Create your first mini website project step by step from scratch.
             </p>
 
-            <button class="btn"
+            <button class="play-btn"
+            id="btn-SqQNKbqgHpA"
             onclick="playVideo('SqQNKbqgHpA')">
 
-                Open Video
+                ▶ PLAY
 
             </button>
 
@@ -338,6 +351,8 @@ body{
 
 <script>
 
+/* PLAY VIDEO */
+
 function playVideo(id){
 
     localStorage.setItem(
@@ -345,9 +360,61 @@ function playVideo(id){
     "https://www.youtube.com/embed/"+id
     );
 
+    /* SAVE WATCH STATUS */
+
+    localStorage.setItem(
+    "watching_"+id,
+    "true"
+    );
+
     window.location.href="watch.html";
 
 }
+
+/* CHECK RESUME BUTTON */
+
+function checkResumeButtons(){
+
+    let videos = [
+
+        "9pS6UkIQxbw",
+        "aD4Sp44DoKI",
+        "KeXRtRHDFKo",
+        "ILDh3QiydCc",
+        "SqQNKbqgHpA"
+
+    ];
+
+    videos.forEach((id)=>{
+
+        let watched =
+        localStorage.getItem(
+        "watching_"+id
+        );
+
+        if(watched){
+
+            let btn =
+            document.getElementById(
+            "btn-"+id
+            );
+
+            btn.innerHTML =
+            "⏯ RESUME";
+
+            btn.classList.add(
+            "resume-btn"
+            );
+
+        }
+
+    });
+
+}
+
+/* PAGE LOAD */
+
+checkResumeButtons();
 
 </script>
 
