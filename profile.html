@@ -284,6 +284,8 @@ body{
     overflow:auto;
 }
 
+/* MOBILE */
+
 @media(max-width:900px){
 
     .sidebar{
@@ -484,7 +486,7 @@ body{
             </div>
 
             <div class="avatar" id="topAvatar">
-                H
+                U
             </div>
 
         </div>
@@ -512,12 +514,12 @@ body{
                 <div class="profile-info">
 
                     <div class="big-avatar" id="bigAvatar">
-                        H
+                        U
                     </div>
 
                     <div>
-                        <h2 id="showName">Hari</h2>
-                        <p id="showEmail">hari@gmail.com</p>
+                        <h2 id="showName">User</h2>
+                        <p id="showEmail">No Email</p>
                     </div>
 
                 </div>
@@ -645,37 +647,59 @@ body{
 
 <script>
 
-let savedName =
-localStorage.getItem("profileName");
+function loadCurrentUser(){
 
-let savedEmail =
-localStorage.getItem("profileEmail");
+    let savedName =
+    localStorage.getItem("profileName");
 
-if(savedName){
+    let savedEmail =
+    localStorage.getItem("profileEmail");
+
+    if(!savedName){
+
+        savedName = "User";
+
+    }
+
+    if(!savedEmail){
+
+        savedEmail = "No Email";
+
+    }
+
+    /* SHOW NAME */
 
     document.getElementById(
-    "showName").innerText = savedName;
+    "showName").innerText =
+    savedName;
 
     document.getElementById(
-    "topName").innerText = savedName;
+    "topName").innerText =
+    savedName;
+
+    /* SHOW EMAIL */
+
+    document.getElementById(
+    "showEmail").innerText =
+    savedEmail;
+
+    /* FIRST LETTER */
 
     let firstLetter =
-    savedName.charAt(0).toUpperCase();
+    savedName.charAt(0)
+    .toUpperCase();
 
     document.getElementById(
-    "topAvatar").innerText = firstLetter;
+    "topAvatar").innerText =
+    firstLetter;
 
     document.getElementById(
-    "bigAvatar").innerText = firstLetter;
+    "bigAvatar").innerText =
+    firstLetter;
 
 }
 
-if(savedEmail){
-
-    document.getElementById(
-    "showEmail").innerText = savedEmail;
-
-}
+/* MOBILE SIDEBAR */
 
 function toggleSidebar(){
 
@@ -683,6 +707,10 @@ function toggleSidebar(){
     "sidebar").classList.toggle("show");
 
 }
+
+/* LOAD USER */
+
+loadCurrentUser();
 
 </script>
 
@@ -716,17 +744,24 @@ const firebaseConfig = {
 
 };
 
-const app = initializeApp(firebaseConfig);
+const app =
+initializeApp(firebaseConfig);
 
-const db = getFirestore(app);
+const db =
+getFirestore(app);
+
+/* LOAD USERS */
 
 async function loadUsers(){
 
     const querySnapshot =
-    await getDocs(collection(db,"users"));
+    await getDocs(
+    collection(db,"users")
+    );
 
     document.getElementById(
-    "memberCount").innerText =
+    "memberCount"
+    ).innerText =
     querySnapshot.size;
 
     let html = "";
@@ -735,20 +770,55 @@ async function loadUsers(){
 
         let user = doc.data();
 
+        let firstLetter =
+        user.name.charAt(0)
+        .toUpperCase();
+
         html += `
 
         <div style="
         background:#1e293b;
-        padding:12px;
-        margin-top:10px;
-        border-radius:10px;
+        padding:15px;
+        margin-top:12px;
+        border-radius:14px;
+        display:flex;
+        align-items:center;
+        gap:15px;
         ">
 
-            <h3>${user.name}</h3>
+            <div style="
+            width:50px;
+            height:50px;
+            border-radius:50%;
+            background:#facc15;
+            color:black;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            font-weight:700;
+            font-size:20px;
+            ">
+                ${firstLetter}
+            </div>
 
-            <p style="color:#94a3b8;">
-            ${user.email}
-            </p>
+            <div>
+
+                <h3 style="
+                margin:0;
+                color:white;
+                ">
+                    ${user.name}
+                </h3>
+
+                <p style="
+                margin-top:4px;
+                color:#94a3b8;
+                font-size:14px;
+                ">
+                    ${user.email}
+                </p>
+
+            </div>
 
         </div>
 
@@ -757,7 +827,8 @@ async function loadUsers(){
     });
 
     document.getElementById(
-    "allUsers").innerHTML = html;
+    "allUsers"
+    ).innerHTML = html;
 
 }
 
