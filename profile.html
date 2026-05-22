@@ -91,6 +91,8 @@ body{
     color:white;
 }
 
+/* MAIN */
+
 .main{
     margin-left:280px;
     width:100%;
@@ -134,6 +136,7 @@ body{
     justify-content:center;
     align-items:center;
     font-weight:700;
+    font-size:20px;
 }
 
 .title h1{
@@ -265,6 +268,22 @@ body{
     color:#facc15;
 }
 
+.member-box{
+    margin-top:25px;
+    background:#111827;
+    padding:20px;
+    border-radius:20px;
+}
+
+.member-box h2{
+    margin-bottom:15px;
+}
+
+#allUsers{
+    max-height:250px;
+    overflow:auto;
+}
+
 @media(max-width:900px){
 
     .sidebar{
@@ -284,6 +303,7 @@ body{
     }
 
 }
+
 .menu-btn{
     display:none;
     position:fixed;
@@ -381,10 +401,13 @@ body{
     }
 
 }
+
 </style>
 </head>
+
 <body>
-	<div class="menu-btn" onclick="toggleSidebar()">☰</div>
+
+<div class="menu-btn" onclick="toggleSidebar()">☰</div>
 
 <div class="mobile-sidebar" id="sidebar">
     <a href="profile.html">My Profile</a>
@@ -393,6 +416,8 @@ body{
     <a href="leaderboard.html">Leaderboard</a>
     <a href="settings.html">Settings</a>
 </div>
+
+<!-- SIDEBAR -->
 
 <div class="sidebar">
 
@@ -415,12 +440,12 @@ body{
             <i class="fa-regular fa-user"></i>
             My Profile
         </a>
-		
+
         <a href="videos.html">
-  	   <i class="fa-solid fa-gear"></i>
-   	   Videos
-	</a>
-		
+            <i class="fa-solid fa-video"></i>
+            Videos
+        </a>
+
         <a href="courses.html">
             <i class="fa-solid fa-book-open"></i>
             Courses
@@ -440,6 +465,8 @@ body{
 
 </div>
 
+<!-- MAIN -->
+
 <div class="main">
 
     <div class="topbar">
@@ -452,11 +479,11 @@ body{
         <div class="profile-top">
 
             <div>
-                <h3 id="topName"></h3>
+                <h3 id="topName">User</h3>
                 <p style="color:#94a3b8;">User</p>
             </div>
 
-            <div class="avatar">
+            <div class="avatar" id="topAvatar">
                 H
             </div>
 
@@ -476,19 +503,21 @@ body{
 
     <div class="grid">
 
+        <!-- LEFT -->
+
         <div>
 
             <div class="profile-card">
 
                 <div class="profile-info">
 
-                    <div class="big-avatar">
+                    <div class="big-avatar" id="bigAvatar">
                         H
                     </div>
 
                     <div>
-                       <h2 id="showName"></h2>
-                      <p id="showEmail">harinallaisivam03@gmail.com</p>
+                        <h2 id="showName">Hari</h2>
+                        <p id="showEmail">hari@gmail.com</p>
                     </div>
 
                 </div>
@@ -516,9 +545,7 @@ body{
 
             <div class="progress-card">
 
-                <h2>
-                    Learning Progress
-                </h2>
+                <h2>Learning Progress</h2>
 
                 <div class="progress">
                     <div class="progress-bar"></div>
@@ -526,13 +553,26 @@ body{
 
             </div>
 
+            <!-- MEMBER SECTION -->
+
+            <div class="member-box">
+
+                <h2>
+                    Total Members :
+                    <span id="memberCount">0</span>
+                </h2>
+
+                <div id="allUsers"></div>
+
+            </div>
+
         </div>
+
+        <!-- RIGHT -->
 
         <div class="leaderboard">
 
-            <h2>
-                Leaderboard Rank
-            </h2>
+            <h2>Leaderboard Rank</h2>
 
             <div class="rank-box">
 
@@ -562,27 +602,8 @@ body{
 
                 <div style="display:flex;align-items:center;gap:12px;">
 
-                    <div class="number"
-                    style="background:silver;">
+                    <div class="number" style="background:silver;">
                         2
-                    </div>
-
-                    <h3>Inba</h3>
-
-                </div>
-
-                <div class="mc">
-                    25 POINTS
-                </div>
-
-            </div>
-			            <div class="user">
-
-                <div style="display:flex;align-items:center;gap:12px;">
-
-                    <div class="number"
-                    style="background:silver;">
-                        4
                     </div>
 
                     <h3>Inba</h3>
@@ -619,6 +640,9 @@ body{
     </div>
 
 </div>
+
+<!-- LOCAL STORAGE -->
+
 <script>
 
 let savedName =
@@ -635,6 +659,15 @@ if(savedName){
     document.getElementById(
     "topName").innerText = savedName;
 
+    let firstLetter =
+    savedName.charAt(0).toUpperCase();
+
+    document.getElementById(
+    "topAvatar").innerText = firstLetter;
+
+    document.getElementById(
+    "bigAvatar").innerText = firstLetter;
+
 }
 
 if(savedEmail){
@@ -643,68 +676,93 @@ if(savedEmail){
     "showEmail").innerText = savedEmail;
 
 }
-	
-function toggleSidebar(){
-    document.getElementById("sidebar").classList.toggle("show");
-}
-	...profile page full html...
-
-
-let savedName = localStorage.getItem("profileName");
-let savedEmail = localStorage.getItem("profileEmail");
-
-if(savedName){
-    document.getElementById("showName").innerText = savedName;
-    document.getElementById("topName").innerText = savedName;
-}
-
-if(savedEmail){
-    document.getElementById("showEmail").innerText = savedEmail;
-}
 
 function toggleSidebar(){
-    document.getElementById("sidebar").classList.toggle("show");
+
+    document.getElementById(
+    "sidebar").classList.toggle("show");
+
 }
+
 </script>
 
-<!-- THIS BELOW ADD -->
+<!-- FIREBASE -->
+
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+getDocs
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
+
   apiKey: "AIzaSyC2wF7KID1lxdcvNGl-ExUmjetgYO4G4lA",
+
   authDomain: "buildwithhari-cf274.firebaseapp.com",
+
   projectId: "buildwithhari-cf274",
-  storageBucket: "buildwithhari-cf274.firebasestorage.app",
+
+  storageBucket: "buildwithhari-cf274.appspot.com",
+
   messagingSenderId: "112190919400",
+
   appId: "1:112190919400:web:424eaf26944ba3848b2f5d"
+
 };
 
 const app = initializeApp(firebaseConfig);
+
 const db = getFirestore(app);
 
 async function loadUsers(){
 
-    const querySnapshot = await getDocs(collection(db,"users"));
+    const querySnapshot =
+    await getDocs(collection(db,"users"));
 
-    document.getElementById("memberCount").innerText = querySnapshot.size;
+    document.getElementById(
+    "memberCount").innerText =
+    querySnapshot.size;
 
     let html = "";
 
     querySnapshot.forEach((doc)=>{
+
         let user = doc.data();
 
         html += `
-        <div style="background:#1e293b;padding:12px;margin-top:10px;border-radius:10px;">
-            ${user.name} - ${user.email}
-        </div>`;
+
+        <div style="
+        background:#1e293b;
+        padding:12px;
+        margin-top:10px;
+        border-radius:10px;
+        ">
+
+            <h3>${user.name}</h3>
+
+            <p style="color:#94a3b8;">
+            ${user.email}
+            </p>
+
+        </div>
+
+        `;
+
     });
 
-    document.getElementById("allUsers").innerHTML = html;
+    document.getElementById(
+    "allUsers").innerHTML = html;
+
 }
 
 loadUsers();
+
 </script>
 
 </body>
