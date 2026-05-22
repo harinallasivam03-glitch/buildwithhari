@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <title>HTML Tutorials</title>
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
@@ -32,7 +28,7 @@ body{
 }
 
 .title h1{
-    font-size:42px;
+    font-size:40px;
 }
 
 .title p{
@@ -44,161 +40,114 @@ body{
 
 .video-grid{
     display:grid;
-    grid-template-columns:
-    repeat(auto-fit,minmax(350px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
     gap:25px;
 }
 
 /* CARD */
 
 .video-card{
-    background:#0f172a;
-    border-radius:28px;
+    background:#111827;
+    border-radius:25px;
     overflow:hidden;
-    border:1px solid rgba(255,255,255,0.05);
     transition:0.3s;
-    cursor:pointer;
+    border:1px solid rgba(255,255,255,0.05);
 }
 
 .video-card:hover{
     transform:translateY(-5px);
 }
 
-/* TOP */
+/* THUMBNAIL */
 
-.video-top{
+.thumbnail{
+    position:relative;
+}
+
+.thumbnail img{
+    width:100%;
     height:220px;
+    object-fit:cover;
+    display:block;
+}
 
-    background:
-    linear-gradient(
-    135deg,
-    #7c3aed,
-    #2563eb
-    );
+/* PLAY ICON */
 
+.play-icon{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:rgba(0,0,0,0.6);
     display:flex;
     justify-content:center;
     align-items:center;
-
-    font-size:70px;
+    font-size:28px;
     color:white;
 }
 
 /* CONTENT */
 
-.video-content{
-    padding:25px;
+.content{
+    padding:22px;
 }
 
-.video-content h2{
-    font-size:30px;
-    margin-bottom:15px;
-    line-height:42px;
+.content h3{
+    font-size:24px;
+    margin-bottom:12px;
+    line-height:34px;
 }
 
-.video-content p{
+.content p{
     color:#94a3b8;
-    font-size:17px;
-    line-height:30px;
-    margin-bottom:25px;
+    line-height:28px;
+    margin-bottom:22px;
 }
 
 /* BUTTON */
 
-.video-btn{
+.btn{
     width:100%;
-    height:58px;
+    height:55px;
     border:none;
-    border-radius:18px;
-
-    background:
-    linear-gradient(
-    to right,
-    #7c3aed,
-    #9333ea
-    );
-
+    border-radius:14px;
+    background:linear-gradient(to right,#7c3aed,#9333ea);
     color:white;
-    font-size:19px;
-    font-weight:600;
+    font-size:18px;
     cursor:pointer;
+    transition:0.3s;
 }
 
-.video-btn:hover{
+.btn:hover{
     opacity:0.9;
 }
 
 /* MOBILE */
 
-.menu-btn{
-    display:none;
-    position:fixed;
-    top:15px;
-    left:15px;
-    font-size:26px;
-    color:white;
-    background:#1e293b;
-    padding:10px 14px;
-    border-radius:10px;
-    z-index:1001;
-    cursor:pointer;
-}
-
-.mobile-sidebar{
-    position:fixed;
-    top:0;
-    left:-260px;
-    width:240px;
-    height:100%;
-    background:#071122;
-    padding-top:70px;
-    transition:0.3s;
-    z-index:1000;
-}
-
-.mobile-sidebar a{
-    display:block;
-    color:white;
-    text-decoration:none;
-    padding:18px 25px;
-    border-bottom:
-    1px solid rgba(255,255,255,0.05);
-}
-
-.mobile-sidebar a:hover{
-    background:#1e293b;
-}
-
-.mobile-sidebar.show{
-    left:0;
-}
-
 @media(max-width:768px){
 
     body{
-        padding:70px 15px 20px;
-    }
-
-    .menu-btn{
-        display:block;
+        padding:15px;
     }
 
     .title h1{
-        font-size:30px;
+        font-size:28px;
     }
 
     .video-grid{
         grid-template-columns:1fr;
     }
 
-    .video-content h2{
-        font-size:24px;
-        line-height:34px;
+    .thumbnail img{
+        height:200px;
     }
 
-    .video-content p{
-        font-size:15px;
-        line-height:25px;
+    .content h3{
+        font-size:20px;
+        line-height:30px;
     }
 
 }
@@ -208,54 +157,15 @@ body{
 
 <body>
 
-<!-- MOBILE MENU -->
-
-<div class="menu-btn"
-onclick="toggleSidebar()">
-
-☰
-
-</div>
-
-<div class="mobile-sidebar"
-id="sidebar">
-
-    <a href="profile.html">
-        My Profile
-    </a>
-
-    <a href="videos.html">
-        Videos
-    </a>
-
-    <a href="courses.html">
-        Courses
-    </a>
-
-    <a href="leaderboard.html">
-        Leaderboard
-    </a>
-
-    <a href="settings.html">
-        Settings
-    </a>
-
-</div>
-
-<!-- TITLE -->
-
 <div class="title">
 
     <h1>HTML Tutorials</h1>
 
     <p>
-        Learn HTML step by step with
-        beginner friendly tutorials
+        Learn HTML from beginner to advanced level
     </p>
 
 </div>
-
-<!-- VIDEO GRID -->
 
 <div class="video-grid">
 
@@ -263,22 +173,25 @@ id="sidebar">
 
     <div class="video-card">
 
-        <div class="video-top">
-            <i class="fa-brands fa-html5"></i>
+        <div class="thumbnail">
+
+            <img src="https://img.youtube.com/vi/9pS6UkIQxbw/maxresdefault.jpg">
+
+            <div class="play-icon">
+                <i class="fa-solid fa-play"></i>
+            </div>
+
         </div>
 
-        <div class="video-content">
+        <div class="content">
 
-            <h2>
-                What is HTML?
-            </h2>
+            <h3>What is HTML?</h3>
 
             <p>
-                Beginner introduction to HTML
-                explained in Tamil.
+                Learn HTML basics in Tamil with easy explanation for beginners.
             </p>
 
-            <button class="video-btn"
+            <button class="btn"
             onclick="playVideo('9pS6UkIQxbw')">
 
                 Open Video
@@ -293,22 +206,25 @@ id="sidebar">
 
     <div class="video-card">
 
-        <div class="video-top">
-            <i class="fa-solid fa-list"></i>
+        <div class="thumbnail">
+
+            <img src="https://img.youtube.com/vi/aD4Sp44DoKI/maxresdefault.jpg">
+
+            <div class="play-icon">
+                <i class="fa-solid fa-play"></i>
+            </div>
+
         </div>
 
-        <div class="video-content">
+        <div class="content">
 
-            <h2>
-                HTML Lists Tutorial
-            </h2>
+            <h3>HTML Lists Tutorial</h3>
 
             <p>
-                Learn ul, ol and li tags
-                full tutorial for beginners.
+                Learn ul, ol and li tags with real examples and beginner projects.
             </p>
 
-            <button class="video-btn"
+            <button class="btn"
             onclick="playVideo('aD4Sp44DoKI')">
 
                 Open Video
@@ -323,22 +239,25 @@ id="sidebar">
 
     <div class="video-card">
 
-        <div class="video-top">
-            <i class="fa-solid fa-code"></i>
+        <div class="thumbnail">
+
+            <img src="https://img.youtube.com/vi/KeXRtRHDFKo/maxresdefault.jpg">
+
+            <div class="play-icon">
+                <i class="fa-solid fa-play"></i>
+            </div>
+
         </div>
 
-        <div class="video-content">
+        <div class="content">
 
-            <h2>
-                Semantic Tags
-            </h2>
+            <h3>HTML Semantic Tags</h3>
 
             <p>
-                Learn header, footer,
-                section and semantic tags.
+                Learn semantic tags like header, footer and section easily.
             </p>
 
-            <button class="video-btn"
+            <button class="btn"
             onclick="playVideo('KeXRtRHDFKo')">
 
                 Open Video
@@ -353,22 +272,25 @@ id="sidebar">
 
     <div class="video-card">
 
-        <div class="video-top">
-            <i class="fa-solid fa-image"></i>
+        <div class="thumbnail">
+
+            <img src="https://img.youtube.com/vi/ILDh3QiydCc/maxresdefault.jpg">
+
+            <div class="play-icon">
+                <i class="fa-solid fa-play"></i>
+            </div>
+
         </div>
 
-        <div class="video-content">
+        <div class="content">
 
-            <h2>
-                Images & Links
-            </h2>
+            <h3>Images & Links in HTML</h3>
 
             <p>
-                Learn how to add image
-                and anchor links in HTML.
+                Learn how to add images and clickable links in HTML websites.
             </p>
 
-            <button class="video-btn"
+            <button class="btn"
             onclick="playVideo('ILDh3QiydCc')">
 
                 Open Video
@@ -383,22 +305,25 @@ id="sidebar">
 
     <div class="video-card">
 
-        <div class="video-top">
-            <i class="fa-solid fa-laptop-code"></i>
+        <div class="thumbnail">
+
+            <img src="https://img.youtube.com/vi/SqQNKbqgHpA/maxresdefault.jpg">
+
+            <div class="play-icon">
+                <i class="fa-solid fa-play"></i>
+            </div>
+
         </div>
 
-        <div class="video-content">
+        <div class="content">
 
-            <h2>
-                First HTML Project
-            </h2>
+            <h3>Build First HTML Website</h3>
 
             <p>
-                Build your first mini
-                HTML website project.
+                Create your first mini website project step by step from scratch.
             </p>
 
-            <button class="video-btn"
+            <button class="btn"
             onclick="playVideo('SqQNKbqgHpA')">
 
                 Open Video
@@ -420,16 +345,7 @@ function playVideo(id){
     "https://www.youtube.com/embed/"+id
     );
 
-    window.location.href =
-    "watch.html";
-
-}
-
-function toggleSidebar(){
-
-    document.getElementById(
-    "sidebar"
-    ).classList.toggle("show");
+    window.location.href="watch.html";
 
 }
 
