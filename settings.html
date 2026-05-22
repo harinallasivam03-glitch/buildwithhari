@@ -439,36 +439,177 @@ body{
 </div>
 
 <script>
-	function saveProfile(){
+
+/* LOAD USER DATA */
+
+let oldName =
+localStorage.getItem("profileName") || "";
+
+let oldEmail =
+localStorage.getItem("profileEmail") || "";
+
+/* SHOW DATA IN INPUT */
+
+document.getElementById("userName").value =
+oldName;
+
+document.getElementById("userEmail").value =
+oldEmail;
+
+/* SAVE PROFILE */
+
+function saveProfile(){
 
     let name =
-    document.getElementById("userName").value;
+    document.getElementById(
+    "userName"
+    ).value.trim();
 
     let email =
-    document.getElementById("userEmail").value;
+    document.getElementById(
+    "userEmail"
+    ).value.trim();
 
-    localStorage.setItem("profileName",name);
+    /* EMPTY na OLD VALUE */
 
-    localStorage.setItem("profileEmail",email);
+    if(name === ""){
+
+        name = oldName;
+
+    }
+
+    if(email === ""){
+
+        email = oldEmail;
+
+    }
+
+    /* SAVE LOCAL STORAGE */
+
+    localStorage.setItem(
+    "profileName",
+    name
+    );
+
+    localStorage.setItem(
+    "profileEmail",
+    email
+    );
 
     alert("Profile Updated ✅");
 
+    window.location.href =
+    "profile.html";
+
 }
+
+/* PASSWORD UPDATE */
+
+function updatePassword(){
+
+    let currentPassword =
+    document.getElementById(
+    "currentPassword"
+    ).value;
+
+    let newPassword =
+    document.getElementById(
+    "newPassword"
+    ).value;
+
+    let savedPassword =
+    localStorage.getItem(
+    "userPassword"
+    );
+
+    /* FIRST PASSWORD */
+
+    if(savedPassword == null){
+
+        if(newPassword === ""){
+
+            alert(
+            "Enter New Password ❌"
+            );
+
+            return;
+
+        }
+
+        localStorage.setItem(
+        "userPassword",
+        newPassword
+        );
+
+        alert(
+        "Password Created ✅"
+        );
+
+        return;
+
+    }
+
+    /* CHECK CURRENT PASSWORD */
+
+    if(currentPassword != savedPassword){
+
+        alert(
+        "Current Password Wrong ❌"
+        );
+
+        return;
+
+    }
+
+    /* EMPTY CHECK */
+
+    if(newPassword === ""){
+
+        alert(
+        "Enter New Password ❌"
+        );
+
+        return;
+
+    }
+
+    /* SAVE NEW PASSWORD */
+
+    localStorage.setItem(
+    "userPassword",
+    newPassword
+    );
+
+    alert(
+    "Password Updated ✅"
+    );
+
+}
+
+/* LOGOUT */
 
 function logout(){
 
-    localStorage.clear();
+    localStorage.removeItem(
+    "accountCreated"
+    );
 
-    alert("Logout Success");
+    alert("Logout Success ✅");
 
-    window.location.href = "index.html";
+    window.location.href =
+    "index.html";
 
 }
+
+/* MOBILE SIDEBAR */
 
 function toggleSidebar(){
-    document.getElementById("sidebar").classList.toggle("show");
-}
 
+    document.getElementById(
+    "sidebar"
+    ).classList.toggle("show");
+
+}
 
 </script>
 
