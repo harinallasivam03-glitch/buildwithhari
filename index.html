@@ -347,7 +347,7 @@ inputs.forEach((input,index)=>{
 
 /* SEND OTP */
 
-function sendOTP(){
+async function sendOTP(){
 
     let name =
     document.getElementById("name").value;
@@ -365,6 +365,18 @@ function sendOTP(){
     if(email === ""){
 
         alert("Enter Email");
+        return;
+
+    }
+
+    /* BLOCK CHECK */
+
+    let isBlocked =
+    await checkBlockedEmail(email);
+
+    if(isBlocked){
+
+        alert("This Email Is Blocked ❌");
         return;
 
     }
@@ -545,7 +557,12 @@ from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import {
 getFirestore,
 collection,
-addDoc
+addDoc,
+query,
+where,
+getDocs,
+doc,
+getDoc
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
@@ -576,18 +593,64 @@ async function(name,email){
 
     try{
 
-        await addDoc(collection(db,"users"),{
+        const q = query(
+            collection(db,"users"),
+            where("email","==",email)
+        );
 
-            name:name,
-            email:email
+        const querySnapshot =
+        await getDocs(q);
 
-        });
+        if(querySnapshot.empty){
 
-        console.log("User Saved");
+            await addDoc(
+            collection(db,"users"),{
+
+                name:name,
+                email:email
+
+            });
+
+            console.log("User Saved");
+
+        }
 
     }catch(error){
 
         console.log(error);
+
+    }
+
+}
+
+/* CHECK BLOCKED EMAIL */
+
+window.checkBlockedEmail =
+async function(email){
+
+    try{
+
+        const blockedRef =
+        doc(db,"blockedEmails",email);
+
+        const blockedSnap =
+        await getDoc(blockedRef);
+
+        if(blockedSnap.exists()){
+
+            return true;
+
+        }else{
+
+            return false;
+
+        }
+
+    }catch(error){
+
+        console.log(error);
+
+        return false;
 
     }
 
