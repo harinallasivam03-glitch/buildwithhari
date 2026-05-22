@@ -99,6 +99,34 @@ body{
     padding:35px;
 }
 
+/* TOPBAR */
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.profile-top{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.avatar{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:#facc15;
+    color:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:700;
+    font-size:22px;
+}
+
 .title h1{
     font-size:50px;
 }
@@ -106,6 +134,15 @@ body{
 .title p{
     color:#94a3b8;
     margin-top:10px;
+}
+
+/* TOTAL MEMBER */
+
+.member-box{
+    background:#111827;
+    padding:20px;
+    border-radius:20px;
+    margin-top:20px;
 }
 
 /* TOP CARD */
@@ -176,12 +213,19 @@ body{
     color:#94a3b8;
 }
 
-.mc{
+.points{
     background:#1e293b;
     padding:10px 18px;
     border-radius:14px;
     color:#facc15;
     font-weight:700;
+}
+
+/* CURRENT USER */
+
+.current-user{
+    border:2px solid #7c3aed;
+    box-shadow:0 0 20px rgba(124,58,237,0.3);
 }
 
 /* MOBILE */
@@ -198,6 +242,7 @@ body{
     }
 
 }
+
 .menu-btn{
     display:none;
     position:fixed;
@@ -261,6 +306,12 @@ body{
         padding:70px 15px 20px;
     }
 
+    .topbar{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:20px;
+    }
+
     .title h1{
         font-size:34px;
     }
@@ -280,10 +331,12 @@ body{
     }
 
 }
+
 </style>
 </head>
 <body>
-	<div class="menu-btn" onclick="toggleSidebar()">☰</div>
+
+<div class="menu-btn" onclick="toggleSidebar()">☰</div>
 
 <div class="mobile-sidebar" id="sidebar">
     <a href="profile.html">My Profile</a>
@@ -316,11 +369,11 @@ body{
             <i class="fa-regular fa-user"></i>
             My Profile
         </a>
-		
-		<a href="videos.html">
-  	   <i class="fa-solid fa-gear"></i>
-   	   Videos
-	</a>
+
+        <a href="videos.html">
+            <i class="fa-solid fa-video"></i>
+            Videos
+        </a>
 
         <a href="courses.html">
             <i class="fa-solid fa-book-open"></i>
@@ -333,10 +386,9 @@ body{
         </a>
 
         <a href="settings.html">
-  	   <i class="fa-solid fa-gear"></i>
-   	   Settings
-	</a>
-
+            <i class="fa-solid fa-gear"></i>
+            Settings
+        </a>
 
     </div>
 
@@ -345,6 +397,27 @@ body{
 <!-- MAIN -->
 
 <div class="main">
+
+    <!-- TOPBAR -->
+
+    <div class="topbar">
+
+        <div></div>
+
+        <div class="profile-top">
+
+            <div>
+                <h3 id="topName">User</h3>
+                <p style="color:#94a3b8;">Developer</p>
+            </div>
+
+            <div class="avatar" id="avatarLetter">
+                H
+            </div>
+
+        </div>
+
+    </div>
 
     <div class="title">
 
@@ -355,12 +428,19 @@ body{
         </p>
 
     </div>
-	<div style="background:#111827;padding:20px;border-radius:15px;margin-top:20px;">
-    <h2>Total Members</h2>
-    <h1 id="memberCount">0</h1>
 
-    <div id="allUsers" style="margin-top:20px;"></div>
-</div>
+    <!-- TOTAL MEMBERS -->
+
+    <div class="member-box">
+
+        <h2>Total Members</h2>
+
+        <h1 id="memberCount">0</h1>
+
+        <div id="allUsers"
+        style="margin-top:20px;"></div>
+
+    </div>
 
     <!-- TOP RANK -->
 
@@ -423,7 +503,9 @@ body{
 
         </div>
 
-        <div class="user">
+        <!-- CURRENT LOGIN USER -->
+
+        <div class="user current-user">
 
             <div class="left">
 
@@ -433,8 +515,13 @@ body{
                 </div>
 
                 <div>
-                    <h2>Hariharan N</h2>
-                    <p>Fast Learner</p>
+                    <h2 id="leaderName">
+                        User
+                    </h2>
+
+                    <p>
+                        Fast Learner
+                    </p>
                 </div>
 
             </div>
@@ -445,14 +532,12 @@ body{
 
         </div>
 
-    </div>
-	
-	<div class="user">
+        <div class="user">
 
             <div class="left">
 
                 <div class="rank"
-                style="background:#f97316;">
+                style="background:#22c55e;">
                     4
                 </div>
 
@@ -466,32 +551,110 @@ body{
             <div class="points">
                 5 POINTS
             </div>
-	</div>
-    <div class="user">
 
-            <div class="left">
+        </div>
 
-                <div class="rank"
-                style="background:#f97316;">
-                    5
-                </div>
-
-                <div>
-                    <h2>Harish kumar</h2>
-                    <p>Fast Learner</p>
-                </div>
-
-            </div>
-
-            <div class="points">
-                3 POINTS
-            </div>
+    </div>
 
 </div>
-	<script>
+
+<script>
+
+/* MOBILE SIDEBAR */
+
 function toggleSidebar(){
-    document.getElementById("sidebar").classList.toggle("show");
+
+    document.getElementById(
+    "sidebar").classList.toggle(
+    "show"
+    );
+
 }
+
+/* USER NAME SHOW */
+
+let savedName =
+localStorage.getItem(
+"profileName"
+);
+
+if(savedName){
+
+    document.getElementById(
+    "topName"
+    ).innerText = savedName;
+
+    document.getElementById(
+    "leaderName"
+    ).innerText = savedName;
+
+    document.getElementById(
+    "avatarLetter"
+    ).innerText =
+    savedName.charAt(0).toUpperCase();
+
+}
+
+/* TOTAL MEMBER */
+
+let users =
+JSON.parse(
+localStorage.getItem("users")
+) || [];
+
+/* ADD CURRENT USER */
+
+if(savedName){
+
+    let exists = users.find(
+    user => user.name === savedName
+    );
+
+    if(!exists){
+
+        users.push({
+            name:savedName
+        });
+
+        localStorage.setItem(
+        "users",
+        JSON.stringify(users)
+        );
+
+    }
+
+}
+
+/* SHOW MEMBER COUNT */
+
+document.getElementById(
+"memberCount"
+).innerText = users.length;
+
+/* SHOW ALL USERS */
+
+let html = "";
+
+users.forEach((user,index)=>{
+
+    html += `
+    <div style="
+    background:#1e293b;
+    padding:15px;
+    border-radius:12px;
+    margin-top:10px;">
+    
+    ${index + 1}. ${user.name}
+
+    </div>
+    `;
+
+});
+
+document.getElementById(
+"allUsers"
+).innerHTML = html;
+
 </script>
 
 </body>
