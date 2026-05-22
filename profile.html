@@ -655,13 +655,15 @@ function loadCurrentUser(){
     let savedEmail =
     localStorage.getItem("profileEmail");
 
-    if(!savedName){
+    /* DEFAULT VALUES */
+
+    if(savedName === null || savedName === ""){
 
         savedName = "User";
 
     }
 
-    if(!savedEmail){
+    if(savedEmail === null || savedEmail === ""){
 
         savedEmail = "No Email";
 
@@ -670,32 +672,31 @@ function loadCurrentUser(){
     /* SHOW NAME */
 
     document.getElementById(
-    "showName").innerText =
-    savedName;
+    "showName"
+    ).innerText = savedName;
 
     document.getElementById(
-    "topName").innerText =
-    savedName;
+    "topName"
+    ).innerText = savedName;
 
     /* SHOW EMAIL */
 
     document.getElementById(
-    "showEmail").innerText =
-    savedEmail;
+    "showEmail"
+    ).innerText = savedEmail;
 
-    /* FIRST LETTER */
+    /* AVATAR LETTER */
 
     let firstLetter =
-    savedName.charAt(0)
-    .toUpperCase();
+    savedName.charAt(0).toUpperCase();
 
     document.getElementById(
-    "topAvatar").innerText =
-    firstLetter;
+    "topAvatar"
+    ).innerText = firstLetter;
 
     document.getElementById(
-    "bigAvatar").innerText =
-    firstLetter;
+    "bigAvatar"
+    ).innerText = firstLetter;
 
 }
 
@@ -704,135 +705,14 @@ function loadCurrentUser(){
 function toggleSidebar(){
 
     document.getElementById(
-    "sidebar").classList.toggle("show");
+    "sidebar"
+    ).classList.toggle("show");
 
 }
 
-/* LOAD USER */
+/* PAGE LOAD */
 
 loadCurrentUser();
-
-</script>
-
-<!-- FIREBASE -->
-
-<script type="module">
-
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
-import {
-getFirestore,
-collection,
-getDocs
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-const firebaseConfig = {
-
-  apiKey: "AIzaSyC2wF7KID1lxdcvNGl-ExUmjetgYO4G4lA",
-
-  authDomain: "buildwithhari-cf274.firebaseapp.com",
-
-  projectId: "buildwithhari-cf274",
-
-  storageBucket: "buildwithhari-cf274.appspot.com",
-
-  messagingSenderId: "112190919400",
-
-  appId: "1:112190919400:web:424eaf26944ba3848b2f5d"
-
-};
-
-const app =
-initializeApp(firebaseConfig);
-
-const db =
-getFirestore(app);
-
-/* LOAD USERS */
-
-async function loadUsers(){
-
-    const querySnapshot =
-    await getDocs(
-    collection(db,"users")
-    );
-
-    document.getElementById(
-    "memberCount"
-    ).innerText =
-    querySnapshot.size;
-
-    let html = "";
-
-    querySnapshot.forEach((doc)=>{
-
-        let user = doc.data();
-
-        let firstLetter =
-        user.name.charAt(0)
-        .toUpperCase();
-
-        html += `
-
-        <div style="
-        background:#1e293b;
-        padding:15px;
-        margin-top:12px;
-        border-radius:14px;
-        display:flex;
-        align-items:center;
-        gap:15px;
-        ">
-
-            <div style="
-            width:50px;
-            height:50px;
-            border-radius:50%;
-            background:#facc15;
-            color:black;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            font-weight:700;
-            font-size:20px;
-            ">
-                ${firstLetter}
-            </div>
-
-            <div>
-
-                <h3 style="
-                margin:0;
-                color:white;
-                ">
-                    ${user.name}
-                </h3>
-
-                <p style="
-                margin-top:4px;
-                color:#94a3b8;
-                font-size:14px;
-                ">
-                    ${user.email}
-                </p>
-
-            </div>
-
-        </div>
-
-        `;
-
-    });
-
-    document.getElementById(
-    "allUsers"
-    ).innerHTML = html;
-
-}
-
-loadUsers();
 
 </script>
 
