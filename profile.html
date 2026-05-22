@@ -286,7 +286,11 @@ body{
 
 /* MOBILE */
 
-@media(max-width:900px){
+@media(max-width:768px){
+
+    body{
+        display:block;
+    }
 
     .sidebar{
         display:none;
@@ -294,6 +298,8 @@ body{
 
     .main{
         margin-left:0;
+        width:100%;
+        padding:70px 15px 20px;
     }
 
     .grid{
@@ -340,66 +346,14 @@ body{
     border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
-.mobile-sidebar a:hover{
-    background:#1e293b;
-}
-
 .mobile-sidebar.show{
     left:0;
 }
 
 @media(max-width:768px){
 
-    body{
-        display:block;
-    }
-
-    .sidebar{
-        display:none;
-    }
-
     .menu-btn{
         display:block;
-    }
-
-    .main{
-        margin-left:0;
-        width:100%;
-        padding:70px 15px 20px;
-    }
-
-    .topbar{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:15px;
-    }
-
-    .title h1{
-        font-size:34px;
-    }
-
-    .grid{
-        grid-template-columns:1fr;
-        gap:20px;
-    }
-
-    .stats{
-        grid-template-columns:1fr;
-    }
-
-    .profile-info{
-        flex-direction:column;
-        align-items:flex-start;
-    }
-
-    .user{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:10px;
-    }
-
-    .rank-box h1{
-        font-size:52px;
     }
 
 }
@@ -482,7 +436,7 @@ body{
 
             <div>
                 <h3 id="topName">User</h3>
-                <p style="color:#94a3b8;">User</p>
+                <p style="color:#94a3b8;">Developer</p>
             </div>
 
             <div class="avatar" id="topAvatar">
@@ -584,59 +538,6 @@ body{
 
             </div>
 
-            <div class="user">
-
-                <div style="display:flex;align-items:center;gap:12px;">
-
-                    <div class="number">1</div>
-
-                    <h3>Monesh</h3>
-
-                </div>
-
-                <div class="mc">
-                    35 POINTS
-                </div>
-
-            </div>
-
-            <div class="user">
-
-                <div style="display:flex;align-items:center;gap:12px;">
-
-                    <div class="number" style="background:silver;">
-                        2
-                    </div>
-
-                    <h3>Inba</h3>
-
-                </div>
-
-                <div class="mc">
-                    25 POINTS
-                </div>
-
-            </div>
-
-            <div class="user">
-
-                <div style="display:flex;align-items:center;gap:12px;">
-
-                    <div class="number"
-                    style="background:#f97316;">
-                        3
-                    </div>
-
-                    <h3>Hariharan</h3>
-
-                </div>
-
-                <div class="mc">
-                    10 POINTS
-                </div>
-
-            </div>
-
         </div>
 
     </div>
@@ -655,8 +556,6 @@ function loadCurrentUser(){
     let savedEmail =
     localStorage.getItem("profileEmail");
 
-    /* DEFAULT VALUES */
-
     if(savedName === null || savedName === ""){
 
         savedName = "User";
@@ -669,50 +568,141 @@ function loadCurrentUser(){
 
     }
 
-    /* SHOW NAME */
+    document.getElementById(
+    "showName").innerText = savedName;
 
     document.getElementById(
-    "showName"
-    ).innerText = savedName;
+    "topName").innerText = savedName;
 
     document.getElementById(
-    "topName"
-    ).innerText = savedName;
-
-    /* SHOW EMAIL */
-
-    document.getElementById(
-    "showEmail"
-    ).innerText = savedEmail;
-
-    /* AVATAR LETTER */
+    "showEmail").innerText = savedEmail;
 
     let firstLetter =
     savedName.charAt(0).toUpperCase();
 
     document.getElementById(
-    "topAvatar"
-    ).innerText = firstLetter;
+    "topAvatar").innerText = firstLetter;
 
     document.getElementById(
-    "bigAvatar"
-    ).innerText = firstLetter;
+    "bigAvatar").innerText = firstLetter;
 
 }
-
-/* MOBILE SIDEBAR */
 
 function toggleSidebar(){
 
     document.getElementById(
-    "sidebar"
-    ).classList.toggle("show");
+    "sidebar").classList.toggle("show");
 
 }
 
-/* PAGE LOAD */
-
 loadCurrentUser();
+
+</script>
+
+<!-- FIREBASE -->
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+getDocs
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+/* FIREBASE CONFIG */
+
+const firebaseConfig = {
+
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT.appspot.com",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+/* LOAD USERS */
+
+async function loadUsers(){
+
+    const querySnapshot =
+    await getDocs(collection(db,"users"));
+
+    document.getElementById(
+    "memberCount").innerText =
+    querySnapshot.size;
+
+    let html = "";
+
+    querySnapshot.forEach((doc)=>{
+
+        let user = doc.data();
+
+        let firstLetter =
+        user.name.charAt(0).toUpperCase();
+
+        html += `
+
+        <div style="
+        background:#1e293b;
+        padding:12px;
+        margin-top:10px;
+        border-radius:12px;
+        display:flex;
+        align-items:center;
+        gap:14px;
+        ">
+
+            <div style="
+            width:45px;
+            height:45px;
+            border-radius:50%;
+            background:#facc15;
+            color:black;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            font-weight:700;
+            ">
+                ${firstLetter}
+            </div>
+
+            <div>
+
+                <h3 style="font-size:16px;">
+                    ${user.name}
+                </h3>
+
+                <p style="
+                color:#94a3b8;
+                font-size:13px;
+                ">
+                    ${user.email}
+                </p>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+    document.getElementById(
+    "allUsers").innerHTML = html;
+
+}
+
+loadUsers();
 
 </script>
 
