@@ -107,7 +107,7 @@ body{
     margin-bottom:22px;
 }
 
-/* LEVEL BUTTON */
+/* BUTTON */
 
 .play-btn{
     width:100%;
@@ -131,6 +131,13 @@ body{
 .resume-btn{
     background:#facc15 !important;
     color:black !important;
+}
+
+/* FINISHED BUTTON */
+
+.finished-btn{
+    background:#2563eb !important;
+    color:white !important;
 }
 
 /* MOBILE */
@@ -177,7 +184,7 @@ body{
 
 <div class="video-grid">
 
-    <!-- VIDEO 1 -->
+    <!-- LEVEL 1 -->
 
     <div class="video-card">
 
@@ -202,7 +209,7 @@ body{
             <button class="play-btn"
             id="btn-9pS6UkIQxbw"
             onclick="openLevelPage(
-            'html-videos.html',
+            'watch.html',
             '9pS6UkIQxbw'
             )">
 
@@ -214,7 +221,7 @@ body{
 
     </div>
 
-    <!-- VIDEO 2 -->
+    <!-- LEVEL 2 -->
 
     <div class="video-card">
 
@@ -239,7 +246,7 @@ body{
             <button class="play-btn"
             id="btn-aD4Sp44DoKI"
             onclick="openLevelPage(
-            'level2.html',
+            'watch.html',
             'aD4Sp44DoKI'
             )">
 
@@ -251,7 +258,7 @@ body{
 
     </div>
 
-    <!-- VIDEO 3 -->
+    <!-- LEVEL 3 -->
 
     <div class="video-card">
 
@@ -276,7 +283,7 @@ body{
             <button class="play-btn"
             id="btn-KeXRtRHDFKo"
             onclick="openLevelPage(
-            'level3.html',
+            'watch.html',
             'KeXRtRHDFKo'
             )">
 
@@ -288,7 +295,7 @@ body{
 
     </div>
 
-    <!-- VIDEO 4 -->
+    <!-- LEVEL 4 -->
 
     <div class="video-card">
 
@@ -313,7 +320,7 @@ body{
             <button class="play-btn"
             id="btn-ILDh3QiydCc"
             onclick="openLevelPage(
-            'level4.html',
+            'watch.html',
             'ILDh3QiydCc'
             )">
 
@@ -333,21 +340,27 @@ body{
 
 function openLevelPage(level,id){
 
+    /* SAVE VIDEO ID */
+
     localStorage.setItem(
-    "videoLink",
-    "https://www.youtube.com/embed/"+id
+    "videoId",
+    id
     );
+
+    /* SAVE WATCH STATUS */
 
     localStorage.setItem(
     "watching_"+id,
     "true"
     );
 
+    /* OPEN PAGE */
+
     window.location.href = level;
 
 }
 
-/* CHECK RESUME BUTTON */
+/* CHECK BUTTON STATUS */
 
 function checkResumeButtons(){
 
@@ -360,19 +373,46 @@ function checkResumeButtons(){
 
     ];
 
-    videos.forEach((id,index)=>{
+    /* FINISHED VIDEOS */
 
-        let watched =
-        localStorage.getItem(
-        "watching_"+id
+    let finishedVideos =
+
+    JSON.parse(
+
+    localStorage.getItem(
+    "finishedVideos"
+    )
+
+    ) || [];
+
+    videos.forEach((id)=>{
+
+        let btn =
+        document.getElementById(
+        "btn-"+id
         );
 
-        if(watched){
+        /* FINISHED */
 
-            let btn =
-            document.getElementById(
-            "btn-"+id
+        if(
+        finishedVideos.includes(id)
+        ){
+
+            btn.innerHTML =
+            "✅ FINISHED";
+
+            btn.classList.add(
+            "finished-btn"
             );
+
+        }
+
+        /* RESUME */
+
+        else if(
+        localStorage.getItem(
+        "watching_"+id
+        )){
 
             btn.innerHTML =
             "⏯ RESUME";
