@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Projects</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
 
 <style>
 
@@ -33,20 +39,83 @@ body{
     justify-content:space-between;
     align-items:center;
     margin-bottom:30px;
-    flex-wrap:wrap;
-    gap:15px;
 }
 
 .top h1{
-    font-size:42px;
+    font-size:45px;
 }
 
 .upload-btn{
-    background:linear-gradient(to right,#7c3aed,#2563eb);
+    background:linear-gradient(
+    to right,
+    #7c3aed,
+    #2563eb
+    );
+
     border:none;
     color:white;
-    padding:14px 24px;
+    padding:15px 25px;
     border-radius:14px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
+}
+
+/* PROJECTS */
+
+.projects{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+    gap:22px;
+}
+
+.card{
+    background:linear-gradient(
+    145deg,
+    #111827,
+    #0b1220
+    );
+
+    border-radius:24px;
+    padding:25px;
+    border:1px solid
+    rgba(255,255,255,0.05);
+}
+
+.avatar{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:#1e1b4b;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+    font-size:38px;
+    font-weight:700;
+    color:#c4b5fd;
+}
+
+.card h2{
+    text-align:center;
+    margin-top:18px;
+}
+
+.user-id{
+    text-align:center;
+    color:#94a3b8;
+    margin-top:10px;
+}
+
+.open-btn{
+    width:100%;
+    height:50px;
+    border:none;
+    border-radius:14px;
+    background:#22c55e;
+    color:white;
+    margin-top:22px;
     cursor:pointer;
     font-size:16px;
     font-weight:600;
@@ -97,16 +166,11 @@ body{
 }
 
 .file-box{
-    margin-top:18px;
-}
-
-.file-box input{
-    margin-top:10px;
+    margin-top:20px;
 }
 
 .save-btn{
     width:100%;
-    margin-top:22px;
     height:55px;
     border:none;
     border-radius:14px;
@@ -114,61 +178,8 @@ body{
     color:white;
     font-size:17px;
     cursor:pointer;
-    font-weight:600;
-}
-
-/* PROJECT GRID */
-
-.projects{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:22px;
-}
-
-.card{
-    background:linear-gradient(145deg,#111827,#0b1220);
-    border-radius:24px;
-    padding:25px;
-    border:1px solid rgba(255,255,255,0.05);
-}
-
-.avatar{
-    width:90px;
-    height:90px;
-    border-radius:50%;
-    background:#1e1b4b;
-    border:1px solid rgba(255,255,255,0.1);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:38px;
-    font-weight:700;
-    margin:auto;
-    color:#c4b5fd;
-}
-
-.card h2{
-    text-align:center;
-    margin-top:18px;
-    font-size:24px;
-}
-
-.card p{
-    text-align:center;
-    color:#94a3b8;
-    margin-top:10px;
-}
-
-.open-btn{
-    width:100%;
-    height:50px;
-    border:none;
-    border-radius:14px;
-    background:#7c3aed;
-    color:white;
-    margin-top:22px;
-    cursor:pointer;
-    font-size:16px;
+    margin-top:25px;
+    display:none;
     font-weight:600;
 }
 
@@ -193,17 +204,31 @@ body{
     color:white;
     font-size:17px;
     cursor:pointer;
+    margin-top:25px;
     font-weight:600;
 }
 
-.files-title{
-    margin-top:28px;
-    margin-bottom:18px;
+.files-btn{
+    width:100%;
+    height:55px;
+    border:none;
+    border-radius:14px;
+    background:#facc15;
+    color:black;
+    font-size:17px;
+    cursor:pointer;
+    margin-top:18px;
+    font-weight:700;
+}
+
+.files-list{
+    display:none;
+    margin-top:20px;
 }
 
 .file-item{
     background:#1e293b;
-    padding:16px;
+    padding:15px;
     border-radius:14px;
     margin-bottom:12px;
     cursor:pointer;
@@ -214,7 +239,7 @@ body{
 }
 
 .text-view{
-    margin-top:25px;
+    margin-top:20px;
     background:black;
     color:#22c55e;
     padding:20px;
@@ -225,13 +250,13 @@ body{
 }
 
 .back-btn{
-    margin-bottom:20px;
     background:#dc2626;
     color:white;
     border:none;
-    padding:12px 20px;
+    padding:12px 22px;
     border-radius:12px;
     cursor:pointer;
+    margin-bottom:20px;
 }
 
 @media(max-width:768px){
@@ -240,8 +265,14 @@ body{
         padding:15px;
     }
 
+    .top{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+    }
+
     .top h1{
-        font-size:30px;
+        font-size:34px;
     }
 
 }
@@ -260,7 +291,7 @@ body{
 
         <button class="upload-btn"
         onclick="openPopup()">
-            Upload Project
+            Upload Files
         </button>
 
     </div>
@@ -285,22 +316,30 @@ id="viewerPage">
         <h1 id="viewName"></h1>
 
         <p id="viewId"
-        style="margin-top:10px;color:#94a3b8;"></p>
+        style="
+        margin-top:10px;
+        color:#94a3b8;
+        ">
+        </p>
 
         <button class="website-btn"
         id="websiteBtn">
             Open Website
         </button>
 
-        <h2 class="files-title">
+        <button class="files-btn"
+        onclick="toggleFiles()">
             Open Files
-        </h2>
+        </button>
 
-        <div id="filesList"></div>
+        <div class="files-list"
+        id="filesList"></div>
 
         <div class="text-view"
         id="textView">
-            Select any file to read...
+
+Select any file to read...
+
         </div>
 
     </div>
@@ -322,7 +361,7 @@ id="popup">
 
             <input type="text"
             id="userName"
-            placeholder="Enter your name">
+            placeholder="Enter name">
 
         </div>
 
@@ -340,14 +379,18 @@ id="popup">
 
             <label>Select Files</label>
 
+            <br><br>
+
             <input type="file"
             id="files"
-            multiple>
+            multiple
+            onchange="showSaveButton()">
 
         </div>
 
-        <button class="save-btn"
-        onclick="saveProject()">
+        <button type="button"
+        class="save-btn"
+        id="saveBtn">
             Save Project
         </button>
 
@@ -357,36 +400,18 @@ id="popup">
 
 <script>
 
-/* LOAD PROJECTS */
+/* LOCAL STORAGE */
 
-let allProjects = JSON.parse(
+let allProjects =
+JSON.parse(
 localStorage.getItem("projects")
 ) || [];
 
-/* RENDER PROJECTS */
+/* RENDER */
 
 function renderProjects(){
 
-    let projectsDiv =
-    document.getElementById("projects");
-
-    projectsDiv.innerHTML = "";
-
-    if(allProjects.length === 0){
-
-        projectsDiv.innerHTML = `
-        
-        <h2 style="
-        color:#94a3b8;
-        font-weight:500;
-        ">
-            No Projects Uploaded
-        </h2>
-
-        `;
-
-        return;
-    }
+    let html = "";
 
     allProjects.forEach((project,index)=>{
 
@@ -394,7 +419,7 @@ function renderProjects(){
         project.name.charAt(0)
         .toUpperCase();
 
-        let card = `
+        html += `
 
         <div class="card">
 
@@ -402,28 +427,35 @@ function renderProjects(){
                 ${first}
             </div>
 
-            <h2>${project.name}</h2>
+            <h2>
+                ${project.name}
+            </h2>
 
-            <p style="margin-top:10px;">
-                USER ID : ${project.id}
-            </p>
+            <div class="user-id">
+
+                USER ID :
+                ${project.id}
+
+            </div>
 
             <button class="open-btn"
             onclick="openProject(${index})">
+
                 Open
+
             </button>
 
         </div>
 
         `;
 
-        projectsDiv.innerHTML += card;
-
     });
 
-}
+    document.getElementById(
+    "projects"
+    ).innerHTML = html;
 
-/* FIRST LOAD */
+}
 
 renderProjects();
 
@@ -451,7 +483,24 @@ window.onclick = function(e){
 
 }
 
+/* SHOW SAVE BUTTON */
+
+function showSaveButton(){
+
+    document.getElementById(
+    "saveBtn"
+    ).style.display = "block";
+
+}
+
 /* SAVE PROJECT */
+
+document.getElementById(
+"saveBtn"
+).addEventListener(
+"click",
+saveProject
+);
 
 async function saveProject(){
 
@@ -484,9 +533,14 @@ async function saveProject(){
 
     }
 
-    let fileData = [];
+    if(files.length === 0){
 
-    /* READ FILES */
+        alert("Select Files");
+        return;
+
+    }
+
+    let fileData = [];
 
     for(let file of files){
 
@@ -496,14 +550,11 @@ async function saveProject(){
         fileData.push({
 
             fileName:file.name,
-
             content:text
 
         });
 
     }
-
-    /* CREATE PROJECT */
 
     let project = {
 
@@ -518,8 +569,6 @@ async function saveProject(){
 
     };
 
-    /* SAVE */
-
     allProjects.push(project);
 
     localStorage.setItem(
@@ -527,29 +576,13 @@ async function saveProject(){
     JSON.stringify(allProjects)
     );
 
-    /* REFRESH */
-
     renderProjects();
-
-    /* RESET */
-
-    document.getElementById(
-    "userName"
-    ).value = "";
-
-    document.getElementById(
-    "websiteLink"
-    ).value = "";
-
-    document.getElementById(
-    "files"
-    ).value = "";
 
     document.getElementById(
     "popup"
     ).style.display = "none";
 
-    alert("Project Saved Successfully ✅");
+    alert("Project Saved ✅");
 
 }
 
@@ -576,31 +609,19 @@ function openProject(index){
     document.getElementById(
     "viewId"
     ).innerText =
-    "USER ID : " + project.id;
-
-    /* WEBSITE BUTTON */
+    "USER ID : " +
+    project.id;
 
     document.getElementById(
     "websiteBtn"
     ).onclick = function(){
 
-        let url = project.website;
-
-        if(
-        !url.startsWith("http://")
-        &&
-        !url.startsWith("https://")
-        ){
-
-            url = "https://" + url;
-
-        }
-
-        window.open(url,"_blank");
+        window.open(
+        project.website,
+        "_blank"
+        );
 
     }
-
-    /* FILES */
 
     let html = "";
 
@@ -609,8 +630,9 @@ function openProject(index){
         html += `
 
         <div class="file-item"
-        onclick="openFile(${index},
-        '${file.fileName}')">
+        onclick='openFile(
+        ${JSON.stringify(file.content)}
+        )'>
 
             ${file.fileName}
 
@@ -624,29 +646,39 @@ function openProject(index){
     "filesList"
     ).innerHTML = html;
 
+}
+
+/* TOGGLE FILES */
+
+function toggleFiles(){
+
+    let box =
     document.getElementById(
-    "textView"
-    ).innerText =
-    "Select any file to read...";
+    "filesList"
+    );
+
+    if(box.style.display === "block"){
+
+        box.style.display = "none";
+
+    }
+
+    else{
+
+        box.style.display = "block";
+
+    }
 
 }
 
 /* OPEN FILE */
 
-function openFile(projectIndex,fileName){
-
-    let project =
-    allProjects[projectIndex];
-
-    let selectedFile =
-    project.files.find(
-    file => file.fileName === fileName
-    );
+function openFile(content){
 
     document.getElementById(
     "textView"
     ).innerText =
-    selectedFile.content;
+    content;
 
 }
 
@@ -667,4 +699,4 @@ function goBack(){
 </script>
 
 </body>
-</html>
+</html>s
