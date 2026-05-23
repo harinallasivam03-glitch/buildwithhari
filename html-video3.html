@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HTML Tutorials</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#030712;
+    color:white;
+    padding:20px;
+}
+
+/* TITLE */
+
+.title{
+    margin-bottom:30px;
+}
+
+.title h1{
+    font-size:40px;
+}
+
+.title p{
+    color:#94a3b8;
+    margin-top:10px;
+}
+
+/* VIDEO GRID */
+
+.video-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+}
+
+/* CARD */
+
+.video-card{
+    background:#111827;
+    border-radius:25px;
+    overflow:hidden;
+    transition:0.3s;
+    border:1px solid rgba(255,255,255,0.05);
+}
+
+.video-card:hover{
+    transform:translateY(-5px);
+}
+
+/* THUMBNAIL */
+
+.thumbnail{
+    position:relative;
+}
+
+.thumbnail img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    display:block;
+}
+
+/* PLAY ICON */
+
+.play-icon{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:rgba(0,0,0,0.6);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    color:white;
+}
+
+/* CONTENT */
+
+.content{
+    padding:22px;
+}
+
+.content h3{
+    font-size:24px;
+    margin-bottom:12px;
+    line-height:34px;
+}
+
+.content p{
+    color:#94a3b8;
+    line-height:28px;
+    margin-bottom:22px;
+}
+
+/* BUTTON */
+
+.play-btn{
+    width:100%;
+    height:55px;
+    border:none;
+    border-radius:14px;
+    background:#22c55e;
+    color:white;
+    font-size:18px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.play-btn:hover{
+    background:#16a34a;
+}
+
+/* RESUME BUTTON */
+
+.resume-btn{
+    background:#facc15 !important;
+    color:black !important;
+}
+
+/* LEVEL BUTTON */
+
+.level-btn-box{
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+}
+
+.level-btn{
+    display:none;
+    padding:16px 35px;
+    border:none;
+    border-radius:14px;
+    background:#2563eb;
+    color:white;
+    font-size:18px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    body{
+        padding:15px;
+    }
+
+    .title h1{
+        font-size:28px;
+    }
+
+    .video-grid{
+        grid-template-columns:1fr;
+    }
+
+    .thumbnail img{
+        height:200px;
+    }
+
+    .content h3{
+        font-size:20px;
+        line-height:30px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="title">
+
+    <h1>LEVEL-3</h1>
+    <h1>HTML TUTORIAL</h1>
+
+    <p>
+        Learn HTML from beginner to advanced level
+    </p>
+
+</div>
+
+<div class="video-grid">
+
+    <!-- VIDEO 1 -->
+
+    <div class="video-card">
+
+        <div class="thumbnail">
+
+            <img src="https://img.youtube.com/vi/9pS6UkIQxbw/hqdefault.jpg">
+
+            <div class="play-icon">
+                <i class="fa-solid fa-play"></i>
+            </div>
+
+        </div>
+
+        <div class="content">
+
+            <h3>What is HTML?</h3>
+
+            <p>
+                HTML na website oda basic structure create panna use aagura language 🔥
+            </p>
+
+            <button class="play-btn"
+            id="btn-9pS6UkIQxbw"
+            onclick="playVideo('9pS6UkIQxbw')">
+
+                ▶ PLAY
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- VIDEO 2 -->
+
+    <div class="video-card">
+
+        <div class="thumbnail">
+
+            <img src="https://img.youtube.com/vi/aD4Sp44DoKI/hqdefault.jpg">
+
+            <div class="play-icon">
+                <i class="fa-solid fa-play"></i>
+            </div>
+
+        </div>
+
+        <div class="content">
+
+            <h3>HTML Lists Explained</h3>
+
+            <p>
+                Lists epdi create pannrathu nu simple ah explain panniruken 💻🔥
+           </p>
+
+            <button class="play-btn"
+            id="btn-aD4Sp44DoKI"
+            onclick="playVideo('aD4Sp44DoKI')">
+
+                ▶ PLAY
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- VIDEO 3 -->
+
+    <div class="video-card">
+
+        <div class="thumbnail">
+
+            <img src="https://img.youtube.com/vi/KeXRtRHDFKo/hqdefault.jpg">
+
+            <div class="play-icon">
+                <i class="fa-solid fa-play"></i>
+            </div>
+
+        </div>
+
+        <div class="content">
+
+            <h3>HTML Semantic Tags</h3>
+
+            <p>
+               Semantic tags use panni oru professional website create pannrathu nu paakalam 🔥
+            </p>
+
+            <button class="play-btn"
+            id="btn-KeXRtRHDFKo"
+            onclick="playVideo('KeXRtRHDFKo')">
+
+                ▶ PLAY
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- VIDEO 4 -->
+
+    <div class="video-card">
+
+        <div class="thumbnail">
+
+            <img src="https://img.youtube.com/vi/ILDh3QiydCc/hqdefault.jpg">
+
+            <div class="play-icon">
+                <i class="fa-solid fa-play"></i>
+            </div>
+
+        </div>
+
+        <div class="content">
+
+            <h3>Images & Links in HTML</h3>
+
+            <p>
+               Image & link epdi add pannrathu nu simple ah explain panniruken 💻🔥
+            </p>
+
+            <button class="play-btn"
+            id="btn-ILDh3QiydCc"
+            onclick="playVideo('ILDh3QiydCc')">
+
+                ▶ PLAY
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- VIDEO 5 -->
+
+    <div class="video-card">
+
+        <div class="thumbnail">
+
+            <img src="https://img.youtube.com/vi/SqQNKbqgHpA/hqdefault.jpg">
+
+            <div class="play-icon">
+                <i class="fa-solid fa-play"></i>
+            </div>
+
+        </div>
+
+        <div class="content">
+
+            <h3>Build First HTML Website</h3>
+
+            <p>
+               Oru complete mini website epdi create pannrathu nu paakalam 💻🚀
+            </p>
+
+            <button class="play-btn"
+            id="btn-SqQNKbqgHpA"
+            onclick="playVideo('SqQNKbqgHpA')">
+
+                ▶ PLAY
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- LEVEL 4 BUTTON -->
+
+<div class="level-btn-box">
+
+    <button class="level-btn"
+    id="level4Btn"
+    onclick="openLevel4()">
+
+        🔓 OPEN LEVEL 4
+
+    </button>
+
+</div>
+
+<script>
+
+/* PLAY VIDEO */
+
+function playVideo(id){
+
+    localStorage.setItem(
+    "videoId",
+    id
+    );
+
+    localStorage.setItem(
+    "watching_"+id,
+    "true"
+    );
+
+    window.location.href =
+    "watch.html";
+
+}
+
+/* CHECK BUTTON STATUS */
+
+function checkResumeButtons(){
+
+    let videos = [
+
+        "9pS6UkIQxbw",
+        "aD4Sp44DoKI",
+        "KeXRtRHDFKo",
+        "ILDh3QiydCc",
+        "SqQNKbqgHpA"
+
+    ];
+
+    let finishedVideos =
+
+    JSON.parse(
+
+    localStorage.getItem(
+    "finishedVideos"
+    )
+
+    ) || [];
+
+    let completedCount = 0;
+
+    videos.forEach((id)=>{
+
+        let btn =
+        document.getElementById(
+        "btn-"+id
+        );
+
+        /* FINISHED */
+
+        if(
+        finishedVideos.includes(id)
+        ){
+
+            completedCount++;
+
+            btn.innerHTML =
+            "✅ FINISHED";
+
+            btn.style.background =
+            "#2563eb";
+
+        }
+
+        /* RESUME */
+
+        else if(
+        localStorage.getItem(
+        "watching_"+id
+        )){
+
+            btn.innerHTML =
+            "⏯ RESUME";
+
+            btn.classList.add(
+            "resume-btn"
+            );
+
+        }
+
+    });
+
+    /* SHOW LEVEL 4 BUTTON */
+
+    if(
+    completedCount === videos.length
+    ){
+
+        document.getElementById(
+        "level4Btn"
+        ).style.display =
+        "block";
+
+    }
+
+}
+
+/* OPEN LEVEL 4 */
+
+function openLevel4(){
+
+    window.location.href =
+    "html-videos4.html";
+
+}
+
+/* PAGE LOAD */
+
+checkResumeButtons();
+
+</script>
+
+</body>
+</html>
