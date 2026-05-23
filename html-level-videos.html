@@ -36,7 +36,7 @@ body{
     margin-top:10px;
 }
 
-/* VIDEO GRID */
+/* GRID */
 
 .video-grid{
     display:grid;
@@ -50,8 +50,8 @@ body{
     background:#111827;
     border-radius:25px;
     overflow:hidden;
-    transition:0.3s;
     border:1px solid rgba(255,255,255,0.05);
+    transition:0.3s;
 }
 
 .video-card:hover{
@@ -69,6 +69,20 @@ body{
     height:220px;
     object-fit:cover;
     display:block;
+}
+
+/* LEVEL TAG */
+
+.level-tag{
+    position:absolute;
+    top:15px;
+    left:15px;
+    background:#2563eb;
+    color:white;
+    padding:10px 18px;
+    border-radius:12px;
+    font-size:15px;
+    font-weight:600;
 }
 
 /* PLAY ICON */
@@ -109,7 +123,7 @@ body{
 
 /* BUTTON */
 
-.play-btn{
+.open-btn{
     width:100%;
     height:55px;
     border:none;
@@ -122,22 +136,8 @@ body{
     transition:0.3s;
 }
 
-.play-btn:hover{
+.open-btn:hover{
     background:#16a34a;
-}
-
-/* RESUME BUTTON */
-
-.resume-btn{
-    background:#facc15 !important;
-    color:black !important;
-}
-
-/* FINISHED BUTTON */
-
-.finished-btn{
-    background:#2563eb !important;
-    color:white !important;
 }
 
 /* MOBILE */
@@ -192,6 +192,10 @@ body{
 
             <img src="https://img.youtube.com/vi/9pS6UkIQxbw/hqdefault.jpg">
 
+            <div class="level-tag">
+                LEVEL 1
+            </div>
+
             <div class="play-icon">
                 <i class="fa-solid fa-play"></i>
             </div>
@@ -203,17 +207,15 @@ body{
             <h3>HTML BEGINNER</h3>
 
             <p>
-                HTML na website oda basic structure create panna use aagura language 🔥
+                HTML basic structure create pannrathu 🔥
             </p>
 
-            <button class="play-btn"
-            id="btn-9pS6UkIQxbw"
-            onclick="openLevelPage(
-            'watch.html',
+            <button class="open-btn"
+            onclick="openVideo(
             '9pS6UkIQxbw'
             )">
 
-                LEVEL 1
+                OPEN LEVEL
 
             </button>
 
@@ -229,6 +231,10 @@ body{
 
             <img src="https://img.youtube.com/vi/aD4Sp44DoKI/hqdefault.jpg">
 
+            <div class="level-tag">
+                LEVEL 2
+            </div>
+
             <div class="play-icon">
                 <i class="fa-solid fa-play"></i>
             </div>
@@ -237,20 +243,18 @@ body{
 
         <div class="content">
 
-            <h3>HTML Lists Explained</h3>
+            <h3>HTML Lists</h3>
 
             <p>
-                Lists epdi create pannrathu nu simple ah explain panniruken 💻🔥
+                HTML list tags full tutorial 💻🔥
             </p>
 
-            <button class="play-btn"
-            id="btn-aD4Sp44DoKI"
-            onclick="openLevelPage(
-            'watch.html',
+            <button class="open-btn"
+            onclick="openVideo(
             'aD4Sp44DoKI'
             )">
 
-                LEVEL 2
+                OPEN LEVEL
 
             </button>
 
@@ -266,6 +270,10 @@ body{
 
             <img src="https://img.youtube.com/vi/KeXRtRHDFKo/hqdefault.jpg">
 
+            <div class="level-tag">
+                LEVEL 3
+            </div>
+
             <div class="play-icon">
                 <i class="fa-solid fa-play"></i>
             </div>
@@ -274,20 +282,18 @@ body{
 
         <div class="content">
 
-            <h3>HTML Semantic Tags</h3>
+            <h3>Semantic Tags</h3>
 
             <p>
-                Semantic tags use panni professional website create pannalam 🔥
+                Professional HTML structure 🔥
             </p>
 
-            <button class="play-btn"
-            id="btn-KeXRtRHDFKo"
-            onclick="openLevelPage(
-            'watch.html',
+            <button class="open-btn"
+            onclick="openVideo(
             'KeXRtRHDFKo'
             )">
 
-                LEVEL 3
+                OPEN LEVEL
 
             </button>
 
@@ -303,6 +309,10 @@ body{
 
             <img src="https://img.youtube.com/vi/ILDh3QiydCc/hqdefault.jpg">
 
+            <div class="level-tag">
+                LEVEL 4
+            </div>
+
             <div class="play-icon">
                 <i class="fa-solid fa-play"></i>
             </div>
@@ -311,20 +321,18 @@ body{
 
         <div class="content">
 
-            <h3>Images & Links in HTML</h3>
+            <h3>Images & Links</h3>
 
             <p>
-                Image & link epdi add pannrathu nu simple ah explain panniruken 💻🔥
+                Image & link add pannrathu 💻🔥
             </p>
 
-            <button class="play-btn"
-            id="btn-ILDh3QiydCc"
-            onclick="openLevelPage(
-            'watch.html',
+            <button class="open-btn"
+            onclick="openVideo(
             'ILDh3QiydCc'
             )">
 
-                LEVEL 4
+                OPEN LEVEL
 
             </button>
 
@@ -336,100 +344,19 @@ body{
 
 <script>
 
-/* OPEN LEVEL PAGE */
+/* OPEN VIDEO PAGE */
 
-function openLevelPage(level,id){
-
-    /* SAVE VIDEO ID */
+function openVideo(id){
 
     localStorage.setItem(
     "videoId",
     id
     );
 
-    /* SAVE WATCH STATUS */
-
-    localStorage.setItem(
-    "watching_"+id,
-    "true"
-    );
-
-    /* OPEN PAGE */
-
-    window.location.href = level;
+    window.location.href =
+    "watch.html";
 
 }
-
-/* CHECK BUTTON STATUS */
-
-function checkResumeButtons(){
-
-    let videos = [
-
-        "9pS6UkIQxbw",
-        "aD4Sp44DoKI",
-        "KeXRtRHDFKo",
-        "ILDh3QiydCc"
-
-    ];
-
-    /* FINISHED VIDEOS */
-
-    let finishedVideos =
-
-    JSON.parse(
-
-    localStorage.getItem(
-    "finishedVideos"
-    )
-
-    ) || [];
-
-    videos.forEach((id)=>{
-
-        let btn =
-        document.getElementById(
-        "btn-"+id
-        );
-
-        /* FINISHED */
-
-        if(
-        finishedVideos.includes(id)
-        ){
-
-            btn.innerHTML =
-            "✅ FINISHED";
-
-            btn.classList.add(
-            "finished-btn"
-            );
-
-        }
-
-        /* RESUME */
-
-        else if(
-        localStorage.getItem(
-        "watching_"+id
-        )){
-
-            btn.innerHTML =
-            "⏯ RESUME";
-
-            btn.classList.add(
-            "resume-btn"
-            );
-
-        }
-
-    });
-
-}
-
-/* PAGE LOAD */
-
-checkResumeButtons();
 
 </script>
 
