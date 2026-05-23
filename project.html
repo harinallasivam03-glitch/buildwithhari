@@ -364,7 +364,7 @@ JSON.parse(
 localStorage.getItem("projects")
 ) || [];
 
-/* RENDER */
+/* RENDER PROJECTS */
 
 function renderProjects(){
 
@@ -439,12 +439,12 @@ async function saveProject(){
     let name =
     document.getElementById(
     "userName"
-    ).value;
+    ).value.trim();
 
     let website =
     document.getElementById(
     "websiteLink"
-    ).value;
+    ).value.trim();
 
     let files =
     document.getElementById(
@@ -453,8 +453,28 @@ async function saveProject(){
 
     if(name === ""){
 
-        alert("Enter Name");
+        alert("Enter User Name");
         return;
+
+    }
+
+    if(website === ""){
+
+        alert("Enter Website Link");
+        return;
+
+    }
+
+    /* AUTO HTTPS */
+
+    if(
+    !website.startsWith("http://")
+    &&
+    !website.startsWith("https://")
+    ){
+
+        website =
+        "https://" + website;
 
     }
 
@@ -468,6 +488,7 @@ async function saveProject(){
         fileData.push({
 
             fileName:file.name,
+
             content:text
 
         });
@@ -478,7 +499,7 @@ async function saveProject(){
 
         id:"USER" +
         Math.floor(
-        Math.random()*100000
+        10000 + Math.random()*90000
         ),
 
         name:name,
@@ -492,17 +513,36 @@ async function saveProject(){
     allProjects.push(project);
 
     localStorage.setItem(
-    "projects",
-    JSON.stringify(allProjects)
+
+        "projects",
+
+        JSON.stringify(allProjects)
+
     );
 
-    renderProjects();
+    /* CLEAR INPUTS */
+
+    document.getElementById(
+    "userName"
+    ).value = "";
+
+    document.getElementById(
+    "websiteLink"
+    ).value = "";
+
+    document.getElementById(
+    "files"
+    ).value = "";
+
+    /* CLOSE POPUP */
 
     document.getElementById(
     "popup"
     ).style.display = "none";
 
-    alert("Project Saved ✅");
+    renderProjects();
+
+    alert("Project Saved Successfully ✅");
 
 }
 
@@ -531,6 +571,8 @@ function openProject(index){
     ).innerText =
     "USER ID : " + project.id;
 
+    /* WEBSITE BUTTON */
+
     document.getElementById(
     "websiteBtn"
     ).onclick = function(){
@@ -541,6 +583,8 @@ function openProject(index){
         );
 
     }
+
+    /* FILE LIST */
 
     let html = "";
 
@@ -553,7 +597,7 @@ function openProject(index){
         ${JSON.stringify(file.content)}
         )'>
 
-            ${file.fileName}
+            📄 ${file.fileName}
 
         </div>
 
@@ -561,9 +605,28 @@ function openProject(index){
 
     });
 
+    if(project.files.length === 0){
+
+        html = `
+
+        <div class="file-item">
+
+            No Files Uploaded
+
+        </div>
+
+        `;
+
+    }
+
     document.getElementById(
     "filesList"
     ).innerHTML = html;
+
+    document.getElementById(
+    "textView"
+    ).innerText =
+    "Select any file to read...";
 
 }
 
@@ -573,7 +636,8 @@ function openFile(content){
 
     document.getElementById(
     "textView"
-    ).innerText = content;
+    ).innerText =
+    content;
 
 }
 
