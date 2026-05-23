@@ -175,31 +175,23 @@ body{
         line-height:24px;
     }
 
+    /* MOBILE ONLY SINGLE SCROLL */
+
     .video-grid{
-        grid-template-columns:1fr;
+        display:flex;
+        flex-direction:column;
         gap:18px;
+        max-width:500px;
+        margin:auto;
     }
 
     .video-card{
+        width:100%;
         border-radius:20px;
     }
 
     .thumbnail img{
         height:190px;
-    }
-    
-    .video-grid{
-    grid-template-columns:1fr;
-    max-width:500px;
-    margin:auto;
-    }
-
-    .level-tag{
-        top:12px;
-        left:12px;
-        padding:8px 14px;
-        font-size:13px;
-        border-radius:10px;
     }
 
     .play-icon{
@@ -224,7 +216,7 @@ body{
         margin-bottom:18px;
     }
 
-    .open-btn{
+    .play-btn{
         height:50px;
         font-size:15px;
         border-radius:12px;
@@ -248,7 +240,7 @@ body{
         font-size:18px;
     }
 
-    .open-btn{
+    .play-btn{
         font-size:14px;
         height:48px;
     }
