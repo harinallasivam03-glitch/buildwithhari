@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Watch Video</title>
+<title>YouTube Style Player</title>
 
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -12,73 +12,86 @@ content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     margin:0;
     padding:0;
     box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
 
 body{
-    background:#030712;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    height:100dvh; /* mobile fix */
-    overflow:hidden;
+    background:#0f0f0f; /* YouTube dark */
+    color:white;
 }
 
-/* VIDEO BOX */
+/* TOP BAR (YouTube style) */
 
-.video-box{
-    width:95%;
-    max-width:1200px;
-    background:#111827;
-    padding:15px;
-    border-radius:24px;
-    box-shadow:0 0 30px rgba(0,0,0,0.5);
+.topbar{
+    height:56px;
+    display:flex;
+    align-items:center;
+    padding:0 16px;
+    background:#0f0f0f;
+    border-bottom:1px solid #222;
+    position:sticky;
+    top:0;
+}
+
+.logo{
+    font-size:18px;
+    font-weight:bold;
+    color:white;
+}
+
+/* MAIN CONTAINER */
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:10px;
+}
+
+/* PLAYER */
+
+.player-box{
+    width:100%;
+    aspect-ratio:16/9;
+    background:black;
+    border-radius:12px;
+    overflow:hidden;
 }
 
 /* TITLE */
 
 .title{
-    color:white;
-    font-size:28px;
-    margin-bottom:15px;
-    text-align:center;
-    font-family:Arial,sans-serif;
+    font-size:18px;
+    margin-top:12px;
+    font-weight:600;
 }
 
-/* PLAYER */
+/* STATUS */
 
-#player{
-    width:100%;
-    height:80vh;
-    border-radius:18px;
-    overflow:hidden;
+.sub{
+    font-size:13px;
+    color:#aaa;
+    margin-top:4px;
 }
 
 /* MOBILE */
 
 @media(max-width:768px){
 
-    body{
+    .container{
         padding:0;
     }
 
-    .video-box{
-        width:100%;
-        height:100dvh;
+    .player-box{
         border-radius:0;
-        padding:10px;
-        padding-top: calc(10px + env(safe-area-inset-top));
-        padding-bottom: calc(10px + env(safe-area-inset-bottom));
-    }
-
-    #player{
-        height:88dvh;
-        border-radius:12px;
     }
 
     .title{
-        font-size:18px;
-        margin-bottom:10px;
+        padding:10px;
+        font-size:16px;
+    }
+
+    .sub{
+        padding:0 10px;
     }
 
 }
@@ -88,13 +101,25 @@ body{
 
 <body>
 
-<div class="video-box">
+<!-- TOP BAR -->
+<div class="topbar">
+    <div class="logo">▶ YouTube Style Player</div>
+</div>
 
-    <h1 class="title">
-        BuildWithHari Video Player
-    </h1>
+<!-- MAIN -->
+<div class="container">
 
-    <div id="player"></div>
+    <div class="player-box">
+        <div id="player"></div>
+    </div>
+
+    <div class="title" id="videoTitle">
+        Loading video...
+    </div>
+
+    <div class="sub">
+        BuildWithHari • Watch Video
+    </div>
 
 </div>
 
@@ -102,6 +127,7 @@ body{
 
 let id = localStorage.getItem("videoId");
 
+/* YouTube API */
 let tag = document.createElement("script");
 tag.src = "https://www.youtube.com/iframe_api";
 document.body.appendChild(tag);
@@ -112,8 +138,8 @@ function onYouTubeIframeAPIReady(){
 
     player = new YT.Player("player", {
 
-        height:"100%",
         width:"100%",
+        height:"100%",
         videoId:id,
 
         playerVars:{
@@ -124,12 +150,18 @@ function onYouTubeIframeAPIReady(){
         },
 
         events:{
-            "onStateChange": onPlayerStateChange
+            onReady: (e)=>{
+                document.getElementById("videoTitle").innerText =
+                "Now Playing Video ID: " + id;
+            },
+            onStateChange: onPlayerStateChange
         }
 
     });
 
 }
+
+/* VIDEO END */
 
 function onPlayerStateChange(event){
 
@@ -140,17 +172,14 @@ function onPlayerStateChange(event){
 
         if(!finishedVideos.includes(id)){
             finishedVideos.push(id);
-
-            localStorage.setItem(
-                "finishedVideos",
-                JSON.stringify(finishedVideos)
-            );
+            localStorage.setItem("finishedVideos", JSON.stringify(finishedVideos));
         }
 
-        alert("✅ Level Finished");
+        alert("Video Finished ✅");
 
         window.location.href = "videos.html";
     }
+
 }
 
 </script>
