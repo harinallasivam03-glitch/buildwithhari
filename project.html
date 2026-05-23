@@ -1,7 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>HTML Tutorials</title>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Projects</title>
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
@@ -18,119 +22,170 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 body{
     background:#030712;
     color:white;
-    padding:20px;
+    padding:25px;
 }
 
-/* TITLE */
+/* TOP */
 
-.title{
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
     margin-bottom:30px;
+    flex-wrap:wrap;
+    gap:15px;
 }
 
-.title h1{
+.topbar h1{
     font-size:40px;
 }
 
-.title p{
-    color:#94a3b8;
-    margin-top:10px;
+/* UPLOAD BUTTON */
+
+.upload-btn{
+    background:#7c3aed;
+    color:white;
+    border:none;
+    padding:14px 22px;
+    border-radius:14px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
 }
 
-/* VIDEO GRID */
+.upload-btn:hover{
+    background:#6d28d9;
+}
 
-.video-grid{
+/* FILE BOX */
+
+.upload-box{
+    display:none;
+    background:#111827;
+    padding:25px;
+    border-radius:20px;
+    margin-bottom:30px;
+}
+
+.upload-box input{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    margin-bottom:18px;
+    background:#1e293b;
+    color:white;
+}
+
+.upload-submit{
+    width:100%;
+    height:50px;
+    border:none;
+    border-radius:12px;
+    background:#22c55e;
+    color:white;
+    font-size:17px;
+    cursor:pointer;
+}
+
+/* PROJECT GRID */
+
+.projects{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    grid-template-columns:
+    repeat(auto-fit,minmax(320px,1fr));
     gap:25px;
 }
 
 /* CARD */
 
-.video-card{
+.project-card{
     background:#111827;
-    border-radius:25px;
+    border-radius:22px;
     overflow:hidden;
-    transition:0.3s;
     border:1px solid rgba(255,255,255,0.05);
 }
 
-.video-card:hover{
-    transform:translateY(-5px);
+.project-top{
+    padding:20px;
+    border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
-/* THUMBNAIL */
-
-.thumbnail{
-    position:relative;
+.user-info{
+    display:flex;
+    align-items:center;
+    gap:12px;
 }
 
-.thumbnail img{
-    width:100%;
-    height:220px;
-    object-fit:cover;
-    display:block;
-}
-
-/* PLAY ICON */
-
-.play-icon{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    width:70px;
-    height:70px;
+.avatar{
+    width:55px;
+    height:55px;
     border-radius:50%;
-    background:rgba(0,0,0,0.6);
+    background:#facc15;
+    color:black;
     display:flex;
     justify-content:center;
     align-items:center;
-    font-size:28px;
-    color:white;
+    font-size:22px;
+    font-weight:700;
 }
 
-/* CONTENT */
-
-.content{
-    padding:22px;
+.user-info h2{
+    font-size:22px;
 }
 
-.content h3{
-    font-size:24px;
+.user-info p{
+    color:#94a3b8;
+    margin-top:4px;
+}
+
+/* PROJECT CONTENT */
+
+.project-content{
+    padding:20px;
+}
+
+.project-content h3{
     margin-bottom:12px;
-    line-height:34px;
+    font-size:24px;
 }
 
-.content p{
+.project-content p{
     color:#94a3b8;
     line-height:28px;
-    margin-bottom:22px;
+    margin-bottom:20px;
 }
 
-/* BUTTON */
+/* BUTTONS */
 
-.play-btn{
-    width:100%;
-    height:55px;
+.buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.open-btn{
+    flex:1;
+    height:48px;
     border:none;
-    border-radius:14px;
+    border-radius:12px;
     background:#22c55e;
     color:white;
-    font-size:18px;
-    font-weight:600;
     cursor:pointer;
-    transition:0.3s;
+    font-size:15px;
+    font-weight:600;
 }
 
-.play-btn:hover{
-    background:#16a34a;
-}
-
-/* RESUME BUTTON */
-
-.resume-btn{
-    background:#facc15 !important;
-    color:black !important;
+.file-btn{
+    flex:1;
+    height:48px;
+    border:none;
+    border-radius:12px;
+    background:#2563eb;
+    color:white;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
 }
 
 /* MOBILE */
@@ -141,21 +196,12 @@ body{
         padding:15px;
     }
 
-    .title h1{
-        font-size:28px;
+    .topbar h1{
+        font-size:30px;
     }
 
-    .video-grid{
-        grid-template-columns:1fr;
-    }
-
-    .thumbnail img{
-        height:200px;
-    }
-
-    .content h3{
-        font-size:20px;
-        line-height:30px;
+    .buttons{
+        flex-direction:column;
     }
 
 }
@@ -165,355 +211,292 @@ body{
 
 <body>
 
-<div class="title">
+<!-- TOP -->
 
-    <h1>HTML Tutorials</h1>
+<div class="topbar">
 
-    <p>
-        Learn HTML from beginner to advanced level
-    </p>
+    <h1>Student Projects</h1>
+
+    <button class="upload-btn"
+    onclick="showUpload()">
+
+        <i class="fa-solid fa-upload"></i>
+        Upload Files
+
+    </button>
 
 </div>
 
-<div class="video-grid">
+<!-- UPLOAD SECTION -->
 
-    <!-- VIDEO 1 -->
+<div class="upload-box"
+id="uploadBox">
 
-    <div class="video-card">
+    <input type="text"
+    id="projectName"
+    placeholder="Project Name">
 
-        <div class="thumbnail">
+    <input type="text"
+    id="projectDesc"
+    placeholder="Project Description">
 
-            <img src="https://img.youtube.com/vi/9pS6UkIQxbw/hqdefault.jpg">
+    <input type="text"
+    id="websiteLink"
+    placeholder="Website Link">
 
-            <div class="play-icon">
-                <i class="fa-solid fa-play"></i>
-            </div>
+    <input type="file"
+    id="projectFile">
 
-        </div>
+    <button class="upload-submit"
+    onclick="uploadProject()">
 
-        <div class="content">
+        Upload Project
 
-            <h3>What is HTML?</h3>
+    </button>
 
-            <p>
-                HTML na website oda basic structure create panna use aagura language 🔥
-            </p>
+</div>
 
-            <button class="play-btn"
-            id="btn-9pS6UkIQxbw"
-            onclick="playVideo('9pS6UkIQxbw')">
+<!-- PROJECTS -->
 
-                ▶ PLAY
-
-            </button>
-
-        </div>
-
-    </div>
-
-    <!-- VIDEO 2 -->
-
-    <div class="video-card">
-
-        <div class="thumbnail">
-
-            <img src="https://img.youtube.com/vi/aD4Sp44DoKI/hqdefault.jpg">
-
-            <div class="play-icon">
-                <i class="fa-solid fa-play"></i>
-            </div>
-
-        </div>
-
-        <div class="content">
-
-            <h3>HTML Lists Explained </h3>
-
-            <p>
-                Lists epdi create pannrathu nu simple ah explain panniruken 💻🔥
-           </p>
-
-            <button class="play-btn"
-            id="btn-aD4Sp44DoKI"
-            onclick="playVideo('aD4Sp44DoKI')">
-
-                ▶ PLAY
-
-            </button>
-
-        </div>
-
-    </div>
-
-    <!-- VIDEO 3 -->
-
-    <div class="video-card">
-
-        <div class="thumbnail">
-
-            <img src="https://img.youtube.com/vi/KeXRtRHDFKo/hqdefault.jpg">
-
-            <div class="play-icon">
-                <i class="fa-solid fa-play"></i>
-            </div>
-
-        </div>
-
-        <div class="content">
-
-            <h3>HTML Semantic Tags</h3>
-
-            <p>
-               Semantic tags use panni oru professional website create pannrathu nu paakalam 🔥
-            </p>
-
-            <button class="play-btn"
-            id="btn-KeXRtRHDFKo"
-            onclick="playVideo('KeXRtRHDFKo')">
-
-                ▶ PLAY
-
-            </button>
-
-        </div>
-
-    </div>
-
-    <!-- VIDEO 4 -->
-
-    <div class="video-card">
-
-        <div class="thumbnail">
-
-            <img src="https://img.youtube.com/vi/ILDh3QiydCc/hqdefault.jpg">
-
-            <div class="play-icon">
-                <i class="fa-solid fa-play"></i>
-            </div>
-
-        </div>
-
-        <div class="content">
-
-            <h3>Images & Links in HTML</h3>
-
-            <p>
-               Image & link epdi add pannrathu nu simple ah explain panniruken 💻🔥
-            </p>
-
-            <button class="play-btn"
-            id="btn-ILDh3QiydCc"
-            onclick="playVideo('ILDh3QiydCc')">
-
-                ▶ PLAY
-
-            </button>
-
-        </div>
-
-    </div>
-
-    <!-- VIDEO 5 -->
-
-    <div class="video-card">
-
-        <div class="thumbnail">
-
-            <img src="https://img.youtube.com/vi/SqQNKbqgHpA/hqdefault.jpg">
-
-            <div class="play-icon">
-                <i class="fa-solid fa-play"></i>
-            </div>
-
-        </div>
-
-        <div class="content">
-
-            <h3>Build First HTML Website</h3>
-
-            <p>
-               Oru complete mini website epdi create pannrathu nu paakalam 💻🚀
-            </p>
-
-            <button class="play-btn"
-            id="btn-SqQNKbqgHpA"
-            onclick="playVideo('SqQNKbqgHpA')">
-
-                ▶ PLAY
-
-            </button>
-
-        </div>
-
-    </div>
-     <!-- VIDEO 6 -->
-
-    <div class="video-card">
-
-        <div class="thumbnail">
-
-            <img src="https://img.youtube.com/vi/qTia9bSOfNY/hqdefault.jpg">
-
-            <div class="play-icon">
-                <i class="fa-solid fa-play"></i>
-            </div>
-
-        </div>
-
-        <div class="content">
-
-            <h3>4 HTML Tags Must Know</h3>
-
-            <p>
-               Must important basic HTML tags ah simple ah explain panniruken 🔥
-            </p>
-
-            <button class="play-btn"
-            id="btn-qTia9bSOfNY"
-            onclick="playVideo('qTia9bSOfNY')">
-
-                ▶ PLAY
-
-            </button>
-
-        </div>
-
-    </div>
-        <!-- VIDEO 7 -->
-
-    <div class="video-card">
-
-        <div class="thumbnail">
-
-            <img src="https://img.youtube.com/vi/E7o73M8Vy4Q/hqdefault.jpg">
-
-            <div class="play-icon">
-                <i class="fa-solid fa-play"></i>
-            </div>
-
-        </div>
-
-        <div class="content">
-
-            <h3>Create First HTML Page</h3>
-
-            <p>
-                HTML page epdi create pannrathu nu step-by-step ah kaamichiruken 🔥
-            </p>
-
-            <button class="play-btn"
-            id="btn-E7o73M8Vy4Q"
-            onclick="playVideo('E7o73M8Vy4Q')">
-
-                ▶ PLAY
-
-            </button>
-
-        </div>
-
-    </div>
-            <!-- VIDEO 8 -->
-
-    <div class="video-card">
-
-        <div class="thumbnail">
-
-            <img src="https://img.youtube.com/vi/UhT0tru1Xh8/hqdefault.jpg">
-
-            <div class="play-icon">
-                <i class="fa-solid fa-play"></i>
-            </div>
-
-        </div>
-
-        <div class="content">
-
-            <h3>Create HTML Forms Easily</h3>
-
-            <p>
-                Form epdi create pannrathu nu simple ah explain panniruken 💻🔥
-            </p>
-
-            <button class="play-btn"
-            id="btn-UhT0tru1Xh8"
-            onclick="playVideo('UhT0tru1Xh8')">
-
-                ▶ PLAY
-
-            </button>
-
-        </div>
-
-    </div>
+<div class="projects"
+id="projectsContainer">
 
 </div>
 
 <script>
 
-/* PLAY VIDEO */
+/* SHOW UPLOAD */
 
-function playVideo(id){
+function showUpload(){
 
-    localStorage.setItem(
-    "videoLink",
-    "https://www.youtube.com/embed/"+id
+    let box =
+    document.getElementById(
+    "uploadBox"
     );
 
-    /* SAVE WATCH STATUS */
+    if(box.style.display==="block"){
 
-    localStorage.setItem(
-    "watching_"+id,
-    "true"
-    );
+        box.style.display="none";
 
-    window.location.href="watch.html";
+    }else{
+
+        box.style.display="block";
+
+    }
 
 }
 
-/* CHECK RESUME BUTTON */
+/* LOAD PROJECTS */
 
-function checkResumeButtons(){
+function loadProjects(){
 
-    let videos = [
+    let projects =
+    JSON.parse(
+    localStorage.getItem("projects")
+    ) || [];
 
-        "9pS6UkIQxbw",
-        "aD4Sp44DoKI",
-        "KeXRtRHDFKo",
-        "ILDh3QiydCc",
-        "SqQNKbqgHpA"
+    let html = "";
 
-    ];
+    projects.forEach((project,index)=>{
 
-    videos.forEach((id)=>{
+        let firstLetter =
+        project.userName
+        .charAt(0)
+        .toUpperCase();
 
-        let watched =
-        localStorage.getItem(
-        "watching_"+id
-        );
+        html += `
 
-        if(watched){
+        <div class="project-card">
 
-            let btn =
-            document.getElementById(
-            "btn-"+id
-            );
+            <div class="project-top">
 
-            btn.innerHTML =
-            "⏯ RESUME";
+                <div class="user-info">
 
-            btn.classList.add(
-            "resume-btn"
-            );
+                    <div class="avatar">
 
-        }
+                        ${firstLetter}
+
+                    </div>
+
+                    <div>
+
+                        <h2>
+                        ${project.userName}
+                        </h2>
+
+                        <p>
+                        Uploaded Project
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="project-content">
+
+                <h3>
+                ${project.projectName}
+                </h3>
+
+                <p>
+                ${project.projectDesc}
+                </p>
+
+                <div class="buttons">
+
+                    <button class="open-btn"
+                    onclick="openWebsite('${project.websiteLink}')">
+
+                        Open Website
+
+                    </button>
+
+                    <button class="file-btn"
+                    onclick="openFiles('${project.fileName}')">
+
+                        Open Files
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        `;
 
     });
+
+    document.getElementById(
+    "projectsContainer"
+    ).innerHTML = html;
+
+}
+
+/* UPLOAD PROJECT */
+
+function uploadProject(){
+
+    let userName =
+    localStorage.getItem(
+    "profileName"
+    ) || "User";
+
+    let projectName =
+    document.getElementById(
+    "projectName"
+    ).value;
+
+    let projectDesc =
+    document.getElementById(
+    "projectDesc"
+    ).value;
+
+    let websiteLink =
+    document.getElementById(
+    "websiteLink"
+    ).value;
+
+    let fileInput =
+    document.getElementById(
+    "projectFile"
+    );
+
+    if(projectName===""){
+
+        alert("Enter Project Name");
+
+        return;
+
+    }
+
+    let fileName = "No File";
+
+    if(fileInput.files.length>0){
+
+        fileName =
+        fileInput.files[0].name;
+
+    }
+
+    let projects =
+    JSON.parse(
+    localStorage.getItem("projects")
+    ) || [];
+
+    projects.push({
+
+        userName:userName,
+
+        projectName:projectName,
+
+        projectDesc:projectDesc,
+
+        websiteLink:websiteLink,
+
+        fileName:fileName
+
+    });
+
+    localStorage.setItem(
+    "projects",
+    JSON.stringify(projects)
+    );
+
+    alert("Project Uploaded ✅");
+
+    loadProjects();
+
+    document.getElementById(
+    "projectName"
+    ).value="";
+
+    document.getElementById(
+    "projectDesc"
+    ).value="";
+
+    document.getElementById(
+    "websiteLink"
+    ).value="";
+
+    document.getElementById(
+    "projectFile"
+    ).value="";
+
+}
+
+/* OPEN WEBSITE */
+
+function openWebsite(link){
+
+    if(link===""){
+
+        alert("No Website Link");
+
+        return;
+
+    }
+
+    window.open(link,"_blank");
+
+}
+
+/* OPEN FILE */
+
+function openFiles(file){
+
+    alert(
+    "File Name : "+file
+    );
 
 }
 
 /* PAGE LOAD */
 
-checkResumeButtons();
+loadProjects();
 
 </script>
 
