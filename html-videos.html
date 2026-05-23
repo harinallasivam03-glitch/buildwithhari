@@ -133,6 +133,26 @@ body{
     color:black !important;
 }
 
+/* LEVEL BUTTON */
+
+.level-btn-box{
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+}
+
+.level-btn{
+    display:none;
+    padding:16px 35px;
+    border:none;
+    border-radius:14px;
+    background:#2563eb;
+    color:white;
+    font-size:18px;
+    font-weight:600;
+    cursor:pointer;
+}
+
 /* MOBILE */
 
 @media(max-width:768px){
@@ -228,7 +248,7 @@ body{
 
         <div class="content">
 
-            <h3>HTML Lists Explained </h3>
+            <h3>HTML Lists Explained</h3>
 
             <p>
                 Lists epdi create pannrathu nu simple ah explain panniruken 💻🔥
@@ -347,108 +367,20 @@ body{
         </div>
 
     </div>
-     <!-- VIDEO 6 -->
 
-    <div class="video-card">
+</div>
 
-        <div class="thumbnail">
+<!-- LEVEL 2 BUTTON -->
 
-            <img src="https://img.youtube.com/vi/qTia9bSOfNY/hqdefault.jpg">
+<div class="level-btn-box">
 
-            <div class="play-icon">
-                <i class="fa-solid fa-play"></i>
-            </div>
+    <button class="level-btn"
+    id="level2Btn"
+    onclick="openLevel2()">
 
-        </div>
+        🔓 OPEN LEVEL 2
 
-        <div class="content">
-
-            <h3>4 HTML Tags Must Know</h3>
-
-            <p>
-               Must important basic HTML tags ah simple ah explain panniruken 🔥
-            </p>
-
-            <button class="play-btn"
-            id="btn-qTia9bSOfNY"
-            onclick="playVideo('qTia9bSOfNY')">
-
-                ▶ PLAY
-
-            </button>
-
-        </div>
-
-    </div>
-        <!-- VIDEO 7 -->
-
-    <div class="video-card">
-
-        <div class="thumbnail">
-
-            <img src="https://img.youtube.com/vi/E7o73M8Vy4Q/hqdefault.jpg">
-
-            <div class="play-icon">
-                <i class="fa-solid fa-play"></i>
-            </div>
-
-        </div>
-
-        <div class="content">
-
-            <h3>Create First HTML Page</h3>
-
-            <p>
-                HTML page epdi create pannrathu nu step-by-step ah kaamichiruken 🔥
-            </p>
-
-            <button class="play-btn"
-            id="btn-E7o73M8Vy4Q"
-            onclick="playVideo('E7o73M8Vy4Q')">
-
-                ▶ PLAY
-
-            </button>
-
-        </div>
-
-    </div>
-            <!-- VIDEO 8 -->
-
-    <div class="video-card">
-
-        <div class="thumbnail">
-
-            <img src="https://img.youtube.com/vi/UhT0tru1Xh8/hqdefault.jpg">
-
-            <div class="play-icon">
-                <i class="fa-solid fa-play"></i>
-            </div>
-
-        </div>
-
-        <div class="content">
-
-            <h3>Create HTML Forms Easily</h3>
-
-            <p>
-                Form epdi create pannrathu nu simple ah explain panniruken 💻🔥
-            </p>
-
-            <button class="play-btn"
-            id="btn-UhT0tru1Xh8"
-            onclick="playVideo('UhT0tru1Xh8')">
-
-                ▶ PLAY
-
-            </button>
-
-        </div>
-
-    </div>
-     <button class="btn "
-                    onclick="window.location.href='html-videos2.html'">LEVEL-2</button>
-
+    </button>
 
 </div>
 
@@ -459,22 +391,21 @@ body{
 function playVideo(id){
 
     localStorage.setItem(
-    "videoLink",
-    "https://www.youtube.com/embed/"+id
+    "videoId",
+    id
     );
-
-    /* SAVE WATCH STATUS */
 
     localStorage.setItem(
     "watching_"+id,
     "true"
     );
 
-    window.location.href="watch.html";
+    window.location.href =
+    "watch.html";
 
 }
 
-/* CHECK RESUME BUTTON */
+/* CHECK BUTTON STATUS */
 
 function checkResumeButtons(){
 
@@ -488,19 +419,47 @@ function checkResumeButtons(){
 
     ];
 
+    let finishedVideos =
+
+    JSON.parse(
+
+    localStorage.getItem(
+    "finishedVideos"
+    )
+
+    ) || [];
+
+    let completedCount = 0;
+
     videos.forEach((id)=>{
 
-        let watched =
-        localStorage.getItem(
-        "watching_"+id
+        let btn =
+        document.getElementById(
+        "btn-"+id
         );
 
-        if(watched){
+        /* FINISHED */
 
-            let btn =
-            document.getElementById(
-            "btn-"+id
-            );
+        if(
+        finishedVideos.includes(id)
+        ){
+
+            completedCount++;
+
+            btn.innerHTML =
+            "✅ FINISHED";
+
+            btn.style.background =
+            "#2563eb";
+
+        }
+
+        /* RESUME */
+
+        else if(
+        localStorage.getItem(
+        "watching_"+id
+        )){
 
             btn.innerHTML =
             "⏯ RESUME";
@@ -512,6 +471,28 @@ function checkResumeButtons(){
         }
 
     });
+
+    /* SHOW LEVEL 2 BUTTON */
+
+    if(
+    completedCount === videos.length
+    ){
+
+        document.getElementById(
+        "level2Btn"
+        ).style.display =
+        "block";
+
+    }
+
+}
+
+/* OPEN LEVEL 2 */
+
+function openLevel2(){
+
+    window.location.href =
+    "html-videos2.html";
 
 }
 
