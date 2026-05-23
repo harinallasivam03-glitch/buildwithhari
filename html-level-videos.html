@@ -107,7 +107,7 @@ body{
     margin-bottom:22px;
 }
 
-/* BUTTON */
+/* LEVEL BUTTON */
 
 .play-btn{
     width:100%;
@@ -201,9 +201,12 @@ body{
 
             <button class="play-btn"
             id="btn-9pS6UkIQxbw"
-            onclick="playVideo('9pS6UkIQxbw')">
+            onclick="openLevelPage(
+            'level1.html',
+            '9pS6UkIQxbw'
+            )">
 
-                ▶ PLAY
+                LEVEL 1
 
             </button>
 
@@ -227,17 +230,20 @@ body{
 
         <div class="content">
 
-            <h3>HTML Lists Explained </h3>
+            <h3>HTML Lists Explained</h3>
 
             <p>
                 Lists epdi create pannrathu nu simple ah explain panniruken 💻🔥
-           </p>
+            </p>
 
             <button class="play-btn"
             id="btn-aD4Sp44DoKI"
-            onclick="playVideo('aD4Sp44DoKI')">
+            onclick="openLevelPage(
+            'level2.html',
+            'aD4Sp44DoKI'
+            )">
 
-                ▶ PLAY
+                LEVEL 2
 
             </button>
 
@@ -264,14 +270,17 @@ body{
             <h3>HTML Semantic Tags</h3>
 
             <p>
-               Semantic tags use panni oru professional website create pannrathu nu paakalam 🔥
+                Semantic tags use panni professional website create pannalam 🔥
             </p>
 
             <button class="play-btn"
             id="btn-KeXRtRHDFKo"
-            onclick="playVideo('KeXRtRHDFKo')">
+            onclick="openLevelPage(
+            'level3.html',
+            'KeXRtRHDFKo'
+            )">
 
-                ▶ PLAY
+                LEVEL 3
 
             </button>
 
@@ -298,147 +307,17 @@ body{
             <h3>Images & Links in HTML</h3>
 
             <p>
-               Image & link epdi add pannrathu nu simple ah explain panniruken 💻🔥
+                Image & link epdi add pannrathu nu simple ah explain panniruken 💻🔥
             </p>
 
             <button class="play-btn"
             id="btn-ILDh3QiydCc"
-            onclick="playVideo('ILDh3QiydCc')">
+            onclick="openLevelPage(
+            'level4.html',
+            'ILDh3QiydCc'
+            )">
 
-                ▶ PLAY
-
-            </button>
-
-        </div>
-
-    </div>
-
-    <!-- VIDEO 5 -->
-
-    <div class="video-card">
-
-        <div class="thumbnail">
-
-            <img src="https://img.youtube.com/vi/SqQNKbqgHpA/hqdefault.jpg">
-
-            <div class="play-icon">
-                <i class="fa-solid fa-play"></i>
-            </div>
-
-        </div>
-
-        <div class="content">
-
-            <h3>Build First HTML Website</h3>
-
-            <p>
-               Oru complete mini website epdi create pannrathu nu paakalam 💻🚀
-            </p>
-
-            <button class="play-btn"
-            id="btn-SqQNKbqgHpA"
-            onclick="playVideo('SqQNKbqgHpA')">
-
-                ▶ PLAY
-
-            </button>
-
-        </div>
-
-    </div>
-     <!-- VIDEO 6 -->
-
-    <div class="video-card">
-
-        <div class="thumbnail">
-
-            <img src="https://img.youtube.com/vi/qTia9bSOfNY/hqdefault.jpg">
-
-            <div class="play-icon">
-                <i class="fa-solid fa-play"></i>
-            </div>
-
-        </div>
-
-        <div class="content">
-
-            <h3>4 HTML Tags Must Know</h3>
-
-            <p>
-               Must important basic HTML tags ah simple ah explain panniruken 🔥
-            </p>
-
-            <button class="play-btn"
-            id="btn-qTia9bSOfNY"
-            onclick="playVideo('qTia9bSOfNY')">
-
-                ▶ PLAY
-
-            </button>
-
-        </div>
-
-    </div>
-        <!-- VIDEO 7 -->
-
-    <div class="video-card">
-
-        <div class="thumbnail">
-
-            <img src="https://img.youtube.com/vi/E7o73M8Vy4Q/hqdefault.jpg">
-
-            <div class="play-icon">
-                <i class="fa-solid fa-play"></i>
-            </div>
-
-        </div>
-
-        <div class="content">
-
-            <h3>Create First HTML Page</h3>
-
-            <p>
-                HTML page epdi create pannrathu nu step-by-step ah kaamichiruken 🔥
-            </p>
-
-            <button class="play-btn"
-            id="btn-E7o73M8Vy4Q"
-            onclick="playVideo('E7o73M8Vy4Q')">
-
-                ▶ PLAY
-
-            </button>
-
-        </div>
-
-    </div>
-            <!-- VIDEO 8 -->
-
-    <div class="video-card">
-
-        <div class="thumbnail">
-
-            <img src="https://img.youtube.com/vi/UhT0tru1Xh8/hqdefault.jpg">
-
-            <div class="play-icon">
-                <i class="fa-solid fa-play"></i>
-            </div>
-
-        </div>
-
-        <div class="content">
-
-            <h3>Create HTML Forms Easily</h3>
-
-            <p>
-                Form epdi create pannrathu nu simple ah explain panniruken 💻🔥
-            </p>
-
-            <button class="play-btn"
-            id="btn-UhT0tru1Xh8"
-            onclick="playVideo('UhT0tru1Xh8')">
-
-                ▶ PLAY
+                LEVEL 4
 
             </button>
 
@@ -450,23 +329,21 @@ body{
 
 <script>
 
-/* PLAY VIDEO */
+/* OPEN LEVEL PAGE */
 
-function playVideo(id){
+function openLevelPage(level,id){
 
     localStorage.setItem(
     "videoLink",
     "https://www.youtube.com/embed/"+id
     );
 
-    /* SAVE WATCH STATUS */
-
     localStorage.setItem(
     "watching_"+id,
     "true"
     );
 
-    window.location.href="watch.html";
+    window.location.href = level;
 
 }
 
@@ -479,12 +356,11 @@ function checkResumeButtons(){
         "9pS6UkIQxbw",
         "aD4Sp44DoKI",
         "KeXRtRHDFKo",
-        "ILDh3QiydCc",
-        "SqQNKbqgHpA"
+        "ILDh3QiydCc"
 
     ];
 
-    videos.forEach((id)=>{
+    videos.forEach((id,index)=>{
 
         let watched =
         localStorage.getItem(
