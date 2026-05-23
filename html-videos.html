@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>CSS Tutorials</title>
+<title>HTML Tutorials</title>
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
@@ -133,6 +133,26 @@ body{
     color:black !important;
 }
 
+/* LEVEL BUTTON */
+
+.level-btn-box{
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+}
+
+.level-btn{
+    display:none;
+    padding:16px 35px;
+    border:none;
+    border-radius:14px;
+    background:#2563eb;
+    color:white;
+    font-size:18px;
+    font-weight:600;
+    cursor:pointer;
+}
+
 /* MOBILE */
 
 @media(max-width:768px){
@@ -167,10 +187,11 @@ body{
 
 <div class="title">
 
-    <h1>CSS Tutorials</h1>
+    <h1>LEVEL-1</h1>
+    <h1>HTML TUTORIAL</h1>
 
     <p>
-        Learn CSS from beginner to advanced level
+        Learn HTML from beginner to advanced level
     </p>
 
 </div>
@@ -196,7 +217,7 @@ body{
             <h3>What is HTML?</h3>
 
             <p>
-                Learn HTML basics in Tamil with easy explanation for beginners.
+                HTML na website oda basic structure create panna use aagura language 🔥
             </p>
 
             <button class="play-btn"
@@ -227,11 +248,11 @@ body{
 
         <div class="content">
 
-            <h3>HTML Lists Tutorial</h3>
+            <h3>HTML Lists Explained</h3>
 
             <p>
-                Learn ul, ol and li tags with real examples and beginner projects.
-            </p>
+                Lists epdi create pannrathu nu simple ah explain panniruken 💻🔥
+           </p>
 
             <button class="play-btn"
             id="btn-aD4Sp44DoKI"
@@ -264,7 +285,7 @@ body{
             <h3>HTML Semantic Tags</h3>
 
             <p>
-                Learn semantic tags like header, footer and section easily.
+               Semantic tags use panni oru professional website create pannrathu nu paakalam 🔥
             </p>
 
             <button class="play-btn"
@@ -298,7 +319,7 @@ body{
             <h3>Images & Links in HTML</h3>
 
             <p>
-                Learn how to add images and clickable links in HTML websites.
+               Image & link epdi add pannrathu nu simple ah explain panniruken 💻🔥
             </p>
 
             <button class="play-btn"
@@ -332,7 +353,7 @@ body{
             <h3>Build First HTML Website</h3>
 
             <p>
-                Create your first mini website project step by step from scratch.
+               Oru complete mini website epdi create pannrathu nu paakalam 💻🚀
             </p>
 
             <button class="play-btn"
@@ -349,6 +370,20 @@ body{
 
 </div>
 
+<!-- LEVEL 2 BUTTON -->
+
+<div class="level-btn-box">
+
+    <button class="level-btn"
+    id="level2Btn"
+    onclick="openLevel2()">
+
+        🔓 OPEN LEVEL 2
+
+    </button>
+
+</div>
+
 <script>
 
 /* PLAY VIDEO */
@@ -356,22 +391,21 @@ body{
 function playVideo(id){
 
     localStorage.setItem(
-    "videoLink",
-    "https://www.youtube.com/embed/"+id
+    "videoId",
+    id
     );
-
-    /* SAVE WATCH STATUS */
 
     localStorage.setItem(
     "watching_"+id,
     "true"
     );
 
-    window.location.href="watch.html";
+    window.location.href =
+    "watch.html";
 
 }
 
-/* CHECK RESUME BUTTON */
+/* CHECK BUTTON STATUS */
 
 function checkResumeButtons(){
 
@@ -385,19 +419,47 @@ function checkResumeButtons(){
 
     ];
 
+    let finishedVideos =
+
+    JSON.parse(
+
+    localStorage.getItem(
+    "finishedVideos"
+    )
+
+    ) || [];
+
+    let completedCount = 0;
+
     videos.forEach((id)=>{
 
-        let watched =
-        localStorage.getItem(
-        "watching_"+id
+        let btn =
+        document.getElementById(
+        "btn-"+id
         );
 
-        if(watched){
+        /* FINISHED */
 
-            let btn =
-            document.getElementById(
-            "btn-"+id
-            );
+        if(
+        finishedVideos.includes(id)
+        ){
+
+            completedCount++;
+
+            btn.innerHTML =
+            "✅ FINISHED";
+
+            btn.style.background =
+            "#2563eb";
+
+        }
+
+        /* RESUME */
+
+        else if(
+        localStorage.getItem(
+        "watching_"+id
+        )){
 
             btn.innerHTML =
             "⏯ RESUME";
@@ -409,6 +471,28 @@ function checkResumeButtons(){
         }
 
     });
+
+    /* SHOW LEVEL 2 BUTTON */
+
+    if(
+    completedCount === videos.length
+    ){
+
+        document.getElementById(
+        "level2Btn"
+        ).style.display =
+        "block";
+
+    }
+
+}
+
+/* OPEN LEVEL 2 */
+
+function openLevel2(){
+
+    window.location.href =
+    "html-videos2.html";
 
 }
 
