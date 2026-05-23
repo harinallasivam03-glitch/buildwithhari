@@ -38,6 +38,7 @@ body{
     border-right:1px solid rgba(255,255,255,0.05);
     padding:20px;
     position:fixed;
+    overflow-y:auto;
 }
 
 .logo{
@@ -154,16 +155,7 @@ body{
 }
 
 .course-footer{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
     margin-top:25px;
-}
-
-.price{
-    color:#facc15;
-    font-weight:700;
-    font-size:20px;
 }
 
 .btn{
@@ -174,6 +166,9 @@ body{
     color:white;
     cursor:pointer;
     transition:0.3s;
+    width:100%;
+    font-size:16px;
+    font-weight:600;
 }
 
 .btn:hover{
@@ -193,7 +188,9 @@ body{
         padding:20px;
     }
 
-}.menu-btn{
+}
+
+.menu-btn{
     display:none;
     position:fixed;
     top:15px;
@@ -264,24 +261,25 @@ body{
         gap:20px;
     }
 
-    .course-card{
-        width:100%;
-    }
-
 }
+
 </style>
 </head>
 <body>
-	
-	<div class="menu-btn" onclick="toggleSidebar()">☰</div>
+
+<!-- MOBILE MENU -->
+
+<div class="menu-btn" onclick="toggleSidebar()">☰</div>
 
 <div class="mobile-sidebar" id="sidebar">
+
     <a href="profile.html">My Profile</a>
     <a href="videos.html">Videos</a>
     <a href="courses.html">Courses</a>
     <a href="project.html">Project</a>
     <a href="leaderboard.html">Leaderboard</a>
     <a href="settings.html">Settings</a>
+
 </div>
 
 <!-- SIDEBAR -->
@@ -308,32 +306,30 @@ body{
             My Profile
         </a>
 
-	    <a href="videos.html">
-   	   <i class="fa-solid fa-video"></i>
-    	   Videos
-	</a>
+        <a href="videos.html">
+            <i class="fa-solid fa-video"></i>
+            Videos
+        </a>
 
         <a href="courses.html" class="active">
             <i class="fa-solid fa-book-open"></i>
             Courses
         </a>
-		
-		 <a href="project.html">
+
+        <a href="project.html">
             <i class="fa-solid fa-project-diagram"></i>
             Project
         </a>
 
-       <a href="leaderboard.html">
+        <a href="leaderboard.html">
             <i class="fa-solid fa-trophy"></i>
             Leaderboard
         </a>
 
-
         <a href="settings.html">
-   	   <i class="fa-solid fa-gear"></i>
-    	   Settings
-	</a>
-
+            <i class="fa-solid fa-gear"></i>
+            Settings
+        </a>
 
     </div>
 
@@ -353,16 +349,16 @@ body{
 
     </div>
 
-    <!-- COURSES -->
+    <!-- COURSE GRID -->
 
     <div class="course-grid">
 
-        <!-- CARD 1 -->
+        <!-- HTML -->
 
         <div class="course-card">
 
             <div class="course-image">
-                <i class="fa-solid fa-code"></i>
+                <i class="fa-brands fa-html5"></i>
             </div>
 
             <div class="course-content">
@@ -370,21 +366,168 @@ body{
                 <h2>HTML Courses</h2>
 
                 <p>
-                    Learn HTML build modern websites.
+                    Learn HTML and build modern websites.
                 </p>
 
                 <div class="course-footer">
-					
-                    <button class="btn Enroll"
-                    onclick="window.location.href='html-pdf.html'">Enroll</button>
-					
+
+                    <button class="btn"
+                    onclick="window.location.href='html-pdf.html'">
+                        Enroll
+                    </button>
+
                 </div>
 
             </div>
 
         </div>
 
-        <!-- CARD 2 -->
+        <!-- CSS -->
+
+        <div class="course-card">
+
+            <div class="course-image">
+                <i class="fa-brands fa-css3-alt"></i>
+            </div>
+
+            <div class="course-content">
+
+                <h2>CSS Courses</h2>
+
+                <p>
+                    Learn CSS and responsive website design.
+                </p>
+
+                <div class="course-footer">
+
+                    <button class="btn"
+                    onclick="window.location.href='css-pdf.html'">
+                        Enroll
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- JAVASCRIPT -->
+
+        <div class="course-card">
+
+            <div class="course-image">
+                <i class="fa-brands fa-js"></i>
+            </div>
+
+            <div class="course-content">
+
+                <h2>JavaScript Courses</h2>
+
+                <p>
+                    Learn JavaScript and interactive websites.
+                </p>
+
+                <div class="course-footer">
+
+                    <button class="btn"
+                    onclick="window.location.href='js-pdf.html'">
+                        Enroll
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- JAVA -->
+
+        <div class="course-card">
+
+            <div class="course-image">
+                <i class="fa-brands fa-java"></i>
+            </div>
+
+            <div class="course-content">
+
+                <h2>Java Courses</h2>
+
+                <p>
+                    Learn Java programming from beginner level.
+                </p>
+
+                <div class="course-footer">
+
+                    <button class="btn"
+                    onclick="window.location.href='java-pdf.html'">
+                        Enroll
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- PYTHON -->
+
+        <div class="course-card">
+
+            <div class="course-image">
+                <i class="fa-brands fa-python"></i>
+            </div>
+
+            <div class="course-content">
+
+                <h2>Python Courses</h2>
+
+                <p>
+                    Learn Python programming easily.
+                </p>
+
+                <div class="course-footer">
+
+                    <button class="btn"
+                    onclick="window.location.href='python-pdf.html'">
+                        Enroll
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- C -->
+
+        <div class="course-card">
+
+            <div class="course-image">
+                <i class="fa-solid fa-c"></i>
+            </div>
+
+            <div class="course-content">
+
+                <h2>C Programming</h2>
+
+                <p>
+                    Learn C programming basics and logic building.
+                </p>
+
+                <div class="course-footer">
+
+                    <button class="btn"
+                    onclick="window.location.href='c-pdf.html'">
+                        Enroll
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- C++ -->
 
         <div class="course-card">
 
@@ -394,16 +537,18 @@ body{
 
             <div class="course-content">
 
-                <h2>JAVA Courses</h2>
+                <h2>C++ Courses</h2>
 
                 <p>
-                    Learn JavaScript build modern websites.
+                    Learn C++ and object oriented programming.
                 </p>
 
                 <div class="course-footer">
-					
-                     <button class="btn Enroll"
-                    onclick="window.location.href='java-pdf.html'">Enroll</button>
+
+                    <button class="btn"
+                    onclick="window.location.href='cpp-pdf.html'">
+                        Enroll
+                    </button>
 
                 </div>
 
@@ -411,7 +556,123 @@ body{
 
         </div>
 
-        <!-- CARD 3 -->
+        <!-- C# -->
+
+        <div class="course-card">
+
+            <div class="course-image">
+                <i class="fa-solid fa-hashtag"></i>
+            </div>
+
+            <div class="course-content">
+
+                <h2>C# Courses</h2>
+
+                <p>
+                    Learn C# for app and game development.
+                </p>
+
+                <div class="course-footer">
+
+                    <button class="btn"
+                    onclick="window.location.href='csharp-pdf.html'">
+                        Enroll
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- FLUTTER -->
+
+        <div class="course-card">
+
+            <div class="course-image">
+                <i class="fa-solid fa-mobile-screen"></i>
+            </div>
+
+            <div class="course-content">
+
+                <h2>Flutter Courses</h2>
+
+                <p>
+                    Learn Flutter app development with Dart.
+                </p>
+
+                <div class="course-footer">
+
+                    <button class="btn"
+                    onclick="window.location.href='flutter-pdf.html'">
+                        Enroll
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- DART -->
+
+        <div class="course-card">
+
+            <div class="course-image">
+                <i class="fa-solid fa-code"></i>
+            </div>
+
+            <div class="course-content">
+
+                <h2>Dart Courses</h2>
+
+                <p>
+                    Learn Dart programming for Flutter development.
+                </p>
+
+                <div class="course-footer">
+
+                    <button class="btn"
+                    onclick="window.location.href='dart-pdf.html'">
+                        Enroll
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- SQL -->
+
+        <div class="course-card">
+
+            <div class="course-image">
+                <i class="fa-solid fa-database"></i>
+            </div>
+
+            <div class="course-content">
+
+                <h2>SQL Courses</h2>
+
+                <p>
+                    Learn SQL database and queries.
+                </p>
+
+                <div class="course-footer">
+
+                    <button class="btn"
+                    onclick="window.location.href='sql-pdf.html'">
+                        Enroll
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- AI -->
 
         <div class="course-card">
 
@@ -424,12 +685,13 @@ body{
                 <h2>AI Engineering</h2>
 
                 <p>
-                    Learn Artificial Intelligence and Machine Learning basics.
+                    Learn Artificial Intelligence and Machine Learning.
                 </p>
 
                 <div class="course-footer">
 
-                    <button class="btn">
+                    <button class="btn"
+                    onclick="window.location.href='ai-pdf.html'">
                         Enroll
                     </button>
 
@@ -442,10 +704,17 @@ body{
     </div>
 
 </div>
-	<script>
+
+<script>
+
 function toggleSidebar(){
-    document.getElementById("sidebar").classList.toggle("show");
+
+    document
+    .getElementById("sidebar")
+    .classList.toggle("show");
+
 }
+
 </script>
 
 </body>
