@@ -341,170 +341,413 @@ body{
 
     <div class="title">
 
-        <h1>Project File's</h1>
+        <h1>Game's</h1>
 
         <p>
-            Upgrade your skills with premium learning
-        </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BuildWithHariOfficialWeb</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#030712;
+    color:white;
+    display:flex;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:280px;
+    height:100vh;
+    background:#071122;
+    border-right:1px solid rgba(255,255,255,0.05);
+    padding:20px;
+    position:fixed;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:40px;
+}
+
+.logo-box{
+    width:45px;
+    height:45px;
+    border-radius:12px;
+    background:#111827;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#a855f7;
+    font-size:20px;
+}
+
+.logo-text h2{
+    font-size:30px;
+}
+
+.logo-text p{
+    color:#94a3b8;
+    font-size:12px;
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.menu a{
+    text-decoration:none;
+    color:#cbd5e1;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:15px 18px;
+    border-radius:18px;
+    transition:0.3s;
+}
+
+.menu a:hover,
+.menu a.active{
+    background:#1e293b;
+    color:white;
+}
+
+/* MAIN */
+
+.main{
+    margin-left:280px;
+    width:100%;
+    padding:35px;
+}
+
+.title h1{
+    font-size:50px;
+}
+
+.title p{
+    color:#94a3b8;
+    margin-top:10px;
+}
+
+/* COURSE GRID */
+
+.course-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+    margin-top:40px;
+}
+
+.course-card{
+    background:linear-gradient(145deg,#111827,#0b1220);
+    border-radius:25px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,0.05);
+    transition:0.3s;
+}
+
+.course-card:hover{
+    transform:translateY(-8px);
+}
+
+.course-image{
+    width:100%;
+    height:180px;
+    background:linear-gradient(to right,#7c3aed,#2563eb);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:60px;
+}
+
+.course-content{
+    padding:25px;
+}
+
+.course-content h2{
+    margin-bottom:10px;
+}
+
+.course-content p{
+    color:#94a3b8;
+    font-size:14px;
+    line-height:24px;
+}
+
+.course-footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:25px;
+}
+
+.btn{
+    background:#7c3aed;
+    border:none;
+    padding:12px 18px;
+    border-radius:12px;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+    width:100%;
+}
+
+.btn:hover{
+    background:#6d28d9;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .sidebar{
+        display:none;
+    }
+
+    .main{
+        margin-left:0;
+        padding:20px;
+    }
+
+}
+
+.menu-btn{
+    display:none;
+    position:fixed;
+    top:15px;
+    left:15px;
+    font-size:26px;
+    color:white;
+    background:#1e293b;
+    padding:10px 14px;
+    border-radius:10px;
+    z-index:1001;
+    cursor:pointer;
+}
+
+.mobile-sidebar{
+    position:fixed;
+    top:0;
+    left:-260px;
+    width:240px;
+    height:100%;
+    background:#071122;
+    padding-top:70px;
+    transition:0.3s;
+    z-index:1000;
+}
+
+.mobile-sidebar a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:18px 25px;
+    border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.mobile-sidebar a:hover{
+    background:#1e293b;
+}
+
+.mobile-sidebar.show{
+    left:0;
+}
+
+@media(max-width:768px){
+
+    body{
+        display:block;
+    }
+
+    .sidebar{
+        display:none;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .main{
+        margin-left:0;
+        width:100%;
+        padding:70px 15px 20px;
+    }
+
+    .title h1{
+        font-size:34px;
+    }
+
+    .course-grid{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+
+<div class="menu-btn" onclick="toggleSidebar()">☰</div>
+
+<div class="mobile-sidebar" id="sidebar">
+
+    <a href="profile.html">My Profile</a>
+    <a href="videos.html">Videos</a>
+    <a href="courses.html">Courses</a>
+    <a href="project.html">Project</a>
+    <a href="leaderboard.html">Leaderboard</a>
+    <a href="settings.html">Settings</a>
+
+</div>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+    <div class="logo">
+
+        <div class="logo-box">
+            <i class="fa-solid fa-b"></i>
+        </div>
+
+        <div class="logo-text">
+            <h2>BuildWithHari</h2>
+            <p>DEVELOPER</p>
+        </div>
 
     </div>
 
-    <!-- VIDEO GRID -->
+    <div class="menu">
 
-    <div class="course-grid">
+        <a href="profile.html">
+            <i class="fa-regular fa-user"></i>
+            My Profile
+        </a>
 
-        <!-- HTML -->
+        <a href="videos.html">
+            <i class="fa-solid fa-video"></i>
+            Videos
+        </a>
 
-        <div class="course-card">
+        <a href="courses.html">
+            <i class="fa-solid fa-book-open"></i>
+            Courses
+        </a>
 
-            <div class="course-image">
-                <i class="fa-brands fa-html5"></i>
-            </div>
+        <a href="project.html"class="active">
+            <i class="fa-solid fa-project-diagram"></i>
+            Project
+        </a>
 
-            <div class="course-content">
+        <a href="leaderboard.html">
+            <i class="fa-solid fa-trophy"></i>
+            Leaderboard
+        </a>
 
-                <h2>HTML Project's</h2>
-
-                <p>
-                    Learn modern HTML full course from beginner level.
-                </p>
-
-                <div class="course-footer">
-
-                    <button class="btn Open Video"
-                    onclick="window.location.href='project-html.html'">Open</button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- CSS -->
-
-        <div class="course-card">
-
-            <div class="course-image">
-                <i class="fa-brands fa-css3-alt"></i>
-            </div>
-
-            <div class="course-content">
-
-                <h2>CSS Beginner</h2>
-
-                <p>
-                    Learn modern CSS and responsive website design.
-                </p>
-
-                <div class="course-footer">
-
-                    <button class="btn"
-                   onclick="window.location.href='css-videos.html'">Open</button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- JAVA -->
-
-        <div class="course-card">
-
-            <div class="course-image">
-                <i class="fa-brands fa-java"></i>
-            </div>
-
-            <div class="course-content">
-
-                <h2>Java Beginner</h2>
-
-                <p>
-                    Learn modern Java programming from scratch.
-                </p>
-
-                <div class="course-footer">
-
-                    <button class="btn"
-                    onclick="window.location.href='java-videos.html'">Open</button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- JAVASCRIPT -->
-
-        <div class="course-card">
-
-            <div class="course-image">
-                <i class="fa-brands fa-js"></i>
-            </div>
-
-            <div class="course-content">
-
-                <h2>JavaScript</h2>
-
-                <p>
-                    Learn JavaScript and build interactive websites.
-                </p>
-
-                <div class="course-footer">
-
-                    <button class="btn"
-                    onclick="openVideo('js')">
-                        Open
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
+        <a href="settings.html">
+            <i class="fa-solid fa-gear"></i>
+            Settings
+        </a>
 
     </div>
 
 </div>
 
-<script>
+<!-- MAIN -->
 
-function openVideo(course){
+<div class="main">
 
-    const links = {
+    <div class="title">
 
-        html1:
-        "https://www.youtube.com/embed/qz0aGYrrlhU",
+        <h1>Project File's</h1>
 
-        css:
-        "https://www.youtube.com/embed/1Rs2ND1ryYc",
+        <p>
+            Play and enjoy games
+        </p>
 
-        java:
-        "https://www.youtube.com/embed/grEKMHGYyns",
+    </div>
 
-        js:
-        "https://www.youtube.com/embed/W6NZfCO5SIk"
+    <!-- GAME GRID -->
 
-    };
+<div class="game-grid">
 
-    localStorage.setItem(
-        "videoLink",
-        links[course]
-    );
+    <div class="game-card">
+        <div class="game-image">
+            <i class="fa-solid fa-car"></i>
+        </div>
 
-    window.location.href = "watch.html";
+        <div class="game-content">
+            <h2>Car Racing</h2>
+            <p>Fast racing game.</p>
 
-}
+            <button class="btn"
+            onclick="window.location.href='car-racing.html'">
+                Play Now
+            </button>
+        </div>
+    </div>
 
-function toggleSidebar(){
+    <div class="game-card">
+        <div class="game-image">
+            <i class="fa-solid fa-ghost"></i>
+        </div>
 
-    document
-    .getElementById("sidebar")
-    .classList.toggle("show");
+        <div class="game-content">
+            <h2>Pacman</h2>
+            <p>Classic arcade game.</p>
 
-}
+            <button class="btn"
+            onclick="window.location.href='pacman.html'">
+                Play Now
+            </button>
+        </div>
+    </div>
 
-</script>
+    <div class="game-card">
+        <div class="game-image">
+            <i class="fa-solid fa-puzzle-piece"></i>
+        </div>
+
+        <div class="game-content">
+            <h2>Puzzle Game</h2>
+            <p>Train your brain.</p>
+
+            <button class="btn"
+            onclick="window.location.href='puzzle.html'">
+                Play Now
+            </button>
+        </div>
+    </div>
+
+</div>
 
 </body>
 </html>
