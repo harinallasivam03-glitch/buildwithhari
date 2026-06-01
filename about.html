@@ -4,185 +4,270 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>About - BuildWithHari</title>
+<title>BuildWithHariOfficialWeb</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Poppins,sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
 }
 
 body{
-background:#030712;
-color:white;
-display:flex;
+    background:#030712;
+    color:white;
+    display:flex;
 }
 
 /* SIDEBAR */
 
 .sidebar{
-width:280px;
-height:100vh;
-background:#071122;
-padding:20px;
-position:fixed;
-left:0;
-top:0;
+    width:280px;
+    height:100vh;
+    background:#071122;
+    border-right:1px solid rgba(255,255,255,0.05);
+    padding:20px;
+    position:fixed;
+    overflow-y:auto;
 }
 
 .logo{
-font-size:28px;
-font-weight:bold;
-margin-bottom:40px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:40px;
+}
+
+.logo-box{
+    width:45px;
+    height:45px;
+    border-radius:12px;
+    background:#111827;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#a855f7;
+    font-size:20px;
+}
+
+.logo-text h2{
+    font-size:30px;
+}
+
+.logo-text p{
+    color:#94a3b8;
+    font-size:12px;
 }
 
 .menu{
-display:flex;
-flex-direction:column;
-gap:12px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
 }
 
 .menu a{
-text-decoration:none;
-color:white;
-padding:14px;
-border-radius:12px;
-transition:.3s;
+    text-decoration:none;
+    color:#cbd5e1;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:15px 18px;
+    border-radius:18px;
+    transition:0.3s;
 }
 
 .menu a:hover,
 .menu a.active{
-background:#1e293b;
+    background:#1e293b;
+    color:white;
 }
 
 /* MAIN */
 
 .main{
-margin-left:280px;
-padding:35px;
-width:100%;
+    margin-left:280px;
+    width:100%;
+    padding:35px;
 }
 
-.about-box{
-background:#111827;
-padding:35px;
-border-radius:25px;
-text-align:center;
+.title h1{
+    font-size:50px;
 }
 
-.about-box i{
-font-size:70px;
-color:#a855f7;
-margin-bottom:20px;
+.title p{
+    color:#94a3b8;
+    margin-top:10px;
 }
 
-.about-box h1{
-font-size:45px;
-margin-bottom:15px;
+/* COURSE GRID */
+
+.course-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+    margin-top:40px;
 }
 
-.about-box p{
-color:#94a3b8;
-line-height:30px;
+.course-card{
+    background:linear-gradient(145deg,#111827,#0b1220);
+    border-radius:25px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,0.05);
+    transition:0.3s;
 }
 
-/* SOCIAL */
-
-.social{
-margin-top:35px;
-display:flex;
-justify-content:center;
-gap:15px;
-flex-wrap:wrap;
+.course-card:hover{
+    transform:translateY(-8px);
 }
 
-.social a{
-text-decoration:none;
-padding:15px 25px;
-border-radius:12px;
-color:white;
-font-weight:600;
+.course-image{
+    width:100%;
+    height:180px;
+    background:linear-gradient(to right,#7c3aed,#2563eb);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:60px;
 }
 
-.youtube{
-background:red;
+.course-content{
+    padding:25px;
 }
 
-.instagram{
-background:#E1306C;
+.course-content h2{
+    margin-bottom:10px;
 }
 
-.facebook{
-background:#1877F2;
+.course-content p{
+    color:#94a3b8;
+    font-size:14px;
+    line-height:24px;
+}
+
+.course-footer{
+    margin-top:25px;
+}
+
+.btn{
+    background:#7c3aed;
+    border:none;
+    padding:12px 18px;
+    border-radius:12px;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+    width:100%;
+    font-size:16px;
+    font-weight:600;
+}
+
+.btn:hover{
+    background:#6d28d9;
 }
 
 /* MOBILE */
 
+@media(max-width:900px){
+
+    .sidebar{
+        display:none;
+    }
+
+    .main{
+        margin-left:0;
+        padding:20px;
+    }
+
+}
+
 .menu-btn{
-display:none;
-position:fixed;
-top:15px;
-left:15px;
-background:#1e293b;
-padding:10px 14px;
-border-radius:10px;
-cursor:pointer;
-z-index:1001;
+    display:none;
+    position:fixed;
+    top:15px;
+    left:15px;
+    font-size:26px;
+    color:white;
+    background:#1e293b;
+    padding:10px 14px;
+    border-radius:10px;
+    z-index:1001;
+    cursor:pointer;
 }
 
 .mobile-sidebar{
-position:fixed;
-left:-250px;
-top:0;
-width:240px;
-height:100%;
-background:#071122;
-padding-top:70px;
-transition:.3s;
-z-index:1000;
+    position:fixed;
+    top:0;
+    left:-260px;
+    width:240px;
+    height:100%;
+    background:#071122;
+    padding-top:70px;
+    transition:0.3s;
+    z-index:1000;
 }
 
 .mobile-sidebar a{
-display:block;
-padding:18px;
-color:white;
-text-decoration:none;
-border-bottom:1px solid rgba(255,255,255,.05);
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:18px 25px;
+    border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.mobile-sidebar a:hover{
+    background:#1e293b;
 }
 
 .mobile-sidebar.show{
-left:0;
+    left:0;
 }
 
 @media(max-width:768px){
 
-.sidebar{
-display:none;
-}
+    body{
+        display:block;
+    }
 
-.menu-btn{
-display:block;
-}
+    .sidebar{
+        display:none;
+    }
 
-.main{
-margin-left:0;
-padding:80px 15px;
-}
+    .menu-btn{
+        display:block;
+    }
 
-.about-box h1{
-font-size:30px;
-}
+    .main{
+        margin-left:0;
+        width:100%;
+        padding:70px 15px 20px;
+    }
+
+    .title h1{
+        font-size:34px;
+    }
+
+    .course-grid{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
 
 }
 
 </style>
 </head>
 <body>
+
+<!-- MOBILE MENU -->
 
 <div class="menu-btn" onclick="toggleSidebar()">☰</div>
 
@@ -196,7 +281,6 @@ font-size:30px;
     <a href="settings.html">Settings</a>
 
 </div>
-
 
 <!-- SIDEBAR -->
 
@@ -261,6 +345,352 @@ font-size:30px;
 
 </div>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BuildWithHariOfficialWeb</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#030712;
+    color:white;
+    display:flex;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:280px;
+    height:100vh;
+    background:#071122;
+    border-right:1px solid rgba(255,255,255,0.05);
+    padding:20px;
+    position:fixed;
+    overflow-y:auto;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:40px;
+}
+
+.logo-box{
+    width:45px;
+    height:45px;
+    border-radius:12px;
+    background:#111827;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#a855f7;
+    font-size:20px;
+}
+
+.logo-text h2{
+    font-size:30px;
+}
+
+.logo-text p{
+    color:#94a3b8;
+    font-size:12px;
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.menu a{
+    text-decoration:none;
+    color:#cbd5e1;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:15px 18px;
+    border-radius:18px;
+    transition:0.3s;
+}
+
+.menu a:hover,
+.menu a.active{
+    background:#1e293b;
+    color:white;
+}
+
+/* MAIN */
+
+.main{
+    margin-left:280px;
+    width:100%;
+    padding:35px;
+}
+
+.title h1{
+    font-size:50px;
+}
+
+.title p{
+    color:#94a3b8;
+    margin-top:10px;
+}
+
+/* COURSE GRID */
+
+.course-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+    margin-top:40px;
+}
+
+.course-card{
+    background:linear-gradient(145deg,#111827,#0b1220);
+    border-radius:25px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,0.05);
+    transition:0.3s;
+}
+
+.course-card:hover{
+    transform:translateY(-8px);
+}
+
+.course-image{
+    width:100%;
+    height:180px;
+    background:linear-gradient(to right,#7c3aed,#2563eb);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:60px;
+}
+
+.course-content{
+    padding:25px;
+}
+
+.course-content h2{
+    margin-bottom:10px;
+}
+
+.course-content p{
+    color:#94a3b8;
+    font-size:14px;
+    line-height:24px;
+}
+
+.course-footer{
+    margin-top:25px;
+}
+
+.btn{
+    background:#7c3aed;
+    border:none;
+    padding:12px 18px;
+    border-radius:12px;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+    width:100%;
+    font-size:16px;
+    font-weight:600;
+}
+
+.btn:hover{
+    background:#6d28d9;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .sidebar{
+        display:none;
+    }
+
+    .main{
+        margin-left:0;
+        padding:20px;
+    }
+
+}
+
+.menu-btn{
+    display:none;
+    position:fixed;
+    top:15px;
+    left:15px;
+    font-size:26px;
+    color:white;
+    background:#1e293b;
+    padding:10px 14px;
+    border-radius:10px;
+    z-index:1001;
+    cursor:pointer;
+}
+
+.mobile-sidebar{
+    position:fixed;
+    top:0;
+    left:-260px;
+    width:240px;
+    height:100%;
+    background:#071122;
+    padding-top:70px;
+    transition:0.3s;
+    z-index:1000;
+}
+
+.mobile-sidebar a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:18px 25px;
+    border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.mobile-sidebar a:hover{
+    background:#1e293b;
+}
+
+.mobile-sidebar.show{
+    left:0;
+}
+
+@media(max-width:768px){
+
+    body{
+        display:block;
+    }
+
+    .sidebar{
+        display:none;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .main{
+        margin-left:0;
+        width:100%;
+        padding:70px 15px 20px;
+    }
+
+    .title h1{
+        font-size:34px;
+    }
+
+    .course-grid{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+
+<div class="menu-btn" onclick="toggleSidebar()">☰</div>
+
+<div class="mobile-sidebar" id="sidebar">
+
+    <a href="profile.html">My Profile</a>
+    <a href="videos.html">Videos</a>
+    <a href="courses.html">Courses</a>
+    <a href="project.html">Project</a>
+    <a href="leaderboard.html">Leaderboard</a>
+    <a href="settings.html">Settings</a>
+
+</div>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+    <div class="logo">
+
+        <div class="logo-box">
+            <i class="fa-solid fa-b"></i>
+        </div>
+
+        <div class="logo-text">
+            <h2>BuildWithHari</h2>
+            <p>DEVELOPER</p>
+        </div>
+
+    </div>
+
+    <div class="menu">
+
+        <a href="profile.html">
+            <i class="fa-regular fa-user"></i>
+            My Profile
+        </a>
+
+        <a href="videos.html">
+            <i class="fa-solid fa-video"></i>
+            Videos
+        </a>
+
+        <a href="courses.html" class="active">
+            <i class="fa-solid fa-book-open"></i>
+            Courses
+        </a>
+
+        <a href="project.html">
+            <i class="fa-solid fa-project-diagram"></i>
+            Project
+        </a>
+            
+        <a href="games.html">
+            <i class="fa-solid fa-gamepad"></i>
+            Games
+        </a>
+
+        <a href="leaderboard.html">
+            <i class="fa-solid fa-trophy"></i>
+            Leaderboard
+        </a>
+
+        <a href="settings.html">
+            <i class="fa-solid fa-gear"></i>
+            Settings
+        </a>
+
+        <a href="about.html">
+            <i class="fa-solid fa-circle-info"></i>
+            <span>About</span>
+        </a>
+
+    </div>
+
+</div>
 
 <!-- MAIN -->
 
