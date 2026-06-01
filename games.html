@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Games</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Poppins,sans-serif;
+}
+
+body{
+    background:#030712;
+    color:white;
+    padding:30px;
+}
+
+.title h1{
+    font-size:50px;
+}
+
+.title p{
+    color:#94a3b8;
+    margin-top:10px;
+}
+
+.game-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+    margin-top:40px;
+}
+
+.game-card{
+    background:#111827;
+    border-radius:25px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.05);
+}
+
+.game-image{
+    height:200px;
+    background:linear-gradient(135deg,#7c3aed,#2563eb);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:70px;
+}
+
+.game-content{
+    padding:25px;
+}
+
+.game-content h2{
+    margin-bottom:10px;
+}
+
+.game-content p{
+    color:#94a3b8;
+    margin-bottom:20px;
+}
+
+.btn{
+    width:100%;
+    border:none;
+    padding:14px;
+    border-radius:12px;
+    background:#7c3aed;
+    color:white;
+    cursor:pointer;
+}
+
+.btn:hover{
+    background:#6d28d9;
+}
+
+@media(max-width:768px){
+
+    body{
+        padding:15px;
+    }
+
+    .title h1{
+        font-size:32px;
+    }
+
+    .game-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="title">
+    <h1>Games</h1>
+    <p>Play and enjoy games</p>
+</div>
+
+<div class="game-grid">
+
+    <div class="game-card">
+        <div class="game-image">
+            <i class="fa-solid fa-car"></i>
+        </div>
+
+        <div class="game-content">
+            <h2>Car Racing</h2>
+            <p>Fast racing game.</p>
+
+            <button class="btn"
+            onclick="window.location.href='car-racing.html'">
+                Play Now
+            </button>
+        </div>
+    </div>
+
+    <div class="game-card">
+        <div class="game-image">
+            <i class="fa-solid fa-ghost"></i>
+        </div>
+
+        <div class="game-content">
+            <h2>Pacman</h2>
+            <p>Classic arcade game.</p>
+
+            <button class="btn"
+            onclick="window.location.href='pacman.html'">
+                Play Now
+            </button>
+        </div>
+    </div>
+
+    <div class="game-card">
+        <div class="game-image">
+            <i class="fa-solid fa-puzzle-piece"></i>
+        </div>
+
+        <div class="game-content">
+            <h2>Puzzle Game</h2>
+            <p>Train your brain.</p>
+
+            <button class="btn"
+            onclick="window.location.href='puzzle.html'">
+                Play Now
+            </button>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
